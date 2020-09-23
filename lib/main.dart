@@ -37,10 +37,10 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.green,
-          primaryColor: Colors.green[800],
+          primarySwatch: Colors.cyan,
+          primaryColor: Color(0xff32AFA9),
           accentColor: Colors.white,
-          splashColor: Colors.amber,
+          splashColor: Color(0xffE7F0C3),
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: BarScreen(),

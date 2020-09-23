@@ -30,10 +30,11 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> _categoryList = [
-      {'cat': 'Flowering', 'path': 'assets/images/Flowering.png'},
-      {'cat': 'Medicinal', 'path': 'assets/images/Medicinal.png'},
-      {'cat': 'Waxy', 'path': 'assets/images/Waxy.png'},
-      {'cat': 'Decorative', 'path': 'assets/images/Show-Plant.png'},
+      {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
+      {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
+      {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
+      {'cat': 'Professionals', 'path': 'assets/images/business.png'},
+      {'cat': '', 'path': 'assets/images/more.png'},
     ];
 
     favIds = Provider.of<ProductProvider>(context, listen: false).topPicks;
@@ -111,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemCount: _categoryList.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (ctx, i) => Container(
-                    width: 200,
+                    width: 250,
                     child: CategoryTile(
                       _categoryList[i]['cat'],
                       _categoryList[i]['path'],

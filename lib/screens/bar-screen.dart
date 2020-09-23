@@ -41,7 +41,12 @@ class _BarScreenState extends State<BarScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Plant Store'),
+        title: Text('Ente Manjeri',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 28,
+          fontFamily: 'Lato',
+        ),),
         centerTitle: true,
         actions: [
           IconButton(

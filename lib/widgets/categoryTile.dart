@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -33,23 +34,35 @@ class CategoryTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(40),
         boxFit: BoxFit.cover,
         title: GFListTile(
-          title: Text(''),
-        ),
-        content: Center(
-          child: Container(
-            padding: EdgeInsets.all(8),
-            color: Colors.black54,
+          description: Container(
+            alignment: AlignmentDirectional.bottomCenter,
+            padding: EdgeInsets.all(1),
+            color: Colors.transparent,
             child: Text(
               category,
               softWrap: true,
               style: TextStyle(
+                  fontFamily: 'OpenSans',
                   color: Colors.white,
-                  fontStyle: FontStyle.italic,
-                  letterSpacing: 0,
-                  fontSize: 20),
+                  letterSpacing: 1.3,
+                  fontSize: 10),
             ),
           ),
         ),
+        // content: Container(
+        //   alignment: AlignmentDirectional.bottomCenter,
+        //   padding: EdgeInsets.all(8),
+        //   color: Colors.black54,
+        //   child: Text(
+        //     category,
+        //     softWrap: true,
+        //     style: TextStyle(
+        //         color: Colors.white,
+        //         fontStyle: FontStyle.italic,
+        //         letterSpacing: 0,
+        //         fontSize: 17),
+        //   ),
+        // ),
       ),
     );
   }

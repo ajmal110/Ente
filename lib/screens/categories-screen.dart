@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/main-drawer.dart';
 import './cart-screen.dart';
-import '../widgets/categoryTile.dart';
+import '../widgets/categoryTile2.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../models/offers.dart';
 import '../Providers/offer-provider.dart';
@@ -14,10 +14,15 @@ class CategoriesScreen extends StatelessWidget {
 
 //You can Change this List as per your requirment.
   final List<Map<String, String>> _categoryList = [
-    {'cat': 'Flowering', 'path': 'assets/images/Flowering.png'},
-    {'cat': 'Medicinal', 'path': 'assets/images/Medicinal.png'},
-    {'cat': 'Waxy', 'path': 'assets/images/Waxy.png'},
-    {'cat': 'Decorative', 'path': 'assets/images/Show-Plant.png'},
+    {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
+    {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
+    {'cat': 'Professionals', 'path': 'assets/images/business.png'},
+    {'cat': 'Vehicles', 'path': 'assets/images/Utility.png'},
+    {'cat': 'News', 'path': 'assets/images/NEWS!.png'},
+    {'cat': 'Workers', 'path': 'assets/images/Workers.png'},
+    {'cat': 'Business', 'path': 'assets/images/Business1.png'},
+    {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
+    {'cat': 'Govt Institutions', 'path': 'assets/images/Govt.png'},
   ];
 
   @override
@@ -26,7 +31,14 @@ class CategoriesScreen extends StatelessWidget {
         Provider.of<OfferProvider>(context).seasonalOffers;
     return Scaffold(
       appBar: AppBar(
-        title: Text('Plant Store'),
+        title: Text(
+          'Ente Manjeri',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontFamily: 'Lato',
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
@@ -58,7 +70,6 @@ class CategoriesScreen extends StatelessWidget {
           Text(
             'Categories',
             style: TextStyle(
-              fontStyle: FontStyle.italic,
               fontSize: 25,
               letterSpacing: 4,
             ),
@@ -69,7 +80,7 @@ class CategoriesScreen extends StatelessWidget {
               child: GridView.builder(
                 itemCount: _categoryList.length,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
+                  crossAxisCount: 3,
                 ),
                 itemBuilder: (ctx, i) => CategoryTile(
                     _categoryList[i]['cat'], _categoryList[i]['path']),
