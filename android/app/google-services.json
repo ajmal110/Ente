@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "876503910711",
+    "firebase_url": "https://ente-manjeri.firebaseio.com",
+    "project_id": "ente-manjeri",
+    "storage_bucket": "ente-manjeri.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876503910711:android:1971ca290d72fca3adf2b2",
+        "android_client_info": {
+          "package_name": "com.example.plantStore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "876503910711-k0461lu88pq5d1ocv7mtft3kutetlaid.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAAKP-hr_uDiVO52rywYjAk3DMKf_vlxsU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "876503910711-k0461lu88pq5d1ocv7mtft3kutetlaid.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
