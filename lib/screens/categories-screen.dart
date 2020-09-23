@@ -83,7 +83,10 @@ class CategoriesScreen extends StatelessWidget {
                   crossAxisCount: 3,
                 ),
                 itemBuilder: (ctx, i) => CategoryTile(
-                    _categoryList[i]['cat'], _categoryList[i]['path']),
+                  false,
+                  _categoryList[i]['cat'],
+                  _categoryList[i]['path'],
+                ),
               ),
             ),
           ),

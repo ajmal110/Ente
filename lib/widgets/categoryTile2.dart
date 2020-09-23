@@ -6,11 +6,14 @@ import 'package:getwidget/getwidget.dart';
 import '../models/product.dart';
 import '../Providers/product-provider.dart';
 import '../screens/product-display-screen.dart';
+import '../screens/categories-screen.dart';
+import '../screens/subcategories-screen.dart';
 
 class CategoryTile extends StatelessWidget {
+  final isSubCat;
   final category;
   final path;
-  CategoryTile(this.category, this.path);
+  CategoryTile(this.isSubCat,this.category, this.path);
   @override
   Widget build(BuildContext context) {
     List<Product> productOfCategory =
@@ -18,11 +21,23 @@ class CategoryTile extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (ctx) => ProductDisplay(category, productOfCategory),
-          ),
-        );
+        if (category == 'more') {
+          Navigator.of(context).pushNamed(CategoriesScreen.routename);
+        } else {
+          if (isSubCat) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) => ProductDisplay(category, productOfCategory),
+              ),
+            );
+          } else {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (ctx) => SubCategoriesScreen(category),
+              ),
+            );
+          }
+        }
       },
       child: Column(
         children: <Widget>[

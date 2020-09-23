@@ -34,7 +34,7 @@ class _HomeScreenState extends State<HomeScreen> {
       {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
       {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
       {'cat': 'Professionals', 'path': 'assets/images/business.png'},
-      {'cat': '', 'path': 'assets/images/more.png'},
+      {'cat': 'more', 'path': 'assets/images/more.png'},
     ];
 
     favIds = Provider.of<ProductProvider>(context, listen: false).topPicks;
@@ -114,6 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (ctx, i) => Container(
                     width: 250,
                     child: CategoryTile(
+                      false,
                       _categoryList[i]['cat'],
                       _categoryList[i]['path'],
                     ),
