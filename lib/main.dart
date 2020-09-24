@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:plantStore/Providers/phone_auth.dart';
 import 'package:provider/provider.dart';
-
+import 'package:plantStore/screens/home.dart';
 import './screens/bar-screen.dart';
 import './screens/cart-screen.dart';
 import './screens/orders-screen.dart';
@@ -42,9 +44,12 @@ class MyApp extends StatelessWidget {
           accentColor: Colors.white,
           splashColor: Color(0xffE7F0C3),
           visualDensity: VisualDensity.adaptivePlatformDensity,
+          textTheme: GoogleFonts.rubikTextTheme(),
         ),
-        home: BarScreen(),
+        debugShowCheckedModeBanner: false,
+        home: PhoneLogin(),
         routes: {
+          HomeScreen.routename: (ctx) => HomeScreen(),
           CartScreen.routename: (ctx) => CartScreen(),
           OrdersScreen.routename: (ctx) => OrdersScreen(),
           LoginScreen.routename: (ctx) => LoginScreen(),

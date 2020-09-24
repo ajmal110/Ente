@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/main.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import '../screens/cart-screen.dart';
 import '../screens/orders-screen.dart';
@@ -8,6 +11,12 @@ import '../screens/login-screen.dart';
 import '../screens/categories-screen.dart';
 
 class MainDrawer extends StatefulWidget {
+  final FirebaseUser user;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  MainDrawer({Key key, @required this.user})
+      : assert(user != null),
+        super(key: key);
   @override
   _MainDrawerState createState() => _MainDrawerState();
 }
@@ -48,11 +57,9 @@ class _MainDrawerState extends State<MainDrawer> {
                   fit: BoxFit.cover,
                 ),
                 color: Color(0xff32AFA9),
-
               ),
             ),
             Container(
-
               height: 40,
               child: ListTile(
                 onTap: () {
@@ -83,8 +90,11 @@ class _MainDrawerState extends State<MainDrawer> {
               height: 40,
               child: ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context,
-                      isSignedIn ? CartScreen.routename : LoginScreen.routename);
+                  Navigator.pushNamed(
+                      context,
+                      isSignedIn
+                          ? CartScreen.routename
+                          : LoginScreen.routename);
                 },
                 leading: Icon(Icons.shopping_cart),
                 title: Text('My Cart'),
@@ -129,7 +139,11 @@ class _MainDrawerState extends State<MainDrawer> {
             Container(
               height: 40,
               child: ListTile(
-                onTap: () {},
+                onTap: () {
+                  // _firebaseAuth.signOut();
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => MyApp()));
+                },
                 leading: Icon(Icons.settings),
                 title: Text('Settings'),
               ),

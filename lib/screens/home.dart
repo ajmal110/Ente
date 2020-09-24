@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -12,6 +13,12 @@ import '../widgets/mainOffersCarousel.dart';
 import '../widgets/multipleItemCarousel.dart';
 
 class HomeScreen extends StatefulWidget {
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+
+  // HomeScreen({Key key, @required this.user})
+  //     : assert(user != null),
+  //       super(key: key);
+  static String routename = '/home-screen';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
