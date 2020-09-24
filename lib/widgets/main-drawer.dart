@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/main.dart';
+import 'package:plantStore/models/app.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -11,17 +12,17 @@ import '../screens/login-screen.dart';
 import '../screens/categories-screen.dart';
 
 class MainDrawer extends StatefulWidget {
-  final FirebaseUser user;
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  // final FirebaseUser user;
 
-  MainDrawer({Key key, @required this.user})
-      : assert(user != null),
-        super(key: key);
+  // MainDrawer({Key key, @required this.user})
+  //     : assert(user != null),
+  //       super(key: key);
   @override
   _MainDrawerState createState() => _MainDrawerState();
 }
 
 class _MainDrawerState extends State<MainDrawer> {
+  final _firebaseAuth = FirebaseAuth.instance;
   bool isSignedIn;
   var _isInit = true;
   @override
@@ -140,9 +141,9 @@ class _MainDrawerState extends State<MainDrawer> {
               height: 40,
               child: ListTile(
                 onTap: () {
-                  // _firebaseAuth.signOut();
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MyApp()));
+                  _firebaseAuth.signOut();
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => App()));
                 },
                 leading: Icon(Icons.settings),
                 title: Text('Settings'),

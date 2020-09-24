@@ -15,7 +15,7 @@ class SubCategoriesScreen extends StatelessWidget {
 
   //ADD YOUR ICONS AND SUBCATEGORIES HERE BELOW !!!
 
-  final List<Map<String, String>> busTimimgs = [
+  final List<Map<String, String>> busTimings = [
     {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
     {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
     {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
@@ -73,7 +73,7 @@ class SubCategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<Map<String, Object>> _categoryList = [
-      {'cat': 'Bus timings', 'subcat': busTimimgs},
+      {'cat': 'Bus timings', 'subcat': busTimings},
       {'cat': 'Taxi', 'subcat': taxi},
       {'cat': 'Professionals', 'subcat': professionals},
       {'cat': 'Vehicles', 'subcat': vehicles},
