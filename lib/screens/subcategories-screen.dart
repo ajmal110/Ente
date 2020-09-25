@@ -22,10 +22,8 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Professionals', 'path': 'assets/images/business.png'},
   ];
   final List<Map<String, String>> taxi = [
-    {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
-    {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
-    {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
-    {'cat': 'Professionals', 'path': 'assets/images/business.png'},
+    {'cat': 'Cab', 'path': 'assets/images/cab.png'},
+    {'cat': 'Auto', 'path': 'assets/images/auto.png'},
   ];
   final List<Map<String, String>> professionals = [
     {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
@@ -34,10 +32,9 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Professionals', 'path': 'assets/images/business.png'},
   ];
   final List<Map<String, String>> vehicles = [
-    {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
-    {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
-    {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
-    {'cat': 'Professionals', 'path': 'assets/images/business.png'},
+    {'cat': 'Pickup ', 'path': 'assets/images/pickup.png'},
+    {'cat': 'Goods Auto', 'path': 'assets/images/Goods Auto.png'},
+    {'cat': 'Truck', 'path': 'assets/images/truck.png'},
   ];
   final List<Map<String, String>> news = [
     {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
@@ -51,17 +48,42 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
     {'cat': 'Professionals', 'path': 'assets/images/business.png'},
   ];
-  final List<Map<String, String>> business = [
-    {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
-    {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
-    {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
-    {'cat': 'Professionals', 'path': 'assets/images/business.png'},
+  final List<Map<String, String>> doctor = [
+    {'cat': 'cardiologist', 'path': 'assets/images/cardiologist.png'},
+    {'cat': 'Dentist', 'path': 'assets/images/Dentist.png'},
+    {'cat': 'Dermatologist', 'path': 'assets/images/Dermatologist.png'},
+    {'cat': 'Eye Care', 'path': 'assets/images/Eye.png'},
+    {'cat': 'ENT Specialist', 'path': 'assets/images/ENT Specialist.png'},
+    {'cat': 'General Medicine', 'path': 'assets/images/General medicine.png'},
+    {
+      'cat': 'Gastroenterologist',
+      'path': 'assets/images/Gastroenterologist.png'
+    },
+    {'cat': 'Medical Laboratory.png', 'path': 'assets/images/Laborotary.png'},
+    {'cat': 'Orthopaedic', 'path': 'assets/images/Orthopaedic.png'},
+    {'cat': 'Paediatrician', 'path': 'assets/images/Paediatrician.png'},
+    {'cat': 'Ayurveda', 'path': 'assets/images/Ayurveda.png'},
+    {'cat': 'Gynaecologist', 'path': 'assets/images/Gynaecologist.png'},
   ];
   final List<Map<String, String>> shopping = [
-    {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
-    {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
-    {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
-    {'cat': 'Professionals', 'path': 'assets/images/business.png'},
+    {'cat': 'Hypermarket', 'path': 'assets/images/Hypermarkets.png'},
+    {'cat': 'Textiles', 'path': 'assets/images/textiles.png'},
+    {'cat': 'Grocery', 'path': 'assets/images/vegetables.png'},
+    {'cat': 'Bakery', 'path': 'assets/images/bakery.png'},
+    {'cat': 'Furniture', 'path': 'assets/images/furniture.png'},
+    {'cat': 'Hardware', 'path': 'assets/images/tools.png'},
+    {'cat': 'Chicken & Meat', 'path': 'assets/images/meat.png'},
+    {'cat': 'Footwear', 'path': 'assets/images/footware.png'},
+    {'cat': 'Stationary', 'path': 'assets/images/stationary.png'},
+    {'cat': 'jewellery.png', 'path': 'assets/images/jwellery.png'},
+    {'cat': 'Salon', 'path': 'assets/images/salon.png'},
+    {'cat': 'Home appliances', 'path': 'assets/images/home appliances.png'},
+    {'cat': 'Mobile Accessories', 'path': 'assets/images/mobile.png'},
+    {'cat': 'Gents Fashion', 'path': 'assets/images/Gents Fashion.png'},
+    {'cat': 'Electricals', 'path': 'assets/images/Electricals.png'},
+    {'cat': 'Opticals', 'path': 'assets/images/opticals.png'},
+    {'cat': 'Sanitaryware', 'path': 'assets/images/sanitary.png'},
+    {'cat': 'Sports Store', 'path': 'assets/images/sports store.png'},
   ];
   final List<Map<String, String>> govtInstitutions = [
     {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
@@ -78,8 +100,8 @@ class SubCategoriesScreen extends StatelessWidget {
       {'cat': 'Professionals', 'subcat': professionals},
       {'cat': 'Vehicles', 'subcat': vehicles},
       {'cat': 'News', 'subcat': news},
-      {'cat': 'Workers', 'subcat': workers},
-      {'cat': 'Business', 'subcat': business},
+      {'cat': 'Skilled Workers', 'subcat': workers},
+      {'cat': 'Doctor', 'subcat': doctor},
       {'cat': 'Shopping', 'subcat': shopping},
       {'cat': 'Govt Institutions', 'subcat': govtInstitutions},
     ];

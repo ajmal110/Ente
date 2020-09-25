@@ -15,14 +15,16 @@ class CategoriesScreen extends StatelessWidget {
 //You can Change this List as per your requirment.
   final List<Map<String, String>> _categoryList = [
     {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
-    {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
+    {'cat': 'Taxi', 'path': 'assets/images/tab.png'},
     {'cat': 'Professionals', 'path': 'assets/images/business.png'},
     {'cat': 'Vehicles', 'path': 'assets/images/Utility.png'},
     {'cat': 'News', 'path': 'assets/images/NEWS!.png'},
-    {'cat': 'Workers', 'path': 'assets/images/Workers.png'},
-    {'cat': 'Business', 'path': 'assets/images/Business1.png'},
+    {'cat': 'Skilled Workers', 'path': 'assets/images/Workers.png'},
+    // {'cat': 'Business', 'path': 'assets/images/Business1.png'},
     {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
     {'cat': 'Govt Institutions', 'path': 'assets/images/Govt.png'},
+    {'cat': 'Doctor', 'path': 'assets/images/doc.png'},
+    {'cat': 'Turf', 'path': 'assets/images/turf.png'},
   ];
 
   @override

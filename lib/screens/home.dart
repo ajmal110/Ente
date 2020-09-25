@@ -38,9 +38,9 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     final List<Map<String, String>> _categoryList = [
       {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
+      {'cat': 'Turf', 'path': 'assets/images/turf.png'},
       {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
       {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
-      {'cat': 'Professionals', 'path': 'assets/images/business.png'},
       {'cat': 'more', 'path': 'assets/images/more.png'},
     ];
 
@@ -132,7 +132,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Top Picks',
+                  'Online Store',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
