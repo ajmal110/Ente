@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/screens/bar-screen.dart';
+import 'package:plantStore/screens/cart-screen.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/topOffersCard.dart';
@@ -60,6 +62,29 @@ class _HomeScreenState extends State<HomeScreen> {
         Provider.of<OfferProvider>(context, listen: false).seasonalOffers;
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Ente Manjeri',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontFamily: 'Lato',
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.pushNamed(context, CartScreen.routename);
+            },
+          )
+        ],
+      ),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -143,6 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                   margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
                   child: CustomCarousel(_topPicks)),
+              BarScreen()
             ],
           ),
         ),
