@@ -68,8 +68,6 @@ class _ProductTileState extends State<ProductTile> {
 
   @override
   Widget build(BuildContext context) {
-    bool isSignedIn = Provider.of<AuthProvider>(context).isSignedIn;
-
     return ClipRRect(
       borderRadius: BorderRadius.circular(10),
       child: GridTile(
@@ -102,30 +100,7 @@ class _ProductTileState extends State<ProductTile> {
               ),
               color: Colors.red,
               onPressed: () {
-                if (!isSignedIn) {
-                  showDialog(
-                    context: context,
-                    builder: (ctx) => AlertDialog(
-                      title: Text('Not Logged In !!'),
-                      content: Text('Would you like to Login now ??'),
-                      actions: [
-                        FlatButton(
-                            onPressed: () {
-                              Navigator.of(context)
-                                  .pushNamed(LoginScreen.routename);
-                            },
-                            child: Text('Yes')),
-                        FlatButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Text('Later')),
-                      ],
-                    ),
-                  );
-                } else {
-                  return _toggleFav(widget.product);
-                }
+                return _toggleFav(widget.product);
               }),
           title: Text(
             widget.product.title,

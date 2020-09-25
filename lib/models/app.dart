@@ -1,16 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:plantStore/Providers/auth-provider.dart';
+import 'package:plantStore/Providers/phone_auth.dart';
+import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/home.dart';
 import 'package:flutter/material.dart';
 
-class App extends StatefulWidget {
-  App({Key key}) : super(key: key);
+class AppWelcome extends StatefulWidget {
+  AppWelcome({Key key}) : super(key: key);
 
   @override
-  _AppState createState() => _AppState();
+  _AppWelcomeState createState() => _AppWelcomeState();
 }
 
-class _AppState extends State<App> {
+class _AppWelcomeState extends State<AppWelcome> {
   final _firebaseAuth = FirebaseAuth.instance;
 
   FirebaseUser user;
@@ -33,9 +35,9 @@ class _AppState extends State<App> {
     print(user);
     return Scaffold(
         body: user != null
-            ? HomeScreen(
+            ? BarScreen(
                 // user: user,
                 )
-            : AuthScreen());
+            : PhoneLogin());
   }
 }

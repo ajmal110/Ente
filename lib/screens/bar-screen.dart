@@ -37,16 +37,16 @@ class _BarScreenState extends State<BarScreen> {
 
   @override
   Widget build(BuildContext context) {
-    bool isSignedIn = Provider.of<AuthProvider>(context).isSignedIn;
-
     return Scaffold(
       appBar: AppBar(
-        title: Text('Ente Manjeri',
-        style: TextStyle(
-          color: Colors.white,
-          fontSize: 28,
-          fontFamily: 'Lato',
-        ),),
+        title: Text(
+          'Ente Manjeri',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontFamily: 'Lato',
+          ),
+        ),
         centerTitle: true,
         actions: [
           IconButton(
@@ -56,8 +56,7 @@ class _BarScreenState extends State<BarScreen> {
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {
-              Navigator.pushNamed(context,
-                  isSignedIn ? CartScreen.routename : LoginScreen.routename);
+              Navigator.pushNamed(context, CartScreen.routename);
             },
           )
         ],

@@ -15,8 +15,6 @@ import '../widgets/mainOffersCarousel.dart';
 import '../widgets/multipleItemCarousel.dart';
 
 class HomeScreen extends StatefulWidget {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
-
   // HomeScreen({Key key, @required this.user})
   //     : assert(user != null),
   //       super(key: key);
@@ -62,29 +60,6 @@ class _HomeScreenState extends State<HomeScreen> {
         Provider.of<OfferProvider>(context, listen: false).seasonalOffers;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Ente Manjeri',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            fontFamily: 'Lato',
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.pushNamed(context, CartScreen.routename);
-            },
-          )
-        ],
-      ),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -166,9 +141,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  child: CustomCarousel(_topPicks)),
-              BarScreen()
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                child: CustomCarousel(_topPicks),
+              ),
             ],
           ),
         ),

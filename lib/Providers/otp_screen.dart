@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/home.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 import './otp_input.dart';
+import '../screens/home.dart';
 
 class OTPScreen extends StatefulWidget {
   final String mobileNumber;
@@ -162,14 +164,12 @@ class _OTPScreenState extends State<OTPScreen> {
         if (value.user != null) {
           // Handle loogged in state
           print(value.user.phoneNumber);
-          Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute(
-                builder: (context) => HomeScreen(
-                    // user: value.user,
-                    ),
-              ),
-              (Route<dynamic> route) => false);
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (ctx) => BarScreen(),
+            ),
+          );
         } else {
           showToast("Error validating OTP, try again", Colors.red);
         }
@@ -224,7 +224,7 @@ class _OTPScreenState extends State<OTPScreen> {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(
-              builder: (context) => HomeScreen(
+              builder: (context) => BarScreen(
                   // user: value.user,
                   ),
             ),

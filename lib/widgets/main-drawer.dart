@@ -23,23 +23,6 @@ class MainDrawer extends StatefulWidget {
 
 class _MainDrawerState extends State<MainDrawer> {
   final _firebaseAuth = FirebaseAuth.instance;
-  bool isSignedIn;
-  var _isInit = true;
-  @override
-  void didChangeDependencies() {
-    if (_isInit) {
-      isSignedIn = Provider.of<AuthProvider>(context, listen: false).isSignedIn;
-    }
-    _isInit = false;
-    super.didChangeDependencies();
-  }
-
-  void switchAuth() {
-    Provider.of<AuthProvider>(context, listen: false).switchAuth();
-    setState(() {
-      isSignedIn = Provider.of<AuthProvider>(context, listen: false).isSignedIn;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -91,11 +74,7 @@ class _MainDrawerState extends State<MainDrawer> {
               height: 40,
               child: ListTile(
                 onTap: () {
-                  Navigator.pushNamed(
-                      context,
-                      isSignedIn
-                          ? CartScreen.routename
-                          : LoginScreen.routename);
+                  Navigator.pushNamed(context, CartScreen.routename);
                 },
                 leading: Icon(Icons.shopping_cart),
                 title: Text('My Cart'),
@@ -108,11 +87,7 @@ class _MainDrawerState extends State<MainDrawer> {
               height: 40,
               child: ListTile(
                 onTap: () {
-                  Navigator.pushNamed(
-                      context,
-                      isSignedIn
-                          ? OrdersScreen.routename
-                          : LoginScreen.routename);
+                  Navigator.pushNamed(context, OrdersScreen.routename);
                 },
                 leading: Icon(Icons.history),
                 title: Text('My Orders'),
@@ -125,14 +100,16 @@ class _MainDrawerState extends State<MainDrawer> {
               height: 40,
               child: ListTile(
                   onTap: () {
-                    if (!isSignedIn) {
-                      Navigator.pushNamed(context, LoginScreen.routename);
-                    } else {
-                      switchAuth();
-                    }
+                    _firebaseAuth.signOut();
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AppWelcome(),
+                      ),
+                    );
                   },
                   leading: Icon(Icons.power_settings_new),
-                  title: isSignedIn ? Text('Logout') : Text('Login')),
+                  title: Text('Logout')),
             ),
             Divider(
               thickness: 2,
@@ -140,11 +117,7 @@ class _MainDrawerState extends State<MainDrawer> {
             Container(
               height: 40,
               child: ListTile(
-                onTap: () {
-                  _firebaseAuth.signOut();
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => App()));
-                },
+                onTap: () {},
                 leading: Icon(Icons.settings),
                 title: Text('Settings'),
               ),

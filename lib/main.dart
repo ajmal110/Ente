@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plantStore/Providers/phone_auth.dart';
+import 'package:plantStore/models/app.dart';
 import 'package:provider/provider.dart';
 import 'package:plantStore/screens/home.dart';
 import './screens/bar-screen.dart';
@@ -23,9 +24,6 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<AuthProvider>(
-          create: (_) => AuthProvider(),
-        ),
         ChangeNotifierProvider<OrderProvider>(
           create: (_) => OrderProvider(),
         ),
@@ -47,7 +45,7 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.rubikTextTheme(),
         ),
         debugShowCheckedModeBanner: false,
-        home: PhoneLogin(),
+        home: AppWelcome(),
         routes: {
           HomeScreen.routename: (ctx) => HomeScreen(),
           CartScreen.routename: (ctx) => CartScreen(),

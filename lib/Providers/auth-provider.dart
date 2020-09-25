@@ -32,7 +32,7 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
             padding: EdgeInsets.only(top: 250.0),
             child: Center(
               child: ImageIcon(
-                AssetImage("assets/images/1.png"),
+                AssetImage("assets/images/1.jpg"),
                 color: Colors.blue,
                 size: 80.0,
               ),
@@ -140,18 +140,5 @@ class _AuthScreenState extends State<AuthScreen> with TickerProviderStateMixin {
         ],
       ),
     );
-  }
-}
-
-class AuthProvider with ChangeNotifier {
-  bool _isSignedIn = true;
-
-  bool get isSignedIn {
-    return _isSignedIn;
-  }
-
-  void switchAuth() {
-    _isSignedIn = !_isSignedIn;
-    notifyListeners();
   }
 }
