@@ -7,7 +7,6 @@ import 'package:firebase_core/firebase_core.dart';
 
 import '../screens/cart-screen.dart';
 import '../screens/orders-screen.dart';
-import '../Providers/auth-provider.dart';
 import '../screens/login-screen.dart';
 import '../screens/categories-screen.dart';
 

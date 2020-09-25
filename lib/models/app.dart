@@ -1,5 +1,4 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:plantStore/Providers/auth-provider.dart';
 import 'package:plantStore/Providers/phone_auth.dart';
 import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/home.dart';

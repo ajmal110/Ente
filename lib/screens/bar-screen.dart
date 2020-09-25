@@ -6,7 +6,6 @@ import './home.dart';
 import './wishlist.dart';
 import './profile.dart';
 import './cart-screen.dart';
-import '../Providers/auth-provider.dart';
 import './login-screen.dart';
 
 class BarScreen extends StatefulWidget {

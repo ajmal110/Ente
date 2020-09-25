@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../Providers/product-provider.dart';
 import '../models/product.dart';
 import '../screens/product-detail-screen.dart';
-import '../Providers/auth-provider.dart';
 import '../screens/login-screen.dart';
 
 class ProductTile extends StatefulWidget {
