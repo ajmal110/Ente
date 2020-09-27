@@ -15,6 +15,7 @@ class CategoriesScreen extends StatelessWidget {
 //You can Change this List as per your requirment.
   final List<Map<String, String>> _categoryList = [
     {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
+    // {'cat': 'Train Booking', 'path': 'assets/images/Train Booking.png'},
     {'cat': 'Taxi', 'path': 'assets/images/tab.png'},
     {'cat': 'Professionals', 'path': 'assets/images/business.png'},
     {'cat': 'Vehicles', 'path': 'assets/images/Utility.png'},
