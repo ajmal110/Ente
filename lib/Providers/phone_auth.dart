@@ -35,6 +35,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
                     end: Alignment.bottomCenter,
                     colors: [Color(0xff32AFA9), Color(0xffA4D4AE)])),
           )),
+          // Expanded(child: Container(child: Image.asset('Manjeri.jpg'))),
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.8,

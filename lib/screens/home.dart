@@ -77,30 +77,6 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: Theme.of(context).splashColor,
                 child: MainOffersCarousel(seasonalOffers),
               ),
-
-              //Can be any Heading here
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Top Offers Today',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    letterSpacing: 5,
-                  ),
-                ),
-              ),
-              Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  child: MultipleItemCarousel(topOffers)),
-              Divider(),
-              //Holds Ads or Offers or etc
-              Container(
-                height: MediaQuery.of(context).size.height * 0.3,
-                child: MainOffersCarousel(mainOffers),
-              ),
-              Divider(),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -129,6 +105,31 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Divider(),
+              //Can be any Heading here
+
+              //Holds Ads or Offers or etc
+              Container(
+                height: MediaQuery.of(context).size.height * 0.3,
+                child: MainOffersCarousel(mainOffers),
+              ),
+              Divider(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'Top Offers Today',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    letterSpacing: 5,
+                  ),
+                ),
+              ),
+              Container(
+                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                  height: MediaQuery.of(context).size.height * 0.25,
+                  child: MultipleItemCarousel(topOffers)),
+              Divider(),
+
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
