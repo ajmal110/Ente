@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  'Top Offers Today',
+                  'Offers And deals',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,

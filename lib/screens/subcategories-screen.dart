@@ -16,10 +16,13 @@ class SubCategoriesScreen extends StatelessWidget {
   //ADD YOUR ICONS AND SUBCATEGORIES HERE BELOW !!!
 
   final List<Map<String, String>> busTimings = [
-    {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
-    {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
-    {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
-    {'cat': 'Professionals', 'path': 'assets/images/business.png'},
+    {'cat': 'Pandikad', 'path': 'assets/images/A.png'},
+    {'cat': 'Nilamboor', 'path': 'assets/images/A.png'},
+    {'cat': 'Wandoor', 'path': 'assets/images/A.png'},
+    {'cat': 'Calicut', 'path': 'assets/images/A.png'},
+    {'cat': 'Perinthlmanna', 'path': 'assets/images/A.png'},
+    {'cat': 'Thrissur', 'path': 'assets/images/A.png'},
+    {'cat': 'Eranamkulam', 'path': 'assets/images/A.png'},
   ];
   final List<Map<String, String>> taxi = [
     {'cat': 'Cab', 'path': 'assets/images/cab.png'},
