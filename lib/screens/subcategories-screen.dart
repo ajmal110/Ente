@@ -44,8 +44,8 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Tyre & Puncture', 'path': 'assets/images/Tyre & Puncture.png'},
     {'cat': 'Fridge & AC', 'path': 'assets/images/Fridge & AC.png'},
     {'cat': 'Block Masonry', 'path': 'assets/images/Block Masonry.png'},
-    {'cat': 'Vehicle Mechanics', 'path': 'assets/images/Vehicle Mechanics.png'},
-    {'cat': 'plastering', 'path': 'assets/images/plastering.png'},
+    {'cat': 'Vehicle Mechanic', 'path': 'assets/images/Vehicle Mechanics.png'},
+    {'cat': 'Plastering', 'path': 'assets/images/plastering.png'},
     {'cat': 'Plumber', 'path': 'assets/images/Plumber.png'},
   ];
   final List<Map<String, String>> doctor = [
