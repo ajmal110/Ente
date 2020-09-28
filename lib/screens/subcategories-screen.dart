@@ -45,6 +45,8 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Pickup ', 'path': 'assets/images/pickup.png'},
     {'cat': 'Goods Auto', 'path': 'assets/images/Goods Auto.png'},
     {'cat': 'Truck', 'path': 'assets/images/truck.png'},
+    {'cat': 'Tourist Bus', 'path': 'assets/images/Tourist Bus.png'},
+    {'cat': 'Traveller', 'path': 'assets/images/Traveller.png'},
   ];
 
   final List<Map<String, String>> skilledWorkers = [
@@ -53,20 +55,27 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Flooring works', 'path': 'assets/images/Flooring works.png'},
     {'cat': 'Catering', 'path': 'assets/images/Catering.png'},
     {'cat': 'Tyre & Puncture', 'path': 'assets/images/Tyre & Puncture.png'},
-    {'cat': 'Fridge & AC', 'path': 'assets/images/Fridge & AC.png'},
+    {'cat': 'Fridge Mechanic', 'path': 'assets/images/Fridge & AC.png'},
     {'cat': 'Block Masonry', 'path': 'assets/images/Block Masonry.png'},
     {'cat': 'Vehicle Mechanic', 'path': 'assets/images/Vehicle Mechanics.png'},
     {'cat': 'Plastering', 'path': 'assets/images/plastering.png'},
     {'cat': 'Plumber', 'path': 'assets/images/Plumber.png'},
+    {'cat': 'Coconut Climber', 'path': 'assets/images/Coconut Climber.png'},
+    {'cat': 'Electrician', 'path': 'assets/images/Electrician.png'},
+    {'cat': 'Grass Cutting', 'path': 'assets/images/Grass Cutting.png'},
+    {'cat': 'Wood Cutting', 'path': 'assets/images/Wood Cutting.png'},
+    {'cat': 'AC Mechanic', 'path': 'assets/images/AC Mechanic.png'},
   ];
 
   final List<Map<String, String>> doctor = [
+    {'cat': 'Govt. Hospitals', 'path': 'assets/images/Govt. Hospitals.png'},
+    {'cat': 'General medicine', 'path': 'assets/images/Homeo.png'},
     {'cat': 'cardiologist', 'path': 'assets/images/cardiologist.png'},
     {'cat': 'Dentist', 'path': 'assets/images/Dentist.png'},
     {'cat': 'Dermatologist', 'path': 'assets/images/Dermatologist.png'},
     {'cat': 'Eye Care', 'path': 'assets/images/Eye.png'},
     {'cat': 'ENT Specialist', 'path': 'assets/images/ENT Specialist.png'},
-    {'cat': 'General Medicine', 'path': 'assets/images/General medicine.png'},
+    {'cat': 'Homeo Clinic', 'path': 'assets/images/General medicine.png'},
     {
       'cat': 'Gastroenterologist',
       'path': 'assets/images/Gastroenterologist.png'
@@ -97,6 +106,8 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Opticals', 'path': 'assets/images/opticals.png'},
     {'cat': 'Sanitaryware', 'path': 'assets/images/sanitary.png'},
     {'cat': 'Sports Store', 'path': 'assets/images/sports store.png'},
+    {'cat': 'Studio', 'path': 'assets/images/Studio.png'},
+    {'cat': 'Courier Service', 'path': 'assets/images/Courier Service.png'},
   ];
 
   final List<Map<String, String>> govtInstitutions = [
@@ -122,7 +133,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
       {'cat': 'Professionals', 'subcat': professionals},
       {'cat': 'Vehicles', 'subcat': vehicles},
       {'cat': 'Skilled Workers', 'subcat': skilledWorkers},
-      {'cat': 'Doctor', 'subcat': doctor},
+      {'cat': 'My Doctor', 'subcat': doctor},
       {'cat': 'Shopping', 'subcat': shopping},
       {'cat': 'Govt Institutions', 'subcat': govtInstitutions},
     ];

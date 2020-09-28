@@ -24,7 +24,7 @@ class CategoriesScreen extends StatelessWidget {
     // {'cat': 'Business', 'path': 'assets/images/Business1.png'},
     {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
     {'cat': 'Govt Institutions', 'path': 'assets/images/Govt.png'},
-    {'cat': 'Doctor', 'path': 'assets/images/doc.png'},
+    {'cat': 'My Doctor', 'path': 'assets/images/doc.png'},
     {'cat': 'Turf', 'path': 'assets/images/turf.png'},
   ];
 
