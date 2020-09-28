@@ -13,7 +13,7 @@ class CategoryTile extends StatelessWidget {
   final isSubCat;
   final category;
   final path;
-  CategoryTile(this.isSubCat,this.category, this.path);
+  CategoryTile(this.isSubCat, this.category, this.path);
   @override
   Widget build(BuildContext context) {
     List<Product> productOfCategory =
@@ -23,6 +23,12 @@ class CategoryTile extends StatelessWidget {
       onTap: () {
         if (category == 'more') {
           Navigator.of(context).pushNamed(CategoriesScreen.routename);
+        } else if (category == 'News' || category == 'Turf') {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => ProductDisplay(category, productOfCategory),
+            ),
+          );
         } else {
           if (isSubCat) {
             Navigator.of(context).push(

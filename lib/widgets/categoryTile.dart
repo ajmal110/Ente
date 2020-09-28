@@ -27,6 +27,12 @@ class CategoryTile extends StatelessWidget {
       onTap: () {
         if (category == 'more') {
           Navigator.of(context).pushNamed(CategoriesScreen.routename);
+        } else if (category == 'News' || category == 'Turf') {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (ctx) => ProductDisplay(category, productOfCategory),
+            ),
+          );
         } else {
           if (isSubCat) {
             Navigator.of(context).push(
