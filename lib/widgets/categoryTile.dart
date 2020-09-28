@@ -20,8 +20,7 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<Product> productOfCategory =
-        Provider.of<ProductProvider>(context).productOfCategory(category);
+   
 
     return GestureDetector(
       onTap: () {
@@ -30,14 +29,14 @@ class CategoryTile extends StatelessWidget {
         } else if (category == 'News' || category == 'Turf') {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => ProductDisplay(category, productOfCategory),
+              builder: (ctx) => ProductDisplay(category),
             ),
           );
         } else {
           if (isSubCat) {
             Navigator.of(context).push(
               MaterialPageRoute(
-                builder: (ctx) => ProductDisplay(category, productOfCategory),
+                builder: (ctx) => ProductDisplay(category),
               ),
             );
           } else {

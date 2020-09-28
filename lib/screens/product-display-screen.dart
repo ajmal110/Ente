@@ -6,9 +6,8 @@ import '../screens/cart-screen.dart';
 
 class ProductDisplay extends StatelessWidget {
   final String appBarTitle;
-  final List<Product> productList;
 
-  ProductDisplay(this.appBarTitle, this.productList);
+  ProductDisplay(this.appBarTitle);
 
   @override
   Widget build(BuildContext context) {
@@ -29,18 +28,7 @@ class ProductDisplay extends StatelessWidget {
           )
         ],
       ),
-      body: GridView.builder(
-        padding: EdgeInsets.all(10),
-        itemCount: productList.length,
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        itemBuilder: (ctx, i) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ProductTile(
-            productList[i],
-          ),
-        ),
-      ),
+      body: null
     );
   }
 }

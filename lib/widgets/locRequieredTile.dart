@@ -3,43 +3,45 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:getwidget/getwidget.dart';
+import '../screens/taxi-product-display.dart';
 import '../models/product.dart';
 import '../Providers/product-provider.dart';
 import '../screens/product-display-screen.dart';
 import '../screens/categories-screen.dart';
 import '../screens/subcategories-screen.dart';
 
-class CategoryTile extends StatelessWidget {
-  final isSubCat;
+class LocTile extends StatelessWidget {
   final category;
   final path;
-  CategoryTile(this.isSubCat, this.category, this.path);
+  final loc;
+  LocTile(this.category, this.path, this.loc);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (category == 'more') {
-          Navigator.of(context).pushNamed(CategoriesScreen.routename);
-        } else if (category == 'News' || category == 'Turf') {
+        if (loc == null) {
+          showDialog(
+              context: context,
+              builder: (ctx) => AlertDialog(
+                    content: Text('Please Select Location'),
+                    actions: [
+                      FlatButton(
+                        onPressed: () {
+                          Navigator.pop(ctx);
+                        },
+                        child: Text('OK'),
+                      ),
+                    ],
+                  ));
+        } else {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => ProductDisplay(category),
+              builder: (ctx) => TaxiProductDisplay(
+                appBarTitle: category,
+                location: loc,
+              ),
             ),
           );
-        } else {
-          if (isSubCat) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (ctx) => ProductDisplay(category),
-              ),
-            );
-          } else {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (ctx) => SubCategoriesScreen(category),
-              ),
-            );
-          }
         }
       },
       child: Column(

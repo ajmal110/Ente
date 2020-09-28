@@ -4,17 +4,21 @@ import 'package:provider/provider.dart';
 
 import '../widgets/main-drawer.dart';
 import './cart-screen.dart';
+import '../widgets/locRequieredTile.dart';
 import '../widgets/categoryTile2.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../models/offers.dart';
 import '../Providers/offer-provider.dart';
 
-class SubCategoriesScreen extends StatelessWidget {
+class SubCategoriesScreen extends StatefulWidget {
   final String cat;
   SubCategoriesScreen(this.cat);
 
-  //ADD YOUR ICONS AND SUBCATEGORIES HERE BELOW !!!
+  @override
+  _SubCategoriesScreenState createState() => _SubCategoriesScreenState();
+}
 
+class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   final List<Map<String, String>> busTimings = [
     {'cat': 'Pandikad', 'path': 'assets/images/A.png'},
     {'cat': 'Nilamboor', 'path': 'assets/images/A.png'},
@@ -24,21 +28,25 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Thrissur', 'path': 'assets/images/A.png'},
     {'cat': 'Eranamkulam', 'path': 'assets/images/A.png'},
   ];
+
   final List<Map<String, String>> taxi = [
     {'cat': 'Cab', 'path': 'assets/images/cab.png'},
     {'cat': 'Auto', 'path': 'assets/images/auto.png'},
   ];
+
   final List<Map<String, String>> professionals = [
     {'cat': 'Civil Engineer', 'path': 'assets/images/Civil Engineer.png'},
     {'cat': 'Architect', 'path': 'assets/images/Architect.png'},
     {'cat': 'Surveyors', 'path': 'assets/images/Surveyors.png'},
     {'cat': 'Advocate', 'path': 'assets/images/Advocate.png'},
   ];
+
   final List<Map<String, String>> vehicles = [
     {'cat': 'Pickup ', 'path': 'assets/images/pickup.png'},
     {'cat': 'Goods Auto', 'path': 'assets/images/Goods Auto.png'},
     {'cat': 'Truck', 'path': 'assets/images/truck.png'},
   ];
+
   final List<Map<String, String>> skilledWorkers = [
     {'cat': 'Painter', 'path': 'assets/images/Painter.png'},
     {'cat': 'Industrial Worker', 'path': 'assets/images/Industrial Worker.png'},
@@ -51,6 +59,7 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Plastering', 'path': 'assets/images/plastering.png'},
     {'cat': 'Plumber', 'path': 'assets/images/Plumber.png'},
   ];
+
   final List<Map<String, String>> doctor = [
     {'cat': 'cardiologist', 'path': 'assets/images/cardiologist.png'},
     {'cat': 'Dentist', 'path': 'assets/images/Dentist.png'},
@@ -68,6 +77,7 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Ayurveda', 'path': 'assets/images/Ayurveda.png'},
     {'cat': 'Gynaecologist', 'path': 'assets/images/Gynaecologist.png'},
   ];
+
   final List<Map<String, String>> shopping = [
     {'cat': 'Hypermarket', 'path': 'assets/images/Hypermarkets.png'},
     {'cat': 'Textiles', 'path': 'assets/images/textiles.png'},
@@ -88,11 +98,21 @@ class SubCategoriesScreen extends StatelessWidget {
     {'cat': 'Sanitaryware', 'path': 'assets/images/sanitary.png'},
     {'cat': 'Sports Store', 'path': 'assets/images/sports store.png'},
   ];
+
   final List<Map<String, String>> govtInstitutions = [
     {'cat': 'Post Office', 'path': 'assets/images/Post Office.png'},
     {'cat': 'Police', 'path': 'assets/images/police.png'},
     {'cat': 'Fire Force', 'path': 'assets/images/Fire Force.png'},
   ];
+  var selectedValue;
+
+  List<String> locRequired = ['Taxi'];
+
+  @override
+  void initState() {
+    selectedValue = null;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -108,7 +128,7 @@ class SubCategoriesScreen extends StatelessWidget {
     ];
 
     List<Map<String, String>> _subCategoryList =
-        _categoryList.firstWhere((ele) => ele['cat'] == cat)['subcat'];
+        _categoryList.firstWhere((ele) => ele['cat'] == widget.cat)['subcat'];
     final List<Offers> seasonalOffers =
         Provider.of<OfferProvider>(context).seasonalOffers;
     return Scaffold(
@@ -149,26 +169,66 @@ class SubCategoriesScreen extends StatelessWidget {
             child: MainOffersCarousel(seasonalOffers),
           ),
           Text(
-            cat,
+            widget.cat,
             style: TextStyle(
               fontSize: 25,
               letterSpacing: 4,
             ),
           ),
           SizedBox(height: 10),
+          if (widget.cat == 'Taxi')
+            DropdownButton(
+              onTap: () {},
+              dropdownColor: Theme.of(context).primaryColorLight,
+              value: selectedValue,
+              items: [
+                DropdownMenuItem(
+                  child: Text('1'),
+                  value: '1',
+                ),
+                DropdownMenuItem(
+                  child: Text('2'),
+                  value: '2',
+                ),
+                DropdownMenuItem(
+                  child: Text('3'),
+                  value: '3',
+                ),
+                DropdownMenuItem(
+                  child: Text('4'),
+                  value: '4',
+                ),
+              ],
+              hint: Text(
+                'Select Location',
+              ),
+              onChanged: (value) {
+                setState(() {
+                  selectedValue = value;
+                });
+                print(selectedValue);
+              },
+            ),
+          SizedBox(height: 10),
           Expanded(
             child: Container(
               child: GridView.builder(
-                itemCount: _subCategoryList.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                ),
-                itemBuilder: (ctx, i) => CategoryTile(
-                  true,
-                  _subCategoryList[i]['cat'],
-                  _subCategoryList[i]['path'],
-                ),
-              ),
+                  itemCount: _subCategoryList.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                  ),
+                  itemBuilder: (ctx, i) {
+                    if (locRequired.contains(widget.cat)) {
+                      return LocTile(_subCategoryList[i]['cat'],
+                          _subCategoryList[i]['path'], selectedValue);
+                    } else {
+                      return CategoryTile(
+                        true,
+                        _subCategoryList[i]['cat'],
+                        _subCategoryList[i]['path'],
+                      );
+                    }
+                  }),
             ),
           ),
         ],
