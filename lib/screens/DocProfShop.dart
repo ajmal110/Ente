@@ -100,7 +100,6 @@ class DocProfShop extends StatelessWidget {
                         ),
                       ],
                     ),
-
                   ),
                 ),
               ),
