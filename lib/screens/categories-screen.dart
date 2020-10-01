@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import '../widgets/main-drawer.dart';
 import './cart-screen.dart';
-import '../widgets/categoryTile2.dart';
+import '../widgets/categoryTile.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../models/offers.dart';
 import '../Providers/offer-provider.dart';
@@ -14,7 +14,7 @@ class CategoriesScreen extends StatelessWidget {
 
 //You can Change this List as per your requirment.
   final List<Map<String, String>> _categoryList = [
-    {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
+    {'cat': 'Bus Timings', 'path': 'assets/images/bus.png'},
     // {'cat': 'Train Booking', 'path': 'assets/images/Train Booking.png'},
     {'cat': 'Taxi', 'path': 'assets/images/tab.png'},
     {'cat': 'Professionals', 'path': 'assets/images/business.png'},
@@ -85,8 +85,7 @@ class CategoriesScreen extends StatelessWidget {
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 3,
                 ),
-                itemBuilder: (ctx, i) => CategoryTile(
-                  false,
+                itemBuilder: (ctx, i) => CategoryTile1(
                   _categoryList[i]['cat'],
                   _categoryList[i]['path'],
                 ),

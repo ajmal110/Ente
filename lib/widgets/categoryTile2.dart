@@ -1,45 +1,57 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/screens/VehiSkil.dart';
 import 'package:provider/provider.dart';
 
 import 'package:getwidget/getwidget.dart';
+import '../screens/productDisplay-subcat.dart';
+import '../screens/govtInstitutions.dart';
+import '../screens/DocProfShop.dart';
 import '../models/product.dart';
 import '../Providers/product-provider.dart';
 import '../screens/product-display-screen.dart';
 import '../screens/categories-screen.dart';
 import '../screens/subcategories-screen.dart';
+import '../screens/busTimings.dart';
 
-class CategoryTile extends StatelessWidget {
-  final isSubCat;
+class CategoryTile2 extends StatelessWidget {
+  final parent;
   final category;
   final path;
-  CategoryTile(this.isSubCat, this.category, this.path);
+  CategoryTile2(this.parent, this.category, this.path);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        if (category == 'more') {
-          Navigator.of(context).pushNamed(CategoriesScreen.routename);
-        } else if (category == 'News' || category == 'Turf') {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (ctx) => ProductDisplay(category),
-            ),
+        if (parent == 'Bus Timings') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (ctx) => BusTimings(category)),
+          );
+        } else if (parent == 'Govt Institutions') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (ctx) => GovtInstitutions(category)),
+          );
+        } else if (parent == 'My Doctor' ||
+            parent == 'Professionals' ||
+            parent == 'Shopping') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (ctx) => DocProfShop(parent, category)),
+          );
+        } else if (parent == 'Vehicles' || parent == 'Skilled Workers') {
+          print('in');
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (ctx) => VehiSkill(parent, category)),
           );
         } else {
-          if (isSubCat) {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (ctx) => ProductDisplay(category),
-              ),
-            );
-          } else {
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (ctx) => SubCategoriesScreen(category),
-              ),
-            );
-          }
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (ctx) => ProductDisplaySubcat(parent, category)),
+          );
         }
       },
       child: Column(

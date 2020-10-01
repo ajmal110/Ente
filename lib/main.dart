@@ -7,7 +7,9 @@ import 'package:plantStore/screens/home.dart';
 import './screens/bar-screen.dart';
 import './screens/cart-screen.dart';
 import './screens/orders-screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 import './screens/categories-screen.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import './screens/login-screen.dart';
 import 'Providers/order-provider.dart';
 import './Providers/product-provider.dart';
@@ -15,7 +17,7 @@ import './Providers/offer-provider.dart';
 import './screens/product-detail-screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MyApp()); 
 }
 
 class MyApp extends StatelessWidget {

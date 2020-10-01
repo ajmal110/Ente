@@ -96,8 +96,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (ctx, i) => Container(
                     width: 250,
-                    child: CategoryTile(
-                      false,
+                    child: CategoryTile1(
                       _categoryList[i]['cat'],
                       _categoryList[i]['path'],
                     ),

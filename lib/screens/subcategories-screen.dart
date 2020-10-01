@@ -42,7 +42,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   ];
 
   final List<Map<String, String>> vehicles = [
-    {'cat': 'Pickup ', 'path': 'assets/images/pickup.png'},
+    {'cat': 'PickUp', 'path': 'assets/images/pickup.png'},
     {'cat': 'Goods Auto', 'path': 'assets/images/Goods Auto.png'},
     {'cat': 'Truck', 'path': 'assets/images/truck.png'},
     {'cat': 'Tourist Bus', 'path': 'assets/images/Tourist Bus.png'},
@@ -52,9 +52,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   final List<Map<String, String>> skilledWorkers = [
     {'cat': 'Painter', 'path': 'assets/images/Painter.png'},
     {'cat': 'Industrial Worker', 'path': 'assets/images/Industrial Worker.png'},
-    {'cat': 'Flooring works', 'path': 'assets/images/Flooring works.png'},
+    {'cat': 'Flooring Works', 'path': 'assets/images/Flooring works.png'},
     {'cat': 'Catering', 'path': 'assets/images/Catering.png'},
-    {'cat': 'Tyre & Puncture', 'path': 'assets/images/Tyre & Puncture.png'},
+    {'cat': 'Tyre&Puncture', 'path': 'assets/images/Tyre & Puncture.png'},
     {'cat': 'Fridge Mechanic', 'path': 'assets/images/Fridge & AC.png'},
     {'cat': 'Block Masonry', 'path': 'assets/images/Block Masonry.png'},
     {'cat': 'Vehicle Mechanic', 'path': 'assets/images/Vehicle Mechanics.png'},
@@ -68,9 +68,9 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   ];
 
   final List<Map<String, String>> doctor = [
-    {'cat': 'Govt. Hospitals', 'path': 'assets/images/Govt. Hospitals.png'},
-    {'cat': 'General medicine', 'path': 'assets/images/Homeo.png'},
-    {'cat': 'cardiologist', 'path': 'assets/images/cardiologist.png'},
+    {'cat': 'Govt. Hospital', 'path': 'assets/images/Govt. Hospitals.png'},
+    {'cat': 'General Medicine', 'path': 'assets/images/Homeo.png'},
+    {'cat': 'Cardiologist', 'path': 'assets/images/cardiologist.png'},
     {'cat': 'Dentist', 'path': 'assets/images/Dentist.png'},
     {'cat': 'Dermatologist', 'path': 'assets/images/Dermatologist.png'},
     {'cat': 'Eye Care', 'path': 'assets/images/Eye.png'},
@@ -80,7 +80,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
       'cat': 'Gastroenterologist',
       'path': 'assets/images/Gastroenterologist.png'
     },
-    {'cat': 'Medical Laboratory.png', 'path': 'assets/images/Laborotary.png'},
+    {'cat': 'Medical Laboratory', 'path': 'assets/images/Laborotary.png'},
     {'cat': 'Orthopaedic', 'path': 'assets/images/Orthopaedic.png'},
     {'cat': 'Paediatrician', 'path': 'assets/images/Paediatrician.png'},
     {'cat': 'Ayurveda', 'path': 'assets/images/Ayurveda.png'},
@@ -94,10 +94,10 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Bakery', 'path': 'assets/images/bakery.png'},
     {'cat': 'Furniture', 'path': 'assets/images/furniture.png'},
     {'cat': 'Hardware', 'path': 'assets/images/tools.png'},
-    {'cat': 'Chicken & Meat', 'path': 'assets/images/meat.png'},
+    {'cat': 'Meat', 'path': 'assets/images/meat.png'},
     {'cat': 'Footwear', 'path': 'assets/images/footware.png'},
     {'cat': 'Stationary', 'path': 'assets/images/stationary.png'},
-    {'cat': 'jewellery.png', 'path': 'assets/images/jwellery.png'},
+    {'cat': 'Jewellery', 'path': 'assets/images/jwellery.png'},
     {'cat': 'Salon', 'path': 'assets/images/salon.png'},
     {'cat': 'Home appliances', 'path': 'assets/images/home appliances.png'},
     {'cat': 'Mobile Accessories', 'path': 'assets/images/mobile.png'},
@@ -105,7 +105,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Electricals', 'path': 'assets/images/Electricals.png'},
     {'cat': 'Opticals', 'path': 'assets/images/opticals.png'},
     {'cat': 'Sanitaryware', 'path': 'assets/images/sanitary.png'},
-    {'cat': 'Sports Store', 'path': 'assets/images/sports store.png'},
+    {'cat': 'Sports store', 'path': 'assets/images/sports store.png'},
     {'cat': 'Studio', 'path': 'assets/images/Studio.png'},
     {'cat': 'Courier Service', 'path': 'assets/images/Courier Service.png'},
   ];
@@ -128,7 +128,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   @override
   Widget build(BuildContext context) {
     List<Map<String, Object>> _categoryList = [
-      {'cat': 'Bus timings', 'subcat': busTimings},
+      {'cat': 'Bus Timings', 'subcat': busTimings},
       {'cat': 'Taxi', 'subcat': taxi},
       {'cat': 'Professionals', 'subcat': professionals},
       {'cat': 'Vehicles', 'subcat': vehicles},
@@ -194,8 +194,8 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
               value: selectedValue,
               items: [
                 DropdownMenuItem(
-                  child: Text('1'),
-                  value: '1',
+                  child: Text('Location1'),
+                  value: 'Location1',
                 ),
                 DropdownMenuItem(
                   child: Text('2'),
@@ -230,11 +230,15 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                   ),
                   itemBuilder: (ctx, i) {
                     if (locRequired.contains(widget.cat)) {
-                      return LocTile(_subCategoryList[i]['cat'],
-                          _subCategoryList[i]['path'], selectedValue);
+                      return LocTile(
+                        widget.cat,
+                        _subCategoryList[i]['cat'],
+                        _subCategoryList[i]['path'],
+                        selectedValue,
+                      );
                     } else {
-                      return CategoryTile(
-                        true,
+                      return CategoryTile2(
+                        widget.cat,
                         _subCategoryList[i]['cat'],
                         _subCategoryList[i]['path'],
                       );

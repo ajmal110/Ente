@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:getwidget/getwidget.dart';
+import '../screens/taxi.dart';
 import '../screens/taxi-product-display.dart';
 import '../models/product.dart';
 import '../Providers/product-provider.dart';
@@ -11,10 +12,11 @@ import '../screens/categories-screen.dart';
 import '../screens/subcategories-screen.dart';
 
 class LocTile extends StatelessWidget {
+  final parent;
   final category;
   final path;
   final loc;
-  LocTile(this.category, this.path, this.loc);
+  LocTile(this.parent, this.category, this.path, this.loc);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -33,13 +35,10 @@ class LocTile extends StatelessWidget {
                       ),
                     ],
                   ));
-        } else {
+        } else if (parent == 'Taxi') {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => TaxiProductDisplay(
-                appBarTitle: category,
-                location: loc,
-              ),
+              builder: (ctx) => Taxi(parent,category,loc),
             ),
           );
         }
