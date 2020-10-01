@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
+import 'package:plantStore/Providers/call_provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/product.dart';
 import '../widgets/productTile.dart';
 import 'cart-screen.dart';
@@ -10,7 +11,6 @@ class VehiSkill extends StatelessWidget {
   final String cat;
 
   VehiSkill(this.parent, this.cat);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,13 +61,36 @@ class VehiSkill extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     leading: CircleAvatar(
-                        // backgroundImage: NetworkImage(docs[i]['Photo']),
-                        ),
+                      radius: 30,
+                      // backgroundImage: NetworkImage(docs[i]['Photo']),
+                    ),
                     title: Text(
                       docs[i]['Name'],
                     ),
-                    subtitle: Text(
-                      'Phone No : ${docs[i]['Phone']}',
+                    subtitle: Row(
+                      children: [
+                        Text(
+                          'Phone: ${docs[i]['Phone']}',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10.0),
+                          child: RaisedButton.icon(
+                              color: Colors.white,
+                              onPressed: () async {
+                                launchCaller('${docs[i]['Phone']}');
+                              },
+                              icon: Icon(
+                                Icons.call,
+                                color: Colors.greenAccent,
+                              ),
+                              label: Text(
+                                'Call',
+                                style: TextStyle(
+                                  color: Colors.greenAccent,
+                                ),
+                              )),
+                        ),
+                      ],
                     ),
                   ),
                 ),

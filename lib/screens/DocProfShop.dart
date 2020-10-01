@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:plantStore/Providers/call_provider.dart';
 
 import '../models/product.dart';
 import '../widgets/productTile.dart';
@@ -61,17 +62,45 @@ class DocProfShop extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     leading: CircleAvatar(
-                        // backgroundImage: NetworkImage(docs[i]['Photo']),
-                        ),
+                      radius: 30,
+                      // backgroundImage: NetworkImage(docs[i]['Photo']),
+                    ),
                     title: Text(
                       docs[i]['Name'],
                     ),
-                    trailing: Text(
-                      docs[i]['Location'],
+                    subtitle: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                              'Phone: ${docs[i]['Phone']}',
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: RaisedButton.icon(
+                                  color: Colors.white,
+                                  onPressed: () async {
+                                    launchCaller('${docs[i]['Phone']}');
+                                  },
+                                  icon: Icon(
+                                    Icons.call,
+                                    color: Colors.greenAccent,
+                                  ),
+                                  label: Text(
+                                    'Call',
+                                    style: TextStyle(
+                                      color: Colors.greenAccent,
+                                    ),
+                                  )),
+                            ),
+                          ],
+                        ),
+                        Text(
+                          docs[i]['Location'],
+                        ),
+                      ],
                     ),
-                    subtitle: Text(
-                      'Phone No : ${docs[i]['Phone']}',
-                    ),
+
                   ),
                 ),
               ),

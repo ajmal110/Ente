@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:plantStore/Providers/call_provider.dart';
 
 import '../models/product.dart';
 import '../widgets/productTile.dart';
@@ -65,8 +66,30 @@ class GovtInstitutions extends StatelessWidget {
                     title: Text(
                       docs[i]['Location'],
                     ),
-                    subtitle: Text(
-                      'Phone No : ${docs[i]['Phone']}',
+                    subtitle: Row(
+                      children: [
+                        Text(
+                          'Phone: ${docs[i]['Phone']}',
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30.0),
+                          child: RaisedButton.icon(
+                              color: Colors.white,
+                              onPressed: () async {
+                                launchCaller('${docs[i]['Phone']}');
+                              },
+                              icon: Icon(
+                                Icons.call,
+                                color: Colors.greenAccent,
+                              ),
+                              label: Text(
+                                'Call',
+                                style: TextStyle(
+                                  color: Colors.greenAccent,
+                                ),
+                              )),
+                        ),
+                      ],
                     ),
                   ),
                 ),
