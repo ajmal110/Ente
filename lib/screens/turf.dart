@@ -149,7 +149,7 @@ class Turf extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'Timie : ',
+                              'Time : ',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 23,
