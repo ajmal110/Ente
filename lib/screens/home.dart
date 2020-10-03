@@ -40,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
       {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
       {'cat': 'Turf', 'path': 'assets/images/turf.png'},
       {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
-      {'cat': 'Taxi', 'path': 'assets/images/auto.png'},
+      {'cat': 'Taxi', 'path': 'assets/images/tab.png'},
       {'cat': 'more', 'path': 'assets/images/more.png'},
     ];
 

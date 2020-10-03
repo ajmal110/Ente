@@ -26,6 +26,7 @@ class CategoriesScreen extends StatelessWidget {
     {'cat': 'Govt Institutions', 'path': 'assets/images/Govt.png'},
     {'cat': 'My Doctor', 'path': 'assets/images/doc.png'},
     {'cat': 'Turf', 'path': 'assets/images/turf.png'},
+    {'cat': 'Blood Bank', 'path': 'assets/images/Blood Bank.png'},
   ];
 
   @override
