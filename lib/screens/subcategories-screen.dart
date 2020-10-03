@@ -115,6 +115,16 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Police', 'path': 'assets/images/police.png'},
     {'cat': 'Fire Force', 'path': 'assets/images/Fire Force.png'},
   ];
+  final List<Map<String, String>> bloodBank = [
+    {'cat': 'A+ve', 'path': 'assets/images/A+ve.png'},
+    {'cat': 'A-ve', 'path': 'assets/images/A-ve.png'},
+    {'cat': 'AB+ve', 'path': 'assets/images/AB+ve.png'},
+    {'cat': 'AB-ve', 'path': 'assets/images/AB-ve.png'},
+    {'cat': 'B+ve', 'path': 'assets/images/B+ve.png'},
+    {'cat': 'B-ve', 'path': 'assets/images/B-ve.png'},
+    {'cat': 'O+ve', 'path': 'assets/images/O+ve.png'},
+    {'cat': 'O-ve', 'path': 'assets/images/O-ve.png'},
+  ];
   var selectedValue;
 
   List<String> locRequired = ['Taxi'];
@@ -136,6 +146,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
       {'cat': 'My Doctor', 'subcat': doctor},
       {'cat': 'Shopping', 'subcat': shopping},
       {'cat': 'Govt Institutions', 'subcat': govtInstitutions},
+      {'cat': 'Blood Bank', 'subcat': bloodBank},
     ];
 
     List<Map<String, String>> _subCategoryList =
@@ -196,6 +207,10 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
                 DropdownMenuItem(
                   child: Text('Location1'),
                   value: 'Location1',
+                ),
+                DropdownMenuItem(
+                  child: Text('Govt. Hospital'),
+                  value: 'Govt. Hospital',
                 ),
                 DropdownMenuItem(
                   child: Text('2'),
