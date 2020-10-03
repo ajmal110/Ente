@@ -70,6 +70,7 @@ class Taxi extends StatelessWidget {
                       docs[i]['Name'],
                     ),
                     subtitle: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Phone: ${docs[i]['Phone No']}',

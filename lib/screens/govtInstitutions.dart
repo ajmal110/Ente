@@ -67,6 +67,7 @@ class GovtInstitutions extends StatelessWidget {
                       docs[i]['Location'],
                     ),
                     subtitle: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           'Phone: ${docs[i]['Phone']}',
