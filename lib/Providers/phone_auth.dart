@@ -25,27 +25,31 @@ class _PhoneLoginState extends State<PhoneLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Stack(
+      backgroundColor: Color(0xffE7F0C3),
+      body: Column(
         children: <Widget>[
           Center(
-              child: Container(
-            decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xff32AFA9), Color(0xffA4D4AE)])),
-          )),
-          // Expanded(child: Container(child: Image.asset('Manjeri.jpg'))),
+            child: Container(
+                alignment: AlignmentDirectional.center,
+                margin: EdgeInsets.only(top: 100),
+                child: Image.asset(
+                  'assets/images/EM Logo.png',
+                  height: 400,
+                  width: 700,
+                  scale: .1,
+                  fit: BoxFit.cover,
+                )),
+          ),
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.8,
-              padding: EdgeInsets.only(top: 390),
+              padding: EdgeInsets.only(top: 120),
               alignment: Alignment.center,
               child: new RaisedButton(
                 shape: new RoundedRectangleBorder(
                   borderRadius: new BorderRadius.circular(30.0),
                 ),
-                color: Colors.green,
+                color: Colors.green[300],
                 onPressed: () => {},
                 child: new Container(
                   child: new Row(
@@ -149,7 +153,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
                                                         : "CONTINUE",
                                                     style: TextStyle(
                                                         color: Colors.white,
-                                                        fontSize: 18.0,
+                                                        fontSize: 17.0,
                                                         fontWeight:
                                                             FontWeight.bold),
                                                   ),
