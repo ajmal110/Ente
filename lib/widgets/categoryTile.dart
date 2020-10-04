@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/screens/news.dart';
+import 'package:plantStore/screens/turf1.dart';
 import 'package:provider/provider.dart';
 
 import 'package:getwidget/getwidget.dart';
@@ -28,7 +29,7 @@ class CategoryTile1 extends StatelessWidget {
         } else if (category == 'Turf') {
           Navigator.of(context).push(
             MaterialPageRoute(
-              builder: (ctx) => Turf(),
+              builder: (ctx) => Turf1(),
             ),
           );
         } else if (category == 'News') {

@@ -92,9 +92,10 @@ class DocProfShop extends StatelessWidget {
                     subtitle: Column(
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              'Phone: ${docs[i]['Phone']}',
+                              'Phone: ${docs[i]['Phone']}\nLocation: ${docs[i]['Location']}',
                             ),
                             Padding(
                               padding: const EdgeInsets.only(left: 10.0),
@@ -115,9 +116,6 @@ class DocProfShop extends StatelessWidget {
                                   )),
                             ),
                           ],
-                        ),
-                        Text(
-                          docs[i]['Location'],
                         ),
                       ],
                     ),
