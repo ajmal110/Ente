@@ -99,20 +99,21 @@ class Taxi extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 10.0),
                           child: RaisedButton.icon(
-                              color: Colors.white,
-                              onPressed: () async {
-                                launchCaller('${docs[i]['Phone']}');
-                              },
-                              icon: Icon(
-                                Icons.call,
+                            color: Colors.white,
+                            onPressed: () async {
+                              launchCaller('${docs[i]['Phone']}');
+                            },
+                            icon: Icon(
+                              Icons.call,
+                              color: Colors.greenAccent,
+                            ),
+                            label: Text(
+                              'Call',
+                              style: TextStyle(
                                 color: Colors.greenAccent,
                               ),
-                              label: Text(
-                                'Call',
-                                style: TextStyle(
-                                  color: Colors.greenAccent,
-                                ),
-                              )),
+                            ),
+                          ),
                         ),
                       ],
                     ),

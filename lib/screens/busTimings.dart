@@ -3,12 +3,22 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/product.dart';
 import '../widgets/productTile.dart';
+import '../widgets/newBustiming.dart';
 import '../screens/cart-screen.dart';
 
 class BusTimings extends StatelessWidget {
   final String cat;
 
   BusTimings(this.cat);
+
+  void changePage(BuildContext context, String _cat) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => NewBus(cat),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +41,9 @@ class BusTimings extends StatelessWidget {
       ),
       persistentFooterButtons: <Widget>[
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            changePage(context, cat);
+          },
           child: Container(
             color: Color(0xffE7F0C3),
             height: 59,
@@ -87,7 +99,7 @@ class BusTimings extends StatelessWidget {
                       docs[i]['Name'],
                     ),
                     trailing: Text(
-                      docs[i]['Time'],
+                      '${docs[i]['Time']} ',
                     ),
                   ),
                 ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plantStore/Providers/call_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -7,6 +8,8 @@ import '../models/product.dart';
 import '../Providers/product-provider.dart';
 
 class Turf extends StatelessWidget {
+  final docs;
+  Turf(this.docs);
   // final String title;
   // final double price;
 
@@ -53,142 +56,147 @@ class Turf extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
+      floatingActionButton: FloatingActionButton(
+        elevation: 20,
+        onPressed: () async {
+          launchCaller('${docs['Phone']}');
+        },
+        backgroundColor: Theme.of(context).primaryColor,
+        child: Icon(
+          Icons.call,
+          size: 40,
+          color: Theme.of(context).accentColor,
+        ),
+      ),
       // appBar: AppBar(
       //   title: Text(loadedProduct.title),
       // ),
-      body: StreamBuilder(
-          stream: Firestore.instance
-              .collection('Turf')
-              .document('12345670')
-              .snapshots(),
-          builder: (ctx, snapshot) {
-            final docs = snapshot.data;
-            return CustomScrollView(
-              slivers: <Widget>[
-                SliverAppBar(
-                  expandedHeight: 300,
-                  pinned: true,
-                  flexibleSpace: FlexibleSpaceBar(
-                    title: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                      decoration: BoxDecoration(
-                          color: Theme.of(context).primaryColor,
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Text(
-                        docs['Name'],
-                        style: TextStyle(
-                          color: Theme.of(context).accentColor,
-                        ),
-                      ),
-                    ),
-                    /*  background: Image.network(
+      body: CustomScrollView(
+        slivers: <Widget>[
+          SliverAppBar(
+            expandedHeight: 300,
+            pinned: true,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  docs['Name'],
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                  ),
+                ),
+              ),
+              /*  background: Image.network(
                       docs['Photo'],
                       fit: BoxFit.cover,
                     ), */
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Phone No : ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 23,
+                        ),
+                      ),
+                      Card(
+                        elevation: 20,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        color: Theme.of(context).primaryColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            docs['Phone'],
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                      // FlatButton.icon(
+                      //     onPressed: () {
+                      //       launch(('tel://1223467'));
+                      //     },
+                      //     icon: Icon(Icons.call),
+                      //     label: null)
+                    ],
                   ),
                 ),
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      SizedBox(height: 10),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Phone No : ',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 23,
-                              ),
-                            ),
-                            Card(
-                              elevation: 20,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              color: Theme.of(context).primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  docs['Phone'],
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Theme.of(context).accentColor,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                            // FlatButton.icon(
-                            //     onPressed: () {
-                            //       launch(('tel://1223467'));
-                            //     },
-                            //     icon: Icon(Icons.call),
-                            //     label: null)
-                          ],
+                SizedBox(
+                  height: 10,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(15),
+                  child: Text(
+                    'Location : ',
+                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  width: double.infinity,
+                  child: Text(
+                    docs['Location'],
+                    textAlign: TextAlign.left,
+                    softWrap: true,
+                    style: TextStyle(fontSize: 17),
+                  ),
+                ),
+                SizedBox(height: 10),
+                Container(
+                  padding: const EdgeInsets.all(15),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Time : ',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 23,
                         ),
                       ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(15),
-                        child: Text(
-                          'Location : ',
-                          style: TextStyle(
-                              fontSize: 23, fontWeight: FontWeight.bold),
+                      Card(
+                        elevation: 20,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 15),
-                        width: double.infinity,
-                        child: Text(
-                          docs['Location'],
-                          textAlign: TextAlign.left,
-                          softWrap: true,
-                          style: TextStyle(fontSize: 17),
-                        ),
-                      ),
-                      SizedBox(height: 10),
-                      Container(
-                        padding: const EdgeInsets.all(15),
-                        child: Row(
-                          children: [
-                            Text(
-                              'Time : ',
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 23,
-                              ),
-                            ),
-                            Card(
-                              elevation: 20,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              color: Theme.of(context).primaryColor,
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(
-                                  docs['Time'],
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                      color: Theme.of(context).accentColor,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                            ),
-                          ],
+                        color: Theme.of(context).primaryColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Text(
+                            '${docs['Time']} ',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Theme.of(context).accentColor,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold),
+                          ),
                         ),
                       ),
                     ],
                   ),
                 ),
               ],
-            );
-          }),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
