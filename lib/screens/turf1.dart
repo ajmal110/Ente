@@ -102,8 +102,11 @@ class Turf1 extends StatelessWidget {
                       subtitle: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            'Phone : ${docs[i]['Phone']}\nLocation : ${docs[i]['Location']}',
+                          Expanded(
+                            child: Text(
+                              'Phone : ${docs[i]['Phone']}\nLocation : ${docs[i]['Location']}',
+                              softWrap: true,
+                            ),
                           ),
                           Padding(
                             padding: const EdgeInsets.only(left: 10.0),

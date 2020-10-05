@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/screens/DocProfShop1.dart';
 import 'package:plantStore/widgets/newDocProfShop.dart';
 
 import '../models/product.dart';
@@ -82,59 +83,71 @@ class DocProfShop extends StatelessWidget {
             );
           }
           return ListView.builder(
-            itemCount: docs.length,
-            itemBuilder: (ctx, i) => Container(
-              padding: EdgeInsets.all(8),
-              child: Card(
-                elevation: 10,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
-                      // backgroundImage: NetworkImage(docs[i]['Photo']),
-                    ),
-                    title: Text(
-                      docs[i]['Name'],
-                    ),
-                    subtitle: Column(
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              'Phone: ${docs[i]['Phone']}\nLocation: ${docs[i]['Location']}',
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: RaisedButton.icon(
-                                  color: Colors.white,
-                                  onPressed: () async {
-                                    launchCaller('${docs[i]['Phone']}');
-                                  },
-                                  icon: Icon(
-                                    Icons.call,
-                                    color: Colors.greenAccent,
-                                  ),
-                                  label: Text(
-                                    'Call',
-                                    style: TextStyle(
-                                      color: Colors.greenAccent,
-                                    ),
-                                  )),
-                            ),
-                          ],
+              itemCount: docs.length,
+              itemBuilder: (ctx, i) => Container(
+                    padding: EdgeInsets.all(8),
+                    child: GestureDetector(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (ctx) => DocProfShop1(docs[i]),
                         ),
-                      ],
+                      ),
+                      child: Card(
+                        elevation: 10,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: ListTile(
+                            leading: CircleAvatar(
+                              radius: 30,
+                              // backgroundImage: NetworkImage(docs[i]['Photo']),
+                            ),
+                            title: Text(
+                              docs[i]['Name'],
+                            ),
+                            subtitle: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Expanded(
+                                      child: Text(
+                                        'Phone: ${docs[i]['Phone']}\nLocation: ${docs[i]['Location']}',
+                                        softWrap: true,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(left: 10.0),
+                                      child: RaisedButton.icon(
+                                          color: Colors.white,
+                                          onPressed: () async {
+                                            launchCaller('${docs[i]['Phone']}');
+                                          },
+                                          icon: Icon(
+                                            Icons.call,
+                                            color: Colors.greenAccent,
+                                          ),
+                                          label: Text(
+                                            'Call',
+                                            style: TextStyle(
+                                              color: Colors.greenAccent,
+                                            ),
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            ),
-          );
+                  ));
         },
       ),
     );
