@@ -41,38 +41,39 @@ class News extends StatelessWidget {
             );
           }
           return ListView.builder(
-              itemCount: docs.length,
-              itemBuilder: (ctx, i) => Container(
-                    padding: EdgeInsets.all(8),
-                    child: GestureDetector(
-                      onTap: () => Navigator.push(
+            itemCount: docs.length,
+            itemBuilder: (ctx, i) => Container(
+              padding: EdgeInsets.all(8),
+              child: GestureDetector(
+                /* onTap: () => Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (ctx) => News1(docs[i]),
                         ),
+                      ), */
+                child: Card(
+                  elevation: 10,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ListTile(
+                      title: Text(
+                        docs[i]['Heading'],
                       ),
-                      child: Card(
-                        elevation: 10,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ListTile(
-                            title: Text(
-                              docs[i]['Heading'],
-                            ),
-                            subtitle: Expanded(
-                              child: Text(
-                                docs[i]['Description'],
-                                softWrap: true,
-                              ),
-                            ),
-                          ),
+                      subtitle: Expanded(
+                        child: Text(
+                          docs[i]['Description'],
+                          softWrap: true,
                         ),
                       ),
                     ),
-                  ));
+                  ),
+                ),
+              ),
+            ),
+          );
         },
       ),
     );

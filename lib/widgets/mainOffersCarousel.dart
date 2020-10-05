@@ -5,7 +5,7 @@ import '../models/offers.dart';
 import './OffersCard.dart';
 
 class MainOffersCarousel extends StatefulWidget {
-  final List<Offers> inputList;
+  final List inputList;
   MainOffersCarousel(this.inputList);
   @override
   _MainOffersCarouselState createState() => _MainOffersCarouselState();
@@ -23,7 +23,12 @@ class _MainOffersCarouselState extends State<MainOffersCarousel> {
       items: widget.inputList.map((prod) {
         return Container(
           width: MediaQuery.of(context).size.width,
-          child: OffersCard(prod),
+          child: OffersCard(
+            Offers(
+              offerImage: prod['photo'],
+              mainText: prod['mainText']
+            ),
+          ),
         );
       }).toList(),
       onPageChanged: (index) {

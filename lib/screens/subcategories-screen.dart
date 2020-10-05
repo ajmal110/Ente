@@ -9,6 +9,7 @@ import '../widgets/categoryTile2.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../models/offers.dart';
 import '../Providers/offer-provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SubCategoriesScreen extends StatefulWidget {
   final String cat;
@@ -151,8 +152,6 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
 
     List<Map<String, String>> _subCategoryList =
         _categoryList.firstWhere((ele) => ele['cat'] == widget.cat)['subcat'];
-    final List<Offers> seasonalOffers =
-        Provider.of<OfferProvider>(context).seasonalOffers;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -188,7 +187,18 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
             ),
             height: MediaQuery.of(context).size.height * 0.3,
             color: Theme.of(context).splashColor,
-            child: MainOffersCarousel(seasonalOffers),
+            child: StreamBuilder(
+                stream:
+                    Firestore.instance.collection('advertisement').snapshots(),
+                builder: (ctx, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  final docs = snapshot.data.documents;
+                  return MainOffersCarousel(docs);
+                }),
           ),
           Text(
             widget.cat,

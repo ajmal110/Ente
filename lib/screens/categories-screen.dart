@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../widgets/main-drawer.dart';
 import './cart-screen.dart';
@@ -69,7 +70,18 @@ class CategoriesScreen extends StatelessWidget {
             ),
             height: MediaQuery.of(context).size.height * 0.3,
             color: Theme.of(context).splashColor,
-            child: MainOffersCarousel(seasonalOffers),
+            child: StreamBuilder(
+                stream:
+                    Firestore.instance.collection('advertisement').snapshots(),
+                builder: (ctx, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                  final docs = snapshot.data.documents;
+                  return MainOffersCarousel(docs);
+                }),
           ),
           Text(
             'Categories',

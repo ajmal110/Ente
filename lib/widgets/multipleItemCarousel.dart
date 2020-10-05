@@ -5,14 +5,19 @@ import '../models/offers.dart';
 import './OffersCard.dart';
 
 class MultipleItemCarousel extends StatelessWidget {
-  final List<Offers> offers;
+  final List offers;
   MultipleItemCarousel(this.offers);
   @override
   Widget build(BuildContext context) {
     return GFItemsCarousel(
       rowCount: 2,
       children: offers.map((offer) {
-        return OffersCard(offer);
+        return OffersCard(
+          Offers(
+            offerImage: offer['photo'],
+            mainText: offer['mainText'],
+          ),
+        );
       }).toList(),
     );
   }

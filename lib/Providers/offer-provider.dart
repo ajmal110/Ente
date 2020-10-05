@@ -10,23 +10,7 @@ class OfferProvider with ChangeNotifier {
     Offers(offerImage: 'assets/images/t4.jpg'),
     Offers(offerImage: 'assets/images/t5.jpg'),
   ];
-  List<Offers> _mainOffers = [
-    Offers(
-        offerImage: 'assets/images/b1.jpg',
-        mainText: 'Each one Plant one!!',
-        description: 'It is our duty to safegaurd mother earth'),
-    Offers(
-      offerImage: 'assets/images/kurikkal.png',
-    ),
-    Offers(
-        offerImage: 'assets/images/b3.jpg',
-        mainText: 'Each one Plant one!!',
-        description: 'It is our duty to safegaurd mother earth'),
-    Offers(
-        offerImage: 'assets/images/b4.jpg',
-        mainText: 'Each one Plant one!!',
-        description: 'It is our duty to safegaurd mother earth'),
-  ];
+  
   List<Offers> _seasonalOffers = [
     Offers(offerImage: 'assets/images/ente manjeri.png'),
     Offers(offerImage: 'assets/images/Manjeri Milk.jpeg'),
@@ -38,9 +22,7 @@ class OfferProvider with ChangeNotifier {
     return [..._topOffers];
   }
 
-  List<Offers> get mainOffers {
-    return [..._mainOffers];
-  }
+
 
   List<Offers> get seasonalOffers {
     return [..._seasonalOffers];

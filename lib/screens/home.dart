@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/cart-screen.dart';
 import 'package:provider/provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../widgets/topOffersCard.dart';
 import '../Providers/product-provider.dart';
@@ -28,12 +29,6 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<String> favIds;
 
-  List<Offers> mainOffers;
-
-  List<Offers> topOffers;
-
-  List<Offers> seasonalOffers;
-
   @override
   Widget build(BuildContext context) {
     final List<Map<String, String>> _categoryList = [
@@ -54,11 +49,6 @@ class _HomeScreenState extends State<HomeScreen> {
       }
     });
 
-    mainOffers = Provider.of<OfferProvider>(context, listen: false).mainOffers;
-    topOffers = Provider.of<OfferProvider>(context, listen: false).topOffers;
-    seasonalOffers =
-        Provider.of<OfferProvider>(context, listen: false).seasonalOffers;
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
@@ -75,7 +65,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 height: MediaQuery.of(context).size.height * 0.3,
                 color: Theme.of(context).splashColor,
-                child: MainOffersCarousel(seasonalOffers),
+                child: StreamBuilder(
+                  stream: Firestore.instance.collection('offers').snapshots(),
+                  builder: (ctx, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    final docs = snapshot.data.documents;
+                    return MainOffersCarousel(docs);
+                  },
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -109,7 +110,19 @@ class _HomeScreenState extends State<HomeScreen> {
               //Holds Ads or Offers or etc
               Container(
                 height: MediaQuery.of(context).size.height * 0.3,
-                child: MainOffersCarousel(mainOffers),
+                child: StreamBuilder(
+                    stream: Firestore.instance
+                        .collection('advertisement')
+                        .snapshots(),
+                    builder: (ctx, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      final docs = snapshot.data.documents;
+                      return MainOffersCarousel(docs);
+                    }),
               ),
               Divider(),
               Padding(
@@ -124,11 +137,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                  margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                  height: MediaQuery.of(context).size.height * 0.25,
-                  child: MultipleItemCarousel(topOffers)),
+                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+                height: MediaQuery.of(context).size.height * 0.25,
+                child: StreamBuilder(
+                  stream: Firestore.instance.collection('offers').snapshots(),
+                  builder: (ctx, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    final docs = snapshot.data.documents;
+                    return MultipleItemCarousel(docs);
+                  },
+                ),
+              ),
               Divider(),
-
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -141,8 +165,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Container(
-                margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                child: CustomCarousel(_topPicks),
+                height: 250,
+                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                child: StreamBuilder(
+                  stream: Firestore.instance.collection('online').snapshots(),
+                  builder: (ctx, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+                    final docs = snapshot.data.documents;
+                    return MainOffersCarousel(docs);
+                  },
+                ),
               ),
             ],
           ),

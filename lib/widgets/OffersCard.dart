@@ -12,7 +12,7 @@ class OffersCard extends StatelessWidget {
       content: Container(
         color: Colors.black26,
         child: Text(
-          offer.description,
+          offer.mainText,
           softWrap: true,
           style: TextStyle(
             color: Colors.white,
@@ -24,9 +24,7 @@ class OffersCard extends StatelessWidget {
       padding: EdgeInsets.all(0),
       color: Theme.of(context).primaryColorLight,
       elevation: 8,
-      imageOverlay: AssetImage(
-        offer.offerImage,
-      ),
+      //imageOverlay:NetworkImage(offer.offerImage),
       boxFit: BoxFit.cover,
       titlePosition: GFPosition.start,
       title: GFListTile(
