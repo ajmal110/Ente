@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/widgets/newDocProfShop.dart';
 
 import '../models/product.dart';
 import '../widgets/productTile.dart';
@@ -11,6 +12,14 @@ class DocProfShop extends StatelessWidget {
   final String cat;
 
   DocProfShop(this.parent, this.cat);
+  void changePage(BuildContext context, String _cat) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => NewBus(parent, cat),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +42,9 @@ class DocProfShop extends StatelessWidget {
       ),
       persistentFooterButtons: <Widget>[
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            changePage(context, cat);
+          },
           child: Container(
             color: Color(0xffE7F0C3),
             height: 59,

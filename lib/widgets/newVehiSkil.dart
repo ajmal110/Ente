@@ -8,8 +8,9 @@ import 'package:path_provider/path_provider.dart' as syspath;
 import 'package:path/path.dart' as path;
 
 class NewBus extends StatefulWidget {
+  final String parent;
   final cat;
-  NewBus(this.cat);
+  NewBus(this.parent, this.cat);
   @override
   _NewBusState createState() => _NewBusState();
 }
@@ -19,7 +20,7 @@ class _NewBusState extends State<NewBus> {
 
   List<File> _selectedImages = [];
   String _name;
-  String _time;
+  String _phone;
 
   Future<void> _picViaGallery() async {
     final picker = ImagePicker();
@@ -91,7 +92,7 @@ class _NewBusState extends State<NewBus> {
     _form.currentState.save();
     print('saved');
 
-    if (_name.trim() == null || _time.trim() == null) {
+    if (_name.trim() == null || _phone.trim() == null) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
@@ -128,12 +129,12 @@ class _NewBusState extends State<NewBus> {
     print(url);
 
     Firestore.instance
-        .collection('Bus Timings')
+        .collection(widget.parent)
         .document(widget.cat)
         .collection('List')
         .add({
       'Name': _name,
-      'Time': _time,
+      'Phone': _phone,
       'Photo': url,
     });
     print('done');
@@ -195,16 +196,17 @@ class _NewBusState extends State<NewBus> {
                           padding: EdgeInsets.all(10),
                           child: TextFormField(
                             decoration: InputDecoration(
-                              labelText: 'Enter Timing',
+                              labelText: 'Enter Phone Number',
                             ),
                             validator: (value) {
                               if (value.trim().isEmpty) {
-                                return 'Please Enter Timing';
+                                return 'Please Enter Phone Number';
                               }
                               return null;
                             },
+                            keyboardType: TextInputType.number,
                             onSaved: (value) {
-                              _time = value;
+                              _phone = value;
                               FocusScope.of(context).unfocus();
                             },
                           ),

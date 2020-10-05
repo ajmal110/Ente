@@ -2,11 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plantStore/screens/turf.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/widgets/newTurf.dart';
 import '../models/product.dart';
 import '../widgets/productTile.dart';
 import 'cart-screen.dart';
 
 class Turf1 extends StatelessWidget {
+  void changePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => NewBus(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +36,29 @@ class Turf1 extends StatelessWidget {
           )
         ],
       ),
+      persistentFooterButtons: <Widget>[
+        GestureDetector(
+          onTap: () {
+            changePage(context);
+          },
+          child: Container(
+            color: Color(0xffE7F0C3),
+            height: 59,
+            width: 900,
+            child: Center(
+              child: Text(
+                '+ Add My Details',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Color(0xff32AFA9),
+                  letterSpacing: 1,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
       body: StreamBuilder(
         stream: Firestore.instance.collection('Turf').snapshots(),
         builder: (ctx, snapshot) {

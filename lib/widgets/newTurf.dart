@@ -8,8 +8,7 @@ import 'package:path_provider/path_provider.dart' as syspath;
 import 'package:path/path.dart' as path;
 
 class NewBus extends StatefulWidget {
-  final cat;
-  NewBus(this.cat);
+  NewBus();
   @override
   _NewBusState createState() => _NewBusState();
 }
@@ -20,6 +19,7 @@ class _NewBusState extends State<NewBus> {
   List<File> _selectedImages = [];
   String _name;
   String _time;
+  String _location;
 
   Future<void> _picViaGallery() async {
     final picker = ImagePicker();
@@ -127,13 +127,10 @@ class _NewBusState extends State<NewBus> {
     }
     print(url);
 
-    Firestore.instance
-        .collection('Bus Timings')
-        .document(widget.cat)
-        .collection('List')
-        .add({
+    Firestore.instance.collection('Turf').add({
       'Name': _name,
       'Time': _time,
+      'Location': _location,
       'Photo': url,
     });
     print('done');
@@ -188,6 +185,24 @@ class _NewBusState extends State<NewBus> {
                             },
                             onSaved: (value) {
                               _name = value;
+                            },
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: TextFormField(
+                            textCapitalization: TextCapitalization.words,
+                            decoration: InputDecoration(
+                              labelText: 'Location',
+                            ),
+                            validator: (value) {
+                              if (value.trim().isEmpty) {
+                                return 'Please Enter Location';
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _location = value;
                             },
                           ),
                         ),

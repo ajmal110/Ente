@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
     final List<Map<String, String>> _categoryList = [
       {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
       {'cat': 'Turf', 'path': 'assets/images/turf.png'},
-      {'cat': 'Bus timings', 'path': 'assets/images/bus.png'},
+      {'cat': 'Bus Timings', 'path': 'assets/images/bus.png'},
       {'cat': 'Taxi', 'path': 'assets/images/tab.png'},
       {'cat': 'more', 'path': 'assets/images/more.png'},
     ];
