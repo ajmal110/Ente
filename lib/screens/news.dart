@@ -45,12 +45,12 @@ class News extends StatelessWidget {
             itemBuilder: (ctx, i) => Container(
               padding: EdgeInsets.all(8),
               child: GestureDetector(
-                /* onTap: () => Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (ctx) => News1(docs[i]),
-                        ),
-                      ), */
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (ctx) => News1(docs[i]),
+                  ),
+                ),
                 child: Card(
                   elevation: 10,
                   shape: RoundedRectangleBorder(
