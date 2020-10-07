@@ -15,11 +15,25 @@ import 'Providers/order-provider.dart';
 import './Providers/product-provider.dart';
 import './screens/product-detail-screen.dart';
 
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:plantStore/Providers/pushNotifications.dart';
+
 void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  @override
+  void initState() {
+    super.initState();
+    NotificationService.instance.start();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(

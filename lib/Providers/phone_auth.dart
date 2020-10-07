@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:plantStore/Providers/notification_bloc.dart';
 import 'package:plantStore/Providers/otp_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/screens/home.dart';
 
 class PhoneLogin extends StatefulWidget {
   PhoneLogin({Key key}) : super(key: key);
@@ -9,6 +13,29 @@ class PhoneLogin extends StatefulWidget {
 }
 
 class _PhoneLoginState extends State<PhoneLogin> {
+  StreamSubscription<Map> _notificationSubscription;
+
+  @override
+  void dispose() {
+    _notificationSubscription.cancel();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _notificationSubscription = NotificationsBloc.instance.notificationStream
+        .listen(_performActionOnNotification);
+  }
+
+  _performActionOnNotification(Map<String, dynamic> message) async {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => HomeScreen(),
+      ),
+    );
+  }
+
   final TextEditingController _phoneNumberController = TextEditingController();
 
   bool isValid = false;
