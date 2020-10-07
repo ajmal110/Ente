@@ -13,11 +13,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './screens/login-screen.dart';
 import 'Providers/order-provider.dart';
 import './Providers/product-provider.dart';
-import './Providers/offer-provider.dart';
 import './screens/product-detail-screen.dart';
 
 void main() {
-  runApp(MyApp()); 
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,9 +29,6 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<ProductProvider>(
           create: (_) => ProductProvider(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => OfferProvider(),
         ),
       ],
       child: MaterialApp(

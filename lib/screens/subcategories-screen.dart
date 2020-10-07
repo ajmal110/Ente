@@ -8,7 +8,6 @@ import '../widgets/locRequieredTile.dart';
 import '../widgets/categoryTile2.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../models/offers.dart';
-import '../Providers/offer-provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SubCategoriesScreen extends StatefulWidget {

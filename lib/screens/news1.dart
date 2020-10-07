@@ -77,10 +77,10 @@ class News1 extends StatelessWidget {
                 //     ),
                 //   ),
                 // ),
-                /*  background: Image.network(
+                 background: Image.network(
                       docs['Photo'],
                       fit: BoxFit.cover,
-                    ), */
+                    ),
                 ),
           ),
           SliverList(

@@ -11,8 +11,8 @@ import '../models/product.dart';
 import '../widgets/categoryTile.dart';
 import '../widgets/customCarousel.dart';
 import '../models/offers.dart';
-import '../Providers/offer-provider.dart';
 import '../widgets/mainOffersCarousel.dart';
+import '../widgets/newsCarousel.dart';
 import '../widgets/multipleItemCarousel.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -112,7 +112,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: MediaQuery.of(context).size.height * 0.3,
                 child: StreamBuilder(
                     stream: Firestore.instance
-                        .collection('advertisement')
+                        .collection('News')
                         .snapshots(),
                     builder: (ctx, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
@@ -121,7 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }
                       final docs = snapshot.data.documents;
-                      return MainOffersCarousel(docs);
+                      return NewsCar(docs);
                     }),
               ),
               Divider(),

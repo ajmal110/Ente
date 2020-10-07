@@ -8,7 +8,6 @@ import './cart-screen.dart';
 import '../widgets/categoryTile.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../models/offers.dart';
-import '../Providers/offer-provider.dart';
 
 class CategoriesScreen extends StatelessWidget {
   static const routename = '/categories-screen';
@@ -32,8 +31,6 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<Offers> seasonalOffers =
-        Provider.of<OfferProvider>(context).seasonalOffers;
     return Scaffold(
       appBar: AppBar(
         title: Text(
