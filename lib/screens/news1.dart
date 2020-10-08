@@ -77,7 +77,7 @@ class News1 extends StatelessWidget {
                     color: Theme.of(context).primaryColor,
                     borderRadius: BorderRadius.circular(20)),
                 child: Text(
-                  docs['Heading'],
+                  "",
                   style: TextStyle(
                     color: Theme.of(context).accentColor,
                   ),
@@ -114,8 +114,11 @@ class News1 extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(15),
                   child: Text(
-                    'Description : ',
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                    docs['Heading'],
+                    style: TextStyle(
+                        fontSize: 23,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.blueGrey),
                   ),
                 ),
                 Container(

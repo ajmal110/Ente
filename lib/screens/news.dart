@@ -37,29 +37,6 @@ class News extends StatelessWidget {
           )
         ],
       ),
-      persistentFooterButtons: <Widget>[
-        GestureDetector(
-          onTap: () {
-            changePage(context);
-          },
-          child: Container(
-            color: Color(0xffE7F0C3),
-            height: 59,
-            width: 900,
-            child: Center(
-              child: Text(
-                '+ Add My Details',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Color(0xff32AFA9),
-                  letterSpacing: 1,
-                ),
-              ),
-            ),
-          ),
-        )
-      ],
       body: StreamBuilder(
         stream: Firestore.instance.collection('News').snapshots(),
         builder: (ctx, snapshot) {

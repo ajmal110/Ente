@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/widgets/newTaxi.dart';
 
 import '../models/product.dart';
 import '../widgets/productTile.dart';
@@ -12,6 +13,15 @@ class Taxi extends StatelessWidget {
   final String loc;
 
   Taxi(this.parent, this.cat, this.loc);
+
+  void changePage(BuildContext context, String cat, String loc) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => NewBus(parent, cat, loc),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +44,9 @@ class Taxi extends StatelessWidget {
       ),
       persistentFooterButtons: <Widget>[
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            changePage(context, cat, loc);
+          },
           child: Container(
             color: Color(0xffE7F0C3),
             height: 59,
