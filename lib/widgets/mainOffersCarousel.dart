@@ -24,10 +24,7 @@ class _MainOffersCarouselState extends State<MainOffersCarousel> {
         return Container(
           width: MediaQuery.of(context).size.width,
           child: OffersCard(
-            Offers(
-              offerImage: prod['photo'],
-              mainText: prod['mainText']
-            ),
+            Offers(offerImage: prod['photo'], mainText: prod['mainText']),
           ),
         );
       }).toList(),
