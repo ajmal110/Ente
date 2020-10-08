@@ -35,9 +35,9 @@ class _MainDrawerState extends State<MainDrawer> {
               height: MediaQuery.of(context).size.height * 0.2,
               child: Container(
                 child: Image.asset(
-                  'assets/images/ente manjeri.png',
-                  height: 90,
-                  fit: BoxFit.cover,
+                  'assets/images/EML.png',
+                  height: 40,
+                  fit: BoxFit.contain,
                 ),
                 color: Color(0xff32AFA9),
               ),

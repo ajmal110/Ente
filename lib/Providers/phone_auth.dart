@@ -52,7 +52,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xffE7F0C3),
+      backgroundColor: Color(0xff32AFA9),
       body: Column(
         children: <Widget>[
           Center(
@@ -60,7 +60,7 @@ class _PhoneLoginState extends State<PhoneLogin> {
                 alignment: AlignmentDirectional.center,
                 margin: EdgeInsets.only(top: 100),
                 child: Image.asset(
-                  'assets/images/EM Logo.png',
+                  'assets/images/EML.png',
                   height: 400,
                   width: 700,
                   scale: .1,
