@@ -37,7 +37,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 child: Image.asset(
                   'assets/images/EML.png',
                   height: 40,
-                  fit: BoxFit.contain,
+                  fit: BoxFit.fitHeight,
                 ),
                 color: Color(0xff32AFA9),
               ),
