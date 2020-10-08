@@ -66,7 +66,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 height: MediaQuery.of(context).size.height * 0.3,
                 color: Theme.of(context).splashColor,
                 child: StreamBuilder(
-                  stream: Firestore.instance.collection('offers').snapshots(),
+                  stream: Firestore.instance
+                      .collection('advertisement')
+                      .snapshots(),
                   builder: (ctx, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Center(
@@ -111,9 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
               Container(
                 height: MediaQuery.of(context).size.height * 0.3,
                 child: StreamBuilder(
-                    stream: Firestore.instance
-                        .collection('News')
-                        .snapshots(),
+                    stream: Firestore.instance.collection('News').snapshots(),
                     builder: (ctx, snapshot) {
                       if (snapshot.connectionState == ConnectionState.waiting) {
                         return Center(
