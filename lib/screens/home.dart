@@ -39,16 +39,6 @@ class _HomeScreenState extends State<HomeScreen> {
       {'cat': 'more', 'path': 'assets/images/more.png'},
     ];
 
-    favIds = Provider.of<ProductProvider>(context, listen: false).topPicks;
-
-    Provider.of<ProductProvider>(context, listen: false)
-        .allProducts
-        .forEach((prod) {
-      if (favIds.contains(prod.prodId)) {
-        _topPicks.add(prod);
-      }
-    });
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(

@@ -16,7 +16,7 @@ class _MainOffersCarouselState extends State<MainOffersCarousel> {
   Widget build(BuildContext context) {
     return GFCarousel(
       autoPlay: true,
-      autoPlayInterval: Duration(seconds: 4),
+      autoPlayInterval: Duration(seconds: 3),
       enlargeMainPage: true,
       pagination: true,
       viewportFraction: 1.0,
@@ -24,7 +24,10 @@ class _MainOffersCarouselState extends State<MainOffersCarousel> {
         return Container(
           width: MediaQuery.of(context).size.width,
           child: OffersCard(
-            Offers(offerImage: prod['photo'], mainText: prod['mainText']),
+            Offers(
+              offerImage: prod['photo'],
+              mainText: prod['mainText']
+            ),
           ),
         );
       }).toList(),
