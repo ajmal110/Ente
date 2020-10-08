@@ -55,6 +55,12 @@ class News1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    String imageurl;
+    if (docs['Photo'].toString().trim() != '') {
+      imageurl = docs['Photo'];
+    } else {
+      imageurl = null;
+    }
     return Scaffold(
       // appBar: AppBar(
       //   title: Text(loadedProduct.title),
@@ -65,23 +71,25 @@ class News1 extends StatelessWidget {
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-                // title: Container(
-                //   padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                //   decoration: BoxDecoration(
-                //       color: Theme.of(context).primaryColor,
-                //       borderRadius: BorderRadius.circular(20)),
-                //   child: Text(
-                //     docs['Heading'],
-                //     style: TextStyle(
-                //       color: Theme.of(context).accentColor,
-                //     ),
-                //   ),
-                // ),
-                 background: Image.network(
+              title: Container(
+                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColor,
+                    borderRadius: BorderRadius.circular(20)),
+                child: Text(
+                  docs['Heading'],
+                  style: TextStyle(
+                    color: Theme.of(context).accentColor,
+                  ),
+                ),
+              ),
+              background: imageurl != null
+                  ? Image.network(
                       docs['Photo'],
                       fit: BoxFit.cover,
-                    ),
-                ),
+                    )
+                  : null,
+            ),
           ),
           SliverList(
             delegate: SliverChildListDelegate(
@@ -91,31 +99,6 @@ class News1 extends StatelessWidget {
                   padding: const EdgeInsets.all(15),
                   child: Row(
                     children: [
-                      Text(
-                        '',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 23,
-                        ),
-                      ),
-                      Card(
-                        elevation: 20,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        color: Theme.of(context).primaryColor,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Text(
-                            docs['Heading'],
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Theme.of(context).accentColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
-                          ),
-                        ),
-                      ),
                       // FlatButton.icon(
                       //     onPressed: () {
                       //       launch(('tel://1223467'));
@@ -131,7 +114,7 @@ class News1 extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.all(15),
                   child: Text(
-                    '',
+                    'Description : ',
                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
                   ),
                 ),

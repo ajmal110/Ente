@@ -3,6 +3,7 @@ import 'package:getwidget/getwidget.dart';
 
 import '../models/offers.dart';
 import './OffersCard.dart';
+import './newsCard.dart';
 
 class NewsCar extends StatefulWidget {
   final List inputList;
@@ -23,12 +24,11 @@ class _NewsCarState extends State<NewsCar> {
       items: widget.inputList.map((prod) {
         return Container(
           width: MediaQuery.of(context).size.width,
-          child: OffersCard(
-            Offers(
-                offerImage: prod['Photo'],
-                mainText: prod['Heading'],
-                desc: prod['Description']),
-          ),
+          child: NewsCard({
+            'Photo': prod['Photo'],
+            'Heading': prod['Heading'],
+            'Description': prod['Description']
+          }),
         );
       }).toList(),
       onPageChanged: (index) {

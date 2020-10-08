@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:plantStore/screens/news1.dart';
-
+import 'package:plantStore/screens/turf.dart';
+import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/widgets/newTurf.dart';
 import '../models/product.dart';
 import '../widgets/productTile.dart';
+import './news1.dart';
 import 'cart-screen.dart';
 
 class News extends StatelessWidget {
+  void changePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => NewBus(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,6 +37,29 @@ class News extends StatelessWidget {
           )
         ],
       ),
+      persistentFooterButtons: <Widget>[
+        GestureDetector(
+          onTap: () {
+            changePage(context);
+          },
+          child: Container(
+            color: Color(0xffE7F0C3),
+            height: 59,
+            width: 900,
+            child: Center(
+              child: Text(
+                '+ Add My Details',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Color(0xff32AFA9),
+                  letterSpacing: 1,
+                ),
+              ),
+            ),
+          ),
+        )
+      ],
       body: StreamBuilder(
         stream: Firestore.instance.collection('News').snapshots(),
         builder: (ctx, snapshot) {
@@ -37,7 +71,7 @@ class News extends StatelessWidget {
           final docs = snapshot.data.documents;
           if (docs.length == 0) {
             return Center(
-              child: Text('No News to display'),
+              child: Text('No Contacts to display'),
             );
           }
           return ListView.builder(
@@ -59,16 +93,10 @@ class News extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: ListTile(
-                      title: Text(
-                        docs[i]['Heading'],
-                      ),
-                      subtitle: Expanded(
-                        child: Text(
-                          docs[i]['Description'],
-                          softWrap: true,
+                        title: Text(
+                          docs[i]['Heading'],
                         ),
-                      ),
-                    ),
+                        subtitle: Text(docs[i]['Description'])),
                   ),
                 ),
               ),
