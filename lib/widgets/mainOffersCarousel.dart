@@ -26,7 +26,7 @@ class _MainOffersCarouselState extends State<MainOffersCarousel> {
           child: OffersCard(
             Offers(
               offerImage: prod['photo'],
-              mainText: prod['mainText']
+              mainText: prod['mainText'],
             ),
           ),
         );

@@ -10,8 +10,6 @@ class OffersCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GFCard(
       content: Container(
-        padding:
-            offer.desc.trim() == '' ? EdgeInsets.all(0) : EdgeInsets.all(2),
         color: Colors.black26,
         child: Text(
           offer.desc,
@@ -27,25 +25,24 @@ class OffersCard extends StatelessWidget {
       color: Theme.of(context).primaryColorLight,
       elevation: 8,
       imageOverlay:
-         offer.offerImage.trim() == '' ? null : NetworkImage(offer.offerImage),
+          offer.offerImage.trim() == '' ? null : NetworkImage(offer.offerImage),
       boxFit: BoxFit.cover,
       titlePosition: GFPosition.start,
       title: GFListTile(
         title: Center(
           child: Container(
-            padding: offer.mainText.trim() == ''
-                ? EdgeInsets.all(0)
-                : EdgeInsets.all(2),
             color: Colors.black38,
-            child: Text(
-              offer.mainText,
-              softWrap: true,
-              style: TextStyle(
-                color: Theme.of(context).splashColor,
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            child: offer.mainText == null
+                ? null
+                : Text(
+                    offer.mainText,
+                    softWrap: true,
+                    style: TextStyle(
+                      color: Theme.of(context).splashColor,
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
           ),
         ),
       ),
