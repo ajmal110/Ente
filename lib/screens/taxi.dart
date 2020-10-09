@@ -14,7 +14,7 @@ class Taxi extends StatelessWidget {
 
   Taxi(this.parent, this.cat, this.loc);
 
-  void changePage(BuildContext context, String cat, String loc) {
+  void changePage(BuildContext context, String _cat, String _loc) {
     Navigator.push(
       context,
       MaterialPageRoute(

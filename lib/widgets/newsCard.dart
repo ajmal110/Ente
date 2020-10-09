@@ -10,18 +10,20 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ()=>Navigator.push(context, MaterialPageRoute(builder: (ctx)=>News1(offer))),
+      onTap: () => Navigator.push(
+          context, MaterialPageRoute(builder: (ctx) => News1(offer))),
       child: GFCard(
         content: Container(
-          padding:
-              offer['Description'].trim() == '' ? EdgeInsets.all(0) : EdgeInsets.all(2),
-          color: Colors.black26,
+          padding: offer['Description'].trim() == ''
+              ? EdgeInsets.all(0)
+              : EdgeInsets.all(2),
+          // color: Colors.black26,
           child: Text(
             offer['Description'],
             softWrap: true,
             style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
+              color: Colors.grey[700],
+              fontSize: 13,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -29,9 +31,8 @@ class NewsCard extends StatelessWidget {
         padding: EdgeInsets.all(4),
         color: Theme.of(context).primaryColorLight,
         elevation: 8,
-        imageOverlay: offer['Photo'].trim() == ''
-            ? null
-            : NetworkImage(offer['Photo']),
+        imageOverlay:
+            offer['Photo'].trim() == '' ? null : NetworkImage(offer['Photo']),
         boxFit: BoxFit.cover,
         titlePosition: GFPosition.start,
         title: GFListTile(
@@ -39,14 +40,14 @@ class NewsCard extends StatelessWidget {
             child: Container(
               padding: offer['Heading'].trim() == ''
                   ? EdgeInsets.all(0)
-                  : EdgeInsets.all(2),
-              color: Colors.black38,
+                  : EdgeInsets.all(1),
+              // color: Colors.black38,
               child: Text(
                 offer['Heading'],
                 softWrap: true,
                 style: TextStyle(
-                  color: Theme.of(context).splashColor,
-                  fontSize: 25,
+                  color: Colors.blueGrey,
+                  fontSize: 17,
                   fontWeight: FontWeight.bold,
                 ),
               ),

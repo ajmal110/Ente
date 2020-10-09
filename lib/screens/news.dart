@@ -9,6 +9,7 @@ import './news1.dart';
 import 'cart-screen.dart';
 
 class News extends StatelessWidget {
+  static String routename = '/News';
   void changePage(BuildContext context) {
     Navigator.push(
       context,

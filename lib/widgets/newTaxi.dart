@@ -132,10 +132,10 @@ class _NewBusState extends State<NewBus> {
     Firestore.instance
         .collection(widget.parent)
         .document(widget.cat)
-        .collection('List')
+        .collection(widget.loc)
         .add({
       'Name': _name,
-      'Phone': _phone,
+      'Phone No': _phone,
       'Photo': url,
     });
     print('done');
