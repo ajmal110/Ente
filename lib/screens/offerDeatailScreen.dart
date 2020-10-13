@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/screens/addReviewScreen.dart';
 import 'package:provider/provider.dart';
@@ -13,6 +14,7 @@ class OfferDetailScreen extends StatelessWidget {
   final String mainText;
   final String photo;
   final String price;
+  final String productDetails;
   OfferDetailScreen({
     this.id,
     this.desc,
@@ -20,6 +22,7 @@ class OfferDetailScreen extends StatelessWidget {
     this.name,
     this.photo,
     this.price,
+    this.productDetails,
   });
 
   //THE FOLLOWING IS A LIST OF DUMMY REVIEWS which actually has to
@@ -100,15 +103,14 @@ class OfferDetailScreen extends StatelessWidget {
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   title: Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                    padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
                         borderRadius: BorderRadius.circular(20)),
                     child: Text(
                       name,
                       style: TextStyle(
-                        color: Theme.of(context).accentColor,
-                      ),
+                          color: Theme.of(context).accentColor, fontSize: 18),
                     ),
                   ),
                   background: Image.network(
@@ -120,7 +122,7 @@ class OfferDetailScreen extends StatelessWidget {
               SliverList(
                 delegate: SliverChildListDelegate(
                   [
-                    SizedBox(height: 10),
+                    SizedBox(height: 5),
                     Container(
                       padding: const EdgeInsets.all(15),
                       child: Row(
@@ -129,39 +131,71 @@ class OfferDetailScreen extends StatelessWidget {
                             'Price : ',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 23,
+                              fontSize: 20,
                             ),
                           ),
                           Card(
-                            elevation: 20,
+                            // elevation: 20,
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                            color: Theme.of(context).primaryColor,
+                            // color: Theme.of(context).primaryColor,
                             child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Text(
-                                '\$$price',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Theme.of(context).accentColor,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold),
-                              ),
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(price.toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    // color: Theme.of(context).accentColor,
+                                    fontSize: 16,
+                                  )
+                                  // fontWeight: FontWeight.bold),
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(10),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Product Details : ',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
+                          ),
+                          Card(
+                            // elevation: 20,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            // color: Theme.of(context).primaryColor,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Text(productDetails.toString(),
+                                  textAlign: TextAlign.center,
+                                  style: TextStyle(
+                                    // color: Theme.of(context).accentColor,
+                                    fontSize: 16,
+                                  )
+                                  // fontWeight: FontWeight.bold),
+                                  ),
                             ),
                           ),
                         ],
                       ),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: 5,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: Text(
                         'Description : ',
                         style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
@@ -215,7 +249,7 @@ class OfferDetailScreen extends StatelessWidget {
                             'Rating : ',
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 23,
+                              fontSize: 20,
                             ),
                           ),
                           if (reviews.length == 0) Text('No ratings yet'),
@@ -235,14 +269,14 @@ class OfferDetailScreen extends StatelessWidget {
                                           1), //////////////////////
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                          color: Theme.of(context).accentColor,
-                                          fontSize: 20,
-                                          fontWeight: FontWeight.bold),
+                                        color: Colors.amber,
+                                        fontSize: 20,
+                                      ),
                                     ),
                                     SizedBox(width: 4),
                                     Icon(
                                       Icons.star,
-                                      color: Theme.of(context).accentColor,
+                                      color: Colors.amber,
                                     )
                                   ],
                                 ),
@@ -256,7 +290,7 @@ class OfferDetailScreen extends StatelessWidget {
                       child: Text(
                         'Reviews : ',
                         style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Column(
@@ -265,7 +299,7 @@ class OfferDetailScreen extends StatelessWidget {
                         if (reviews.length != 0)
                           Container(
                             height: MediaQuery.of(context).size.height * 0.5,
-                            padding: const EdgeInsets.all(15),
+                            padding: const EdgeInsets.all(10),
                             child: ListView.builder(
                               itemCount: reviews.length,
                               itemBuilder: (ctx, i) => Card(
@@ -291,16 +325,14 @@ class OfferDetailScreen extends StatelessWidget {
                                                   .toStringAsFixed(
                                                       1), //////////
                                               style: TextStyle(
-                                                  color: Theme.of(context)
-                                                      .accentColor,
-                                                  fontSize: 18,
+                                                  color: Colors.amber,
+                                                  fontSize: 16,
                                                   fontWeight: FontWeight.bold),
                                             ),
                                             SizedBox(width: 4),
                                             Icon(
                                               Icons.star,
-                                              color:
-                                                  Theme.of(context).accentColor,
+                                              color: Colors.amber,
                                             )
                                           ],
                                         ),

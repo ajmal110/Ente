@@ -14,12 +14,12 @@ class NewsCard extends StatelessWidget {
           context, MaterialPageRoute(builder: (ctx) => News1(offer))),
       child: GFCard(
         content: Container(
-          padding: offer['Description'].trim() == ''
+          padding: offer['SubDes'].trim() == ''
               ? EdgeInsets.all(0)
               : EdgeInsets.all(2),
           // color: Colors.black26,
           child: Text(
-            offer['Description'],
+            offer['SubDes'],
             softWrap: true,
             style: TextStyle(
               color: Colors.grey[700],
