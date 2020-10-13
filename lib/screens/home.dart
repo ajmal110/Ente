@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/cart-screen.dart';
+import 'package:plantStore/widgets/onlineCarousel.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -166,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       );
                     }
                     final docs = snapshot.data.documents;
-                    return MainOffersCarousel(docs);
+                    return OnlineCarousel(docs);
                   },
                 ),
               ),
