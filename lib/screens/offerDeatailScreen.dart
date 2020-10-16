@@ -13,14 +13,15 @@ class OfferDetailScreen extends StatelessWidget {
   final String mainText;
   final String photo;
   final String price;
-  OfferDetailScreen({
-    this.id,
-    this.desc,
-    this.mainText,
-    this.name,
-    this.photo,
-    this.price,
-  });
+  final String details;
+  OfferDetailScreen(
+      {this.id,
+      this.desc,
+      this.mainText,
+      this.name,
+      this.photo,
+      this.price,
+      this.details});
 
   //THE FOLLOWING IS A LIST OF DUMMY REVIEWS which actually has to
   // be a part of Products OR has to be in a separate database with the
@@ -141,7 +142,7 @@ class OfferDetailScreen extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                '\$$price',
+                                '$price',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: Theme.of(context).accentColor,
@@ -156,6 +157,25 @@ class OfferDetailScreen extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
+                    Padding(
+                      padding: const EdgeInsets.all(15),
+                      child: Text(
+                        'Details : ',
+                        style: TextStyle(
+                            fontSize: 23, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(horizontal: 15),
+                      width: double.infinity,
+                      child: Text(
+                        details.toString(),
+                        textAlign: TextAlign.left,
+                        softWrap: true,
+                        style: TextStyle(fontSize: 17),
+                      ),
+                    ),
+                    SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: Text(

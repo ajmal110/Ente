@@ -10,7 +10,6 @@ import '../widgets/topOffersCard.dart';
 import '../Providers/product-provider.dart';
 import '../models/product.dart';
 import '../widgets/categoryTile.dart';
-import '../widgets/customCarousel.dart';
 import '../models/offers.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../widgets/newsCarousel.dart';

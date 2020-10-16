@@ -349,14 +349,8 @@ class ProductProvider with ChangeNotifier {
 
   List<String> _cart = [];
 
-  List<Map<String, String>> _myCart = [];
-
   List<String> get cart {
     return [..._cart];
-  }
-
-  List<Map<String, String>> get myCart {
-    return [..._myCart];
   }
 
   List<Product> get allProducts {
@@ -374,51 +368,19 @@ class ProductProvider with ChangeNotifier {
   void toggleCart(String a) {
     if (_cart.contains(a)) {
       _cart.remove(a);
-      _myCart.removeWhere((element) => element['prodId'] == a);
     } else {
       _cart.add(a);
-      _myCart.add({'prodId': a, 'count': '1'});
-    }
-    notifyListeners();
-  }
-
-  void changeCartCount(bool isAdd, String prodId) {
-    int index = _myCart.indexWhere((element) => element['prodId'] == prodId);
-    if (isAdd) {
-      _myCart[index]['count'] =
-          (int.parse(_myCart[index]['count']) + 1).toString();
-    } else {
-      if (_myCart[index]['count'] == '1') {
-        toggleCart(_myCart[index]['prodId']);
-      } else {
-        _myCart[index]['count'] =
-            (int.parse(_myCart[index]['count']) - 1).toString();
-      }
     }
     notifyListeners();
   }
 
   void removeCartItem(String prodId) {
-    int index = _myCart.indexWhere((element) => element['prodId'] == prodId);
     _cart.remove(prodId);
-    _myCart.removeAt(index);
-
-    notifyListeners();
-  }
-
-  void toggleFav(Product a) {
-    if (_favProducts.contains(a)) {
-      _favProducts.remove(a);
-    } else {
-      _favProducts.add(a);
-    }
     notifyListeners();
   }
 
   void emptyCart() {
-    _myCart = [];
     _cart = [];
-
     notifyListeners();
   }
 

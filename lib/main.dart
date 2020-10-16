@@ -16,7 +16,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import './screens/login-screen.dart';
 import 'Providers/order-provider.dart';
 import './Providers/product-provider.dart';
-import './screens/product-detail-screen.dart';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:plantStore/Providers/pushNotifications.dart';
@@ -66,7 +65,6 @@ class _MyAppState extends State<MyApp> {
           OrdersScreen.routename: (ctx) => OrdersScreen(),
           LoginScreen.routename: (ctx) => LoginScreen(),
           CategoriesScreen.routename: (ctx) => CategoriesScreen(),
-          ProductDetailScreen.routeName: (ctx) => ProductDetailScreen(),
           News.routename: (ctx) => News()
         },
       ),

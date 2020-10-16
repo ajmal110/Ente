@@ -3,7 +3,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plantStore/Providers/call_provider.dart';
 
 import '../models/product.dart';
-import '../widgets/productTile.dart';
 import '../screens/cart-screen.dart';
 
 class GovtInstitutions extends StatelessWidget {

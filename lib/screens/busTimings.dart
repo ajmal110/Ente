@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../models/product.dart';
-import '../widgets/productTile.dart';
 import '../widgets/newBustiming.dart';
 import '../screens/cart-screen.dart';
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
-import '../widgets/productTile.dart';
+
 import '../screens/cart-screen.dart';
 
 class TaxiProductDisplay extends StatefulWidget {

@@ -32,6 +32,7 @@ class _OnlineCarouselState extends State<OnlineCarousel> {
               photo: prod['photo'],
               name: prod['Name'],
               price: prod['price'],
+              details: prod['productDetails'],
             ));
       }).toList(),
       onPageChanged: (index) {

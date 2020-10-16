@@ -4,7 +4,7 @@ import 'package:plantStore/Providers/call_provider.dart';
 import 'package:plantStore/widgets/newTaxi.dart';
 
 import '../models/product.dart';
-import '../widgets/productTile.dart';
+
 import '../screens/cart-screen.dart';
 
 class Taxi extends StatelessWidget {

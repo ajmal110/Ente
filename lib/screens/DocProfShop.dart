@@ -5,7 +5,6 @@ import 'package:plantStore/screens/DocProfShop1.dart';
 import 'package:plantStore/widgets/newDocProfShop.dart';
 
 import '../models/product.dart';
-import '../widgets/productTile.dart';
 import 'cart-screen.dart';
 
 class DocProfShop extends StatelessWidget {
