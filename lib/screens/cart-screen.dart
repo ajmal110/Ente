@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/widgets/UserDetails.dart';
 import 'package:plantStore/widgets/onlineCard.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -16,6 +17,15 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
+  void changePage(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (ctx) => NewUser(),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     void placeOrder(List cartToShow, String currUid) {
@@ -99,6 +109,29 @@ class _CartScreenState extends State<CartScreen> {
                   appBar: AppBar(
                     title: Text('My Cart'),
                   ),
+                  persistentFooterButtons: <Widget>[
+                    GestureDetector(
+                      onTap: () {
+                        changePage(context);
+                      },
+                      child: Container(
+                        color: Color(0xffE7F0C3),
+                        height: 59,
+                        width: 900,
+                        child: Center(
+                          child: Text(
+                            '+ Add Details to place order',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: Color(0xff32AFA9),
+                              letterSpacing: 1,
+                            ),
+                          ),
+                        ),
+                      ),
+                    )
+                  ],
                   body: Provider.of<ProductProvider>(context).cart.isEmpty
                       ? Center(
                           child: Text('Nothing in Cart yet!'),
@@ -134,25 +167,25 @@ class _CartScreenState extends State<CartScreen> {
                                 },
                               ),
                             ),
-                            Container(
-                              padding: EdgeInsets.symmetric(horizontal: 80),
-                              width: double.infinity,
-                              child: FlatButton(
-                                color: Theme.of(context).primaryColor,
-                                onPressed: () {
-                                  placeOrder(cartToShow, currUid);
-                                  Provider.of<ProductProvider>(context,
-                                          listen: false)
-                                      .emptyCart();
-                                },
-                                child: Text(
-                                  'Place Order',
-                                  style: TextStyle(
-                                    color: Theme.of(context).accentColor,
-                                  ),
-                                ),
-                              ),
-                            ),
+                            // Container(
+                            //   padding: EdgeInsets.symmetric(horizontal: 80),
+                            //   width: double.infinity,
+                            //   child: FlatButton(
+                            //     color: Theme.of(context).primaryColor,
+                            //     onPressed: () {
+                            //       placeOrder(cartToShow, currUid);
+                            //       Provider.of<ProductProvider>(context,
+                            //               listen: false)
+                            //           .emptyCart();
+                            //     },
+                            //     child: Text(
+                            //       'Place Order',
+                            //       style: TextStyle(
+                            //         color: Theme.of(context).accentColor,
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                           ],
                         ),
                 );
