@@ -21,7 +21,7 @@ class _NewUserState extends State<NewUser> {
   String _name;
   String _address;
   String _phone;
-
+  String _pin;
   Future<void> _saveForm() async {
     print('in');
     FocusScope.of(context).unfocus();
@@ -109,7 +109,8 @@ class _NewUserState extends State<NewUser> {
             'productDetails': details,
             'name': _name,
             'address': _address,
-            'phone': _phone
+            'phone': _phone,
+            'pin': _pin,
           });
         } else {
           Firestore.instance
@@ -127,7 +128,8 @@ class _NewUserState extends State<NewUser> {
             'productDetails': details,
             'name': _name,
             'address': _address,
-            'phone': _phone
+            'phone': _phone,
+            'pin': _pin,
           });
         }
       });
@@ -223,6 +225,25 @@ class _NewUserState extends State<NewUser> {
                         Container(
                           padding: EdgeInsets.all(10),
                           child: TextFormField(
+                            textCapitalization: TextCapitalization.words,
+                            decoration: InputDecoration(
+                              labelText: 'Area Pincode',
+                            ),
+                            validator: (value) {
+                              if (value.trim().isEmpty) {
+                                return 'Please Enter your area pincode';
+                              }
+                              return null;
+                            },
+                            keyboardType: TextInputType.number,
+                            onSaved: (value) {
+                              _pin = value;
+                            },
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: TextFormField(
                             decoration: InputDecoration(
                               labelText: 'Enter Phone Number',
                             ),
@@ -232,6 +253,7 @@ class _NewUserState extends State<NewUser> {
                               }
                               return null;
                             },
+                            keyboardType: TextInputType.number,
                             onSaved: (value) {
                               _phone = value;
                               FocusScope.of(context).unfocus();
