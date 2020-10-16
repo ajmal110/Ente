@@ -13,6 +13,7 @@ class OnlineCard extends StatelessWidget {
   final String photo;
   final String price;
   final String details;
+
   OnlineCard({
     this.id,
     this.desc,
@@ -21,6 +22,7 @@ class OnlineCard extends StatelessWidget {
     this.photo,
     this.price,
     this.details
+
   });
   @override
   Widget build(BuildContext context) {
@@ -34,7 +36,9 @@ class OnlineCard extends StatelessWidget {
             photo: photo,
             price: price,
             desc: desc,
+
             details: details,
+
           ),
         ),
       ),

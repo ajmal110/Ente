@@ -27,7 +27,8 @@ class _NewsCarState extends State<NewsCar> {
           child: NewsCard({
             'Photo': prod['Photo'],
             'Heading': prod['Heading'],
-            'Description': prod['Description']
+            'Description': prod['Description'],
+            'SubDes': prod['SubDes'],
           }),
         );
       }).toList(),

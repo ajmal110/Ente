@@ -27,7 +27,7 @@ class _OTPScreenState extends State<OTPScreen> {
 
   /// Decorate the outside of the Pin.
   PinDecoration _pinDecoration =
-      UnderlineDecoration(enteredColor: Colors.black, hintText: '333333');
+      UnderlineDecoration(enteredColor: Colors.black, hintText: '******');
 
   bool isCodeSent = false;
   String _verificationId;
