@@ -10,6 +10,9 @@ import 'package:plantStore/Providers/product-provider.dart';
 import 'package:provider/provider.dart';
 
 class NewUser extends StatefulWidget {
+  final cartToShow;
+  final currUid;
+  NewUser(this.cartToShow, this.currUid);
   @override
   _NewUserState createState() => _NewUserState();
 }
@@ -17,7 +20,6 @@ class NewUser extends StatefulWidget {
 class _NewUserState extends State<NewUser> {
   final _form = GlobalKey<FormState>();
 
-  List<File> _selectedImages = [];
   String _name;
   String _address;
   String _phone;
@@ -32,13 +34,16 @@ class _NewUserState extends State<NewUser> {
     _form.currentState.save();
     print('saved');
 
-    if (_name.trim() == null || _address.trim() == null) {
+    if (_name.trim() == null ||
+        _address.trim() == null ||
+        _phone == null ||
+        _pin == null) {
       showDialog(
         context: context,
         builder: (ctx) => AlertDialog(
           title: Text('Please fill all the details'),
           content: Text(
-              'Make sure you have entered Name, Timimg and uploaded your Photo'),
+              'Make sure you have entered Name, Address, PIN and entered your Phone No'),
           actions: <Widget>[
             FlatButton(
                 onPressed: () {
@@ -53,21 +58,6 @@ class _NewUserState extends State<NewUser> {
 
     print('SAVED');
 
-    String url;
-
-    if (_selectedImages.length > 0) {
-      final ref = FirebaseStorage.instance
-          .ref()
-          .child('contactImages')
-          .child(_name + '.jpg');
-      await ref.putFile(_selectedImages[0]).onComplete;
-
-      url = await ref.getDownloadURL();
-    } else {
-      url = '';
-    }
-    print(url);
-
     //print(_addedExpense.title);
     //print(_addedExpense.category);
     //print(_addedExpense.day);
@@ -77,6 +67,7 @@ class _NewUserState extends State<NewUser> {
   @override
   Widget build(BuildContext context) {
     void placeOrder(List cartToShow, String currUid) {
+      _saveForm();
       String orderid = '';
       cartToShow.forEach((item) {
         final String desc = item['Description'];
@@ -99,6 +90,17 @@ class _NewUserState extends State<NewUser> {
               .document(currUid)
               .collection('orders')
               .document(orderid)
+              .setData({
+            'Name': _name,
+            'Address': _address,
+            'PIN code': _pin,
+            'PhoneNo': _phone,
+          });
+          Firestore.instance
+              .collection('users')
+              .document(currUid)
+              .collection('orders')
+              .document(orderid)
               .collection('List')
               .add({
             'Description': desc,
@@ -107,10 +109,6 @@ class _NewUserState extends State<NewUser> {
             'photo': photo,
             'price': price,
             'productDetails': details,
-            'name': _name,
-            'address': _address,
-            'phone': _phone,
-            'pin': _pin,
           });
         } else {
           Firestore.instance
@@ -126,10 +124,6 @@ class _NewUserState extends State<NewUser> {
             'photo': photo,
             'price': price,
             'productDetails': details,
-            'name': _name,
-            'address': _address,
-            'phone': _phone,
-            'pin': _pin,
           });
         }
       });
@@ -141,20 +135,12 @@ class _NewUserState extends State<NewUser> {
         title: Text(
           'Add Contact',
         ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.save,
-            ),
-            onPressed: _saveForm,
-          ),
-        ],
       ),
       persistentFooterButtons: <Widget>[
         GestureDetector(
           onTap: () {
-            // placeOrder(cartToShow, currUid);
-            // Provider.of<ProductProvider>(context, listen: false).emptyCart();
+            placeOrder(widget.cartToShow, widget.currUid);
+            Provider.of<ProductProvider>(context, listen: false).emptyCart();
           },
           child: Container(
             color: Color(0xffE7F0C3),

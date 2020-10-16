@@ -17,68 +17,17 @@ class CartScreen extends StatefulWidget {
 }
 
 class _CartScreenState extends State<CartScreen> {
-  void changePage(BuildContext context) {
+  void changePage(BuildContext context, String currUid, List cartToShow) {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (ctx) => NewUser(),
+        builder: (ctx) => NewUser(cartToShow, currUid),
       ),
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    void placeOrder(List cartToShow, String currUid) {
-      String orderid = '';
-      cartToShow.forEach((item) {
-        final String desc = item['Description'];
-        final String name = item['Name'];
-        final String mainText = item['mainText'];
-        final String photo = item['photo'];
-        final String price = item['price'];
-        final String details = item['productDetails'];
-
-        if (orderid.trim() == '') {
-          final id1 = Firestore.instance
-              .collection('users')
-              .document(currUid)
-              .collection('orders')
-              .document()
-              .documentID;
-          orderid = id1;
-          Firestore.instance
-              .collection('users')
-              .document(currUid)
-              .collection('orders')
-              .document(orderid)
-              .collection('List')
-              .add({
-            'Description': desc,
-            'Name': name,
-            'mainText': mainText,
-            'photo': photo,
-            'price': price,
-            'productDetails': details,
-          });
-        } else {
-          Firestore.instance
-              .collection('users')
-              .document(currUid)
-              .collection('orders')
-              .document(orderid)
-              .collection('List')
-              .add({
-            'Description': desc,
-            'Name': name,
-            'mainText': mainText,
-            'photo': photo,
-            'price': price,
-            'productDetails': details,
-          });
-        }
-      });
-    }
-
     final List<String> cartItems = Provider.of<ProductProvider>(context).cart;
     return FutureBuilder(
       future: FirebaseAuth.instance.currentUser(),
@@ -112,7 +61,24 @@ class _CartScreenState extends State<CartScreen> {
                   persistentFooterButtons: <Widget>[
                     GestureDetector(
                       onTap: () {
-                        changePage(context);
+                        if (cartItems.length == 0) {
+                          showDialog(
+                              context: context,
+                              builder: (ctx) => AlertDialog(
+                                    title: Text('Nothing in Cart!!'),
+                                    content: Text(
+                                        'Add something in cart to proceed'),
+                                    actions: [
+                                      FlatButton(
+                                        onPressed: () =>
+                                            Navigator.of(context).pop(),
+                                        child: Text('OK'),
+                                      ),
+                                    ],
+                                  ));
+                        } else {
+                          changePage(context, currUid, cartToShow);
+                        }
                       },
                       child: Container(
                         color: Color(0xffE7F0C3),
