@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:plantStore/screens/home.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -33,12 +34,17 @@ class CategoriesScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Ente Manjeri',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            fontFamily: 'Lato',
+        title: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            'Ente Manjeri',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 28,
+              fontFamily: 'Lato',
+            ),
           ),
         ),
         centerTitle: true,

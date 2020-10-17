@@ -82,13 +82,16 @@ class Turf extends StatelessWidget {
               title: Container(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(20)),
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Text(
                   docs['Name'],
                   style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                  ),
+                      color: Theme.of(context).accentColor,
+                      fontSize: 15,
+                      fontFamily: 'OpenSans',
+                      fontWeight: FontWeight.bold,
+                      letterSpacing: 1.5),
                 ),
               ),
               /*  background: Image.network(
@@ -109,7 +112,7 @@ class Turf extends StatelessWidget {
                         'Phone No : ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 23,
+                          fontSize: 20,
                         ),
                       ),
                       Card(
@@ -117,16 +120,16 @@ class Turf extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.white,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             docs['Phone'],
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Theme.of(context).accentColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                              color: Colors.black,
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ),
@@ -140,13 +143,13 @@ class Turf extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 5,
                 ),
                 Padding(
                   padding: const EdgeInsets.all(15),
                   child: Text(
                     'Location : ',
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
@@ -168,7 +171,7 @@ class Turf extends StatelessWidget {
                         'Time : ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 23,
+                          fontSize: 20,
                         ),
                       ),
                       Card(
@@ -176,16 +179,14 @@ class Turf extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        color: Theme.of(context).primaryColor,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             '${docs['Time']} ',
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Theme.of(context).accentColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                              fontSize: 17,
+                            ),
                           ),
                         ),
                       ),

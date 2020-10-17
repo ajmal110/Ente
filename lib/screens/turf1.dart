@@ -21,7 +21,14 @@ class Turf1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Turf'),
+        title: Text(
+          'Turf',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         actions: [
           IconButton(

@@ -152,6 +152,11 @@ class _NewBusState extends State<NewBus> {
         centerTitle: true,
         title: Text(
           'Add Contact',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(

@@ -28,7 +28,7 @@ class _BarScreenState extends State<BarScreen> {
   void initState() {
     pages = [
       HomeScreen(),
-      Wishlist(),
+      CartScreen(),
       ProfileScreen(),
     ];
     super.initState();
@@ -70,9 +70,11 @@ class _BarScreenState extends State<BarScreen> {
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
           BottomNavigationBarItem(
-              icon: Icon(Icons.favorite), title: Text('Wishlist')),
-          BottomNavigationBarItem(
-              icon: Icon(Icons.person), title: Text('Profile')),
+            icon: Icon(Icons.shopping_cart),
+            title: Text('Cart'),
+          ),
+          // BottomNavigationBarItem(
+          //     icon: Icon(Icons.person), title: Text('Profile')),
         ],
       ),
       body: pages[selectedPageIndex],

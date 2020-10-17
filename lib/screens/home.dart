@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/cart-screen.dart';
+import 'package:plantStore/screens/categories-screen.dart';
 import 'package:plantStore/widgets/onlineCarousel.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -70,14 +71,19 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Categories',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    letterSpacing: 5,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(context, CategoriesScreen.routename);
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    'Categories',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      letterSpacing: 5,
+                    ),
                   ),
                 ),
               ),

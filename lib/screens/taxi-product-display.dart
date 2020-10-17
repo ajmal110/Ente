@@ -30,7 +30,14 @@ class _TaxiProductDisplayState extends State<TaxiProductDisplay> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.appBarTitle),
+        title: Text(
+          widget.appBarTitle,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         actions: [
           IconButton(

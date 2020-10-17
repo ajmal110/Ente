@@ -20,6 +20,7 @@ class _NewBusState extends State<NewBus> {
   String _name;
   String _time;
   String _location;
+  String _phone;
 
   Future<void> _picViaGallery() async {
     final picker = ImagePicker();
@@ -132,6 +133,7 @@ class _NewBusState extends State<NewBus> {
       'Time': _time,
       'Location': _location,
       'Photo': url,
+      'Phone': _phone
     });
     print('done');
 
@@ -148,6 +150,11 @@ class _NewBusState extends State<NewBus> {
         centerTitle: true,
         title: Text(
           'Add Contact',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold),
         ),
         actions: [
           IconButton(
@@ -220,6 +227,24 @@ class _NewBusState extends State<NewBus> {
                             },
                             onSaved: (value) {
                               _time = value;
+                              FocusScope.of(context).unfocus();
+                            },
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          child: TextFormField(
+                            decoration: InputDecoration(
+                              labelText: 'Phone Number',
+                            ),
+                            validator: (value) {
+                              if (value.trim().isEmpty) {
+                                return 'Please Enter your Phone Number';
+                              }
+                              return null;
+                            },
+                            onSaved: (value) {
+                              _phone = value;
                               FocusScope.of(context).unfocus();
                             },
                           ),

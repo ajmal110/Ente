@@ -104,12 +104,16 @@ class OfferDetailScreen extends StatelessWidget {
                   title: Container(
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
-                        color: Theme.of(context).primaryColor,
-                        borderRadius: BorderRadius.circular(20)),
+                        color: Colors.black26,
+                        borderRadius: BorderRadius.circular(10)),
                     child: Text(
                       name,
                       style: TextStyle(
-                          color: Theme.of(context).accentColor, fontSize: 18),
+                          color: Theme.of(context).accentColor,
+                          fontSize: 15,
+                          fontFamily: 'OpenSans',
+                          fontWeight: FontWeight.bold,
+                          letterSpacing: 1.5),
                     ),
                   ),
                   background: Image.network(
@@ -154,47 +158,12 @@ class OfferDetailScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      child: Row(
-                        children: [
-                          Text(
-                            'Product Details : ',
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
-                          ),
-                          Card(
-                            // elevation: 20,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(30),
-                            ),
-                            // color: Theme.of(context).primaryColor,
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: Text(details.toString(),
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    // color: Theme.of(context).accentColor,
-                                    fontSize: 16,
-                                  )
-                                  // fontWeight: FontWeight.bold),
-                                  ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
                     Padding(
                       padding: const EdgeInsets.all(15),
                       child: Text(
-                        'Details : ',
+                        'Product Details : ',
                         style: TextStyle(
-                            fontSize: 23, fontWeight: FontWeight.bold),
+                            fontSize: 20, fontWeight: FontWeight.bold),
                       ),
                     ),
                     Container(
@@ -230,7 +199,8 @@ class OfferDetailScreen extends StatelessWidget {
                     Consumer<ProductProvider>(
                       builder: (ctx, product, ch) => Center(
                         child: Container(
-                          width: MediaQuery.of(context).size.width * 0.6,
+                          height: MediaQuery.of(context).size.width * 0.11,
+                          width: MediaQuery.of(context).size.width * 0.9,
                           child: FlatButton.icon(
                             color: product.cart.contains(id)
                                 ? Colors.grey
@@ -275,7 +245,7 @@ class OfferDetailScreen extends StatelessWidget {
                             Card(
                               elevation: 20,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
+                                borderRadius: BorderRadius.circular(5),
                               ),
                               color: Theme.of(context).primaryColor,
                               child: Padding(
@@ -322,7 +292,7 @@ class OfferDetailScreen extends StatelessWidget {
                               itemCount: reviews.length,
                               itemBuilder: (ctx, i) => Card(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
+                                  borderRadius: BorderRadius.circular(10),
                                 ),
                                 elevation: 8,
                                 child: ListTile(

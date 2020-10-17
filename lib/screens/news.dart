@@ -22,7 +22,14 @@ class News extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('News'),
+        title: Text(
+          'News',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold),
+        ),
         centerTitle: true,
         actions: [
           IconButton(

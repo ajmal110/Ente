@@ -14,16 +14,14 @@ class OnlineCard extends StatelessWidget {
   final String price;
   final String details;
 
-  OnlineCard({
-    this.id,
-    this.desc,
-    this.mainText,
-    this.name,
-    this.photo,
-    this.price,
-    this.details
-
-  });
+  OnlineCard(
+      {this.id,
+      this.desc,
+      this.mainText,
+      this.name,
+      this.photo,
+      this.price,
+      this.details});
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -36,22 +34,24 @@ class OnlineCard extends StatelessWidget {
             photo: photo,
             price: price,
             desc: desc,
-
             details: details,
-
           ),
         ),
       ),
       child: GFCard(
-        content: Container(
-          color: Colors.black26,
-          child: Text(
-            name,
-            softWrap: true,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
+        content: Padding(
+          padding: const EdgeInsets.only(top: 55.0),
+          child: Container(
+            color: Colors.black12,
+            child: Text(
+              name,
+              softWrap: true,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontFamily: 'Lato',
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 1.5),
             ),
           ),
         ),
@@ -62,21 +62,18 @@ class OnlineCard extends StatelessWidget {
         boxFit: BoxFit.cover,
         titlePosition: GFPosition.start,
         title: GFListTile(
-          title: Center(
-            child: Container(
-              color: Colors.black38,
-              child: mainText == null
-                  ? null
-                  : Text(
-                      mainText,
-                      softWrap: true,
-                      style: TextStyle(
+          title: Container(
+            color: Colors.black38,
+            child: mainText == null
+                ? null
+                : Text(
+                    mainText,
+                    softWrap: true,
+                    style: TextStyle(
                         color: Theme.of(context).splashColor,
                         fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-            ),
+                        letterSpacing: 2),
+                  ),
           ),
         ),
       ),

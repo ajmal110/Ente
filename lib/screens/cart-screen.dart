@@ -55,8 +55,16 @@ class _CartScreenState extends State<CartScreen> {
                 });
 
                 return Scaffold(
+                  resizeToAvoidBottomInset: false,
                   appBar: AppBar(
-                    title: Text('My Cart'),
+                    title: Text(
+                      'My Cart',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18,
+                          fontFamily: 'Lato',
+                          fontWeight: FontWeight.bold),
+                    ),
                   ),
                   persistentFooterButtons: <Widget>[
                     GestureDetector(
@@ -102,57 +110,60 @@ class _CartScreenState extends State<CartScreen> {
                       ? Center(
                           child: Text('Nothing in Cart yet!'),
                         )
-                      : Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Container(
-                              height: MediaQuery.of(context).size.height * 0.8,
-                              child: ListView.builder(
-                                itemCount: cartToShow.length,
-                                itemBuilder: (ctx, i) {
-                                  final String id = cartToShow[i].documentID;
-                                  final String desc =
-                                      cartToShow[i]['Description'];
-                                  final String name = cartToShow[i]['Name'];
-                                  final String mainText =
-                                      cartToShow[i]['mainText'];
-                                  final String photo = cartToShow[i]['photo'];
-                                  final String price = cartToShow[i]['price'];
-                                  final String details =
-                                      cartToShow[i]['productDetails'];
+                      : SingleChildScrollView(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Container(
+                                height:
+                                    MediaQuery.of(context).size.height * 0.8,
+                                child: ListView.builder(
+                                  itemCount: cartToShow.length,
+                                  itemBuilder: (ctx, i) {
+                                    final String id = cartToShow[i].documentID;
+                                    final String desc =
+                                        cartToShow[i]['Description'];
+                                    final String name = cartToShow[i]['Name'];
+                                    final String mainText =
+                                        cartToShow[i]['mainText'];
+                                    final String photo = cartToShow[i]['photo'];
+                                    final String price = cartToShow[i]['price'];
+                                    final String details =
+                                        cartToShow[i]['productDetails'];
 
-                                  return OnlineCard(
-                                    desc: desc,
-                                    id: id,
-                                    mainText: mainText,
-                                    name: name,
-                                    photo: photo,
-                                    price: price,
-                                    details: details,
-                                  );
-                                },
+                                    return OnlineCard(
+                                      desc: desc,
+                                      id: id,
+                                      mainText: mainText,
+                                      name: name,
+                                      photo: photo,
+                                      price: price,
+                                      details: details,
+                                    );
+                                  },
+                                ),
                               ),
-                            ),
-                            // Container(
-                            //   padding: EdgeInsets.symmetric(horizontal: 80),
-                            //   width: double.infinity,
-                            //   child: FlatButton(
-                            //     color: Theme.of(context).primaryColor,
-                            //     onPressed: () {
-                            //       placeOrder(cartToShow, currUid);
-                            //       Provider.of<ProductProvider>(context,
-                            //               listen: false)
-                            //           .emptyCart();
-                            //     },
-                            //     child: Text(
-                            //       'Place Order',
-                            //       style: TextStyle(
-                            //         color: Theme.of(context).accentColor,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
-                          ],
+                              // Container(
+                              //   padding: EdgeInsets.symmetric(horizontal: 80),
+                              //   width: double.infinity,
+                              //   child: FlatButton(
+                              //     color: Theme.of(context).primaryColor,
+                              //     onPressed: () {
+                              //       placeOrder(cartToShow, currUid);
+                              //       Provider.of<ProductProvider>(context,
+                              //               listen: false)
+                              //           .emptyCart();
+                              //     },
+                              //     child: Text(
+                              //       'Place Order',
+                              //       style: TextStyle(
+                              //         color: Theme.of(context).accentColor,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
+                            ],
+                          ),
                         ),
                 );
               },
