@@ -129,18 +129,82 @@ class _NewUserState extends State<NewUser> {
       });
     }
 
+    createThanksDialog(BuildContext context) {
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: new Text(
+                '',
+                style: TextStyle(fontSize: 18),
+              ),
+              content: new Text(
+                'Thank you for placing your order',
+                style: TextStyle(fontSize: 13),
+              ),
+              actions: <Widget>[
+                new FlatButton(
+                  child: new Text("Continue"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop(NewUser);
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
+    createAlertDialog(BuildContext context) {
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: new Text(
+                'Are you sure?',
+                style: TextStyle(fontSize: 18),
+              ),
+              content: new Text(
+                'You are about to place your order. To continue press confirm',
+                style: TextStyle(fontSize: 13),
+              ),
+              actions: <Widget>[
+                new FlatButton(
+                  child: new Text("Confirm"),
+                  onPressed: () {
+                    placeOrder(widget.cartToShow, widget.currUid);
+                    Provider.of<ProductProvider>(context, listen: false)
+                        .emptyCart();
+                    createThanksDialog(context);
+                  },
+                ),
+                new FlatButton(
+                  child: Text("Cancel"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(
-          'Add Contact',
+          'Order Details',
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: 21,
+              fontFamily: 'Lato',
+              fontWeight: FontWeight.bold),
         ),
       ),
       persistentFooterButtons: <Widget>[
         GestureDetector(
           onTap: () {
-            placeOrder(widget.cartToShow, widget.currUid);
-            Provider.of<ProductProvider>(context, listen: false).emptyCart();
+            createAlertDialog(context);
           },
           child: Container(
             color: Color(0xffE7F0C3),

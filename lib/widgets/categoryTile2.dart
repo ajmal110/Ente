@@ -40,7 +40,9 @@ class CategoryTile2 extends StatelessWidget {
             context,
             MaterialPageRoute(builder: (ctx) => DocProfShop(parent, category)),
           );
-        } else if (parent == 'Vehicles' || parent == 'Skilled Workers' || parent == 'Blood Bank') {
+        } else if (parent == 'Vehicles' ||
+            parent == 'Skilled Workers' ||
+            parent == 'Blood Bank') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (ctx) => VehiSkill(parent, category)),
@@ -76,7 +78,7 @@ class CategoryTile2 extends StatelessWidget {
                 fontFamily: 'OpenSans',
                 color: Colors.grey[800],
                 letterSpacing: 1.3,
-                fontSize: 10),
+                fontSize: 12),
           ),
 
           // title: GFListTile(
