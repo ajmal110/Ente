@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
-
+import 'package:plantStore/models/MainAd.dart';
+import 'package:plantStore/widgets/mainAdCard.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../models/offers.dart';
 import './OffersCard.dart';
 
@@ -23,8 +25,11 @@ class _MainOffersCarouselState extends State<MainOffersCarousel> {
       items: widget.inputList.map((prod) {
         return Container(
           width: MediaQuery.of(context).size.width,
-          child: OffersCard(
-            Offers(offerImage: prod['photo'], mainText: prod['mainText']),
+          child: MainAdCard(
+            MainAd(
+                mainAdImage: prod['photo'],
+                mainText: prod['mainText'],
+                link: prod['link']),
           ),
         );
       }).toList(),

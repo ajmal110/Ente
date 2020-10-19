@@ -42,7 +42,14 @@ class _MyOrdersState extends State<MyOrders> {
 
             return Scaffold(
               appBar: AppBar(
-                title: Text('Your Orders'),
+                title: Text(
+                  'Your Orders',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                      fontFamily: 'Lato',
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               body: orderData.length == 0
                   ? Center(

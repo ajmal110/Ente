@@ -48,6 +48,7 @@ class _OrderItemState extends State<OrderItem> {
               duration: Duration(milliseconds: 300),
               height: _expanded ? min(order.length * 20.0 + 110, 200) : 95,
               child: Card(
+                elevation: 10,
                 margin: EdgeInsets.all(10),
                 child: Column(
                   children: <Widget>[
