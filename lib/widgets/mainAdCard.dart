@@ -7,10 +7,11 @@ import './fullScreenImage.dart';
 
 class MainAdCard extends StatelessWidget {
   final MainAd mainAd;
-  var url = mainAd.link;
+
   MainAdCard(this.mainAd);
   @override
   Widget build(BuildContext context) {
+    var url = mainAd.link;
     _launchURL() async {
       if (await canLaunch(url)) {
         await launch(url);
