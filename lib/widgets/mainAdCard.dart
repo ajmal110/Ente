@@ -12,7 +12,6 @@ class MainAdCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     _launchURL() async {
-
       if (await canLaunch(url)) {
         await launch(url);
       } else {
