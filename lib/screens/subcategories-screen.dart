@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:provider/provider.dart';
@@ -208,40 +209,51 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
           ),
           SizedBox(height: 10),
           if (widget.cat == 'Taxi')
-            DropdownButton(
-              onTap: () {},
-              dropdownColor: Theme.of(context).primaryColorLight,
-              value: selectedValue,
-              items: [
-                DropdownMenuItem(
-                  child: Text('Location1'),
-                  value: 'Location1',
-                ),
-                DropdownMenuItem(
-                  child: Text('Govt. Hospital'),
-                  value: 'Govt. Hospital',
-                ),
-                DropdownMenuItem(
-                  child: Text('2'),
-                  value: '2',
-                ),
-                DropdownMenuItem(
-                  child: Text('3'),
-                  value: '3',
-                ),
-                DropdownMenuItem(
-                  child: Text('4'),
-                  value: '4',
-                ),
-              ],
-              hint: Text(
-                'Select Location',
-              ),
-              onChanged: (value) {
-                setState(() {
-                  selectedValue = value;
-                });
-                print(selectedValue);
+            FutureBuilder(
+              future: FirebaseAuth.instance.currentUser(),
+              builder: (ctx, snap) {
+                if (snap.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                return StreamBuilder(
+                    stream:
+                        Firestore.instance.collection('locations').snapshots(),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.waiting) {
+                        return Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      }
+                      /*  DropdownMenuItem(
+                            child: Text(orderData[]),
+                            value: 'Location1',
+                          ), */
+                      List<DocumentSnapshot> orderData =
+                          snapshot.data.documents;
+                      return DropdownButton(
+                        dropdownColor: Theme.of(context).primaryColorLight,
+                        value: selectedValue,
+                        items: orderData
+                            .map(
+                              (DocumentSnapshot loc) => DropdownMenuItem(
+                                child: Text(loc['loc']),
+                                value: loc['loc'].toString(),
+                              ),
+                            )
+                            .toList(),
+                        hint: Text(
+                          'Select Location',
+                        ),
+                        onChanged: (value) {
+                          setState(() {
+                            selectedValue = value;
+                          });
+                          print(selectedValue);
+                        },
+                      );
+                    });
               },
             ),
           SizedBox(height: 10),

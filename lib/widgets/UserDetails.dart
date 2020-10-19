@@ -24,50 +24,34 @@ class _NewUserState extends State<NewUser> {
   String _address;
   String _phone;
   String _pin;
+
+  int _test = 0;
   Future<void> _saveForm() async {
     print('in');
+    setState(() {
+      _test = 0;
+    });
     FocusScope.of(context).unfocus();
     final isValid = _form.currentState.validate();
     if (!isValid) {
+      setState(() {
+        _test = 1;
+      });
       return;
     }
     _form.currentState.save();
     print('saved');
-
-    if (_name.trim() == null ||
-        _address.trim() == null ||
-        _phone == null ||
-        _pin == null) {
-      showDialog(
-        context: context,
-        builder: (ctx) => AlertDialog(
-          title: Text('Please fill all the details'),
-          content: Text(
-              'Make sure you have entered Name, Address, PIN and entered your Phone No'),
-          actions: <Widget>[
-            FlatButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-                child: Text('Okay'))
-          ],
-        ),
-      );
-      return;
-    }
 
     print('SAVED');
 
     //print(_addedExpense.title);
     //print(_addedExpense.category);
     //print(_addedExpense.day);
-    Navigator.of(context).pop();
   }
 
   @override
   Widget build(BuildContext context) {
     void placeOrder(List cartToShow, String currUid) {
-      _saveForm();
       String orderid = '';
       cartToShow.forEach((item) {
         final String desc = item['Description'];
@@ -95,6 +79,7 @@ class _NewUserState extends State<NewUser> {
             'Address': _address,
             'PIN code': _pin,
             'PhoneNo': _phone,
+            'DateTime': DateTime.now().toIso8601String(),
           });
           Firestore.instance
               .collection('users')
@@ -148,6 +133,7 @@ class _NewUserState extends State<NewUser> {
                   onPressed: () {
                     Navigator.of(context).pop();
                     Navigator.of(context).pop(NewUser);
+                    Navigator.of(context).pop();
                   },
                 ),
               ],
@@ -156,6 +142,26 @@ class _NewUserState extends State<NewUser> {
     }
 
     createAlertDialog(BuildContext context) {
+      _saveForm();
+      print('*************$_test');
+      if (_test == 1) {
+        showDialog(
+          context: context,
+          builder: (ctx) => AlertDialog(
+            title: Text('Please fill all the details'),
+            content: Text(
+                'Make sure you have entered Name, Address, PIN and entered your Phone No'),
+            actions: <Widget>[
+              FlatButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Okay'))
+            ],
+          ),
+        );
+        return null;
+      }
       return showDialog(
           context: context,
           builder: (context) {
@@ -172,10 +178,10 @@ class _NewUserState extends State<NewUser> {
                 new FlatButton(
                   child: new Text("Confirm"),
                   onPressed: () {
+                    createThanksDialog(context);
                     placeOrder(widget.cartToShow, widget.currUid);
                     Provider.of<ProductProvider>(context, listen: false)
                         .emptyCart();
-                    createThanksDialog(context);
                   },
                 ),
                 new FlatButton(

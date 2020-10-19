@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import '../screens/cart-screen.dart';
-import '../screens/orders-screen.dart';
+import '../widgets/myOrders.dart';
 import '../screens/login-screen.dart';
 import '../screens/categories-screen.dart';
 
@@ -86,7 +86,7 @@ class _MainDrawerState extends State<MainDrawer> {
               height: 40,
               child: ListTile(
                 onTap: () {
-                  Navigator.pushNamed(context, OrdersScreen.routename);
+                  Navigator.push(context, MaterialPageRoute(builder: (ctx)=>MyOrders()));
                 },
                 leading: Icon(Icons.history),
                 title: Text('My Orders'),
