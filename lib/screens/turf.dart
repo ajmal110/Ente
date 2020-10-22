@@ -94,10 +94,10 @@ class Turf extends StatelessWidget {
                       letterSpacing: 1.5),
                 ),
               ),
-              /*  background: Image.network(
-                      docs['Photo'],
-                      fit: BoxFit.cover,
-                    ), */
+              background: Image.network(
+                docs['Photo'],
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           SliverList(
@@ -116,7 +116,7 @@ class Turf extends StatelessWidget {
                         ),
                       ),
                       Card(
-                        elevation: 20,
+                        elevation: 1,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
@@ -175,7 +175,7 @@ class Turf extends StatelessWidget {
                         ),
                       ),
                       Card(
-                        elevation: 20,
+                        elevation: 1,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),

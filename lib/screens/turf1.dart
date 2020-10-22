@@ -101,7 +101,7 @@ class Turf1 extends StatelessWidget {
                     child: ListTile(
                       leading: CircleAvatar(
                         radius: 30,
-                        // backgroundImage: NetworkImage(docs[i]['Photo']),
+                        backgroundImage: NetworkImage(docs[i]['Photo']),
                       ),
                       title: Text(
                         docs[i]['Name'],

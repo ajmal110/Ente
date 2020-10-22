@@ -104,7 +104,7 @@ class Taxi extends StatelessWidget {
                   child: ListTile(
                     leading: CircleAvatar(
                       radius: 30,
-                      // backgroundImage: NetworkImage(docs[i]['Photo']),
+                      backgroundImage: NetworkImage(docs[i]['Photo']),
                     ),
                     title: Text(
                       docs[i]['Name'],
@@ -114,6 +114,7 @@ class Taxi extends StatelessWidget {
                       children: [
                         Text(
                           'Phone: ${docs[i]['Phone No']}',
+                          softWrap: true,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 10.0),

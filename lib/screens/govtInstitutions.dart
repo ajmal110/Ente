@@ -67,10 +67,11 @@ class GovtInstitutions extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     leading: CircleAvatar(
-                        // backgroundImage: NetworkImage(docs[i]['Photo']),
-                        ),
+                      backgroundImage: NetworkImage(docs[i]['Photo']),
+                    ),
                     title: Text(
-                      docs[i]['Location'],
+                      "Location: ${docs[i]['Location']}",
+                      softWrap: true,
                     ),
                     subtitle: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,

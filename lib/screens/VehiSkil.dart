@@ -99,11 +99,11 @@ class VehiSkill extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(3.0),
                   child: ListTile(
                     leading: CircleAvatar(
                       radius: 30,
-                      // backgroundImage: NetworkImage(docs[i]['Photo']),
+                      backgroundImage: NetworkImage(docs[i]['Photo']),
                     ),
                     title: Text(
                       docs[i]['Name'],
@@ -112,7 +112,8 @@ class VehiSkill extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          'Phone: ${docs[i]['Phone']}',
+                          'Phone:\n ${docs[i]['Phone']}',
+                          softWrap: true,
                         ),
                         Padding(
                           padding: const EdgeInsets.only(left: 10.0),

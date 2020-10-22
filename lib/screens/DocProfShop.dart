@@ -114,7 +114,7 @@ class DocProfShop extends StatelessWidget {
                           child: ListTile(
                             leading: CircleAvatar(
                               radius: 30,
-                              // backgroundImage: NetworkImage(docs[i]['Photo']),
+                              backgroundImage: NetworkImage(docs[i]['Photo']),
                             ),
                             title: Text(
                               docs[i]['Name'],
@@ -127,7 +127,7 @@ class DocProfShop extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        'Phone: ${docs[i]['Phone']}\nLocation: ${docs[i]['Location']}',
+                                        'Phone:\n      ${docs[i]['Phone']}\nLocation:\n     ${docs[i]['Location']}',
                                         softWrap: true,
                                       ),
                                     ),

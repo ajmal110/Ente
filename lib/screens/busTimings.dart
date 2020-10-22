@@ -98,8 +98,7 @@ class BusTimings extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
-                    leading: CircleAvatar(
-                        // backgroundImage: NetworkImage(docs[i]['Photo']),
+                    leading: CircleAvatar(backgroundImage: NetworkImage(docs[i]['Photo']),
                         ),
                     title: Text(
                       docs[i]['Name'],
