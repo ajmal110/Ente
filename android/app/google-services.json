@@ -8,9 +8,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:876503910711:android:1971ca290d72fca3adf2b2",
+        "mobilesdk_app_id": "1:876503910711:android:a218ed973c0e21b4adf2b2",
         "android_client_info": {
-          "package_name": "com.example.plantStore"
+          "package_name": "com.tmc.EnteManjeri"
         }
       },
       "oauth_client": [

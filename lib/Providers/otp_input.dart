@@ -1080,7 +1080,7 @@ class _PinInputTextFormFieldState extends FormFieldState<String> {
         setValue(value.substring(0, widget.pinLength));
         _effectiveController.text = value;
         _effectiveController.selection = TextSelection.collapsed(
-          offset: value.runes.length,
+          offset : value.runes.length,
         );
       });
     }
