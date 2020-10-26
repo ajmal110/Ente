@@ -54,7 +54,7 @@ class CategoriesScreen extends StatelessWidget {
           //   onPressed: () {},
           // ),
           IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
             onPressed: () {
               Navigator.pushNamed(context, CartScreen.routename);
             },
