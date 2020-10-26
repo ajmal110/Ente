@@ -116,7 +116,7 @@ class _CartScreenState extends State<CartScreen> {
                             children: [
                               Container(
                                 height:
-                                    MediaQuery.of(context).size.height * 0.8,
+                                    MediaQuery.of(context).size.height * 0.68,
                                 child: ListView.builder(
                                   itemCount: cartToShow.length,
                                   itemBuilder: (ctx, i) {
