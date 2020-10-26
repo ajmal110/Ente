@@ -127,7 +127,7 @@ class DocProfShop extends StatelessWidget {
                                   children: [
                                     Expanded(
                                       child: Text(
-                                        'Phone:\n      ${docs[i]['Phone']}\nLocation:\n     ${docs[i]['Location']}',
+                                        'Phone:\n ${docs[i]['Phone']}\n \n Location:\n ${docs[i]['Location']}',
                                         softWrap: true,
                                       ),
                                     ),

@@ -74,13 +74,19 @@ class News extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ListTile(
-                        title: Text(
-                          docs[i]['Heading'],
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: ListTile(
+                          title: Text(
+                            docs[i]['Heading'],
+                          ),
+                          subtitle: Text(docs[i]['SubDes']),
                         ),
-                        subtitle: Text(docs[i]['Description'])),
+                      ),
+                      Text('View more...')
+                    ],
                   ),
                 ),
               ),

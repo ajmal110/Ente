@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/screens/cart-screen.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -62,31 +63,39 @@ class News1 extends StatelessWidget {
       imageurl = null;
     }
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text(loadedProduct.title),
-      // ),
+      appBar: AppBar(
+        title: GestureDetector(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: Text(
+            'News',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.bold),
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          // IconButton(
+          //   icon: Icon(Icons.search),
+          //   onPressed: () {},
+          // ),
+        ],
+      ),
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            automaticallyImplyLeading: false,
             expandedHeight: 300,
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
-              title: Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
-                    borderRadius: BorderRadius.circular(20)),
-                child: Text(
-                  "",
-                  style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                  ),
-                ),
-              ),
               background: imageurl != null
                   ? Image.network(
                       docs['Photo'],
-                      fit: BoxFit.cover,
+                      fit: BoxFit.fitWidth,
                     )
                   : null,
             ),

@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/main.dart';
 import 'package:plantStore/models/app.dart';
+import 'package:plantStore/screens/aboutsUs.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -86,7 +87,8 @@ class _MainDrawerState extends State<MainDrawer> {
               height: 40,
               child: ListTile(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (ctx)=>MyOrders()));
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (ctx) => MyOrders()));
                 },
                 leading: Icon(Icons.history),
                 title: Text('My Orders'),
@@ -116,22 +118,38 @@ class _MainDrawerState extends State<MainDrawer> {
             Container(
               height: 40,
               child: ListTile(
-                onTap: () {},
-                leading: Icon(Icons.settings),
-                title: Text('Settings'),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => AboutUs(),
+                    ),
+                  );
+                },
+                leading: Icon(Icons.info),
+                title: Text('About'),
               ),
             ),
             Divider(
               thickness: 2,
             ),
-            Container(
-              height: 40,
-              child: ListTile(
-                onTap: () {},
-                leading: Icon(Icons.info),
-                title: Text('About'),
+            Padding(
+              padding: const EdgeInsets.only(top: 30.0, left: 10),
+              child: Row(
+                children: [
+                  Container(
+                    child: Text('Powered by:'),
+                  ),
+                  Container(
+                    child: Image.asset(
+                      'assets/images/OGLogo.png',
+                      height: 80,
+                      fit: BoxFit.fitHeight,
+                    ),
+                  ),
+                ],
               ),
-            ),
+            )
           ],
         ),
       ),

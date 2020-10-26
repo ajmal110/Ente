@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/animation.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/screens/addReviewScreen.dart';
+import 'package:plantStore/screens/cart-screen.dart';
 import 'package:provider/provider.dart';
 
 import '../models/product.dart';
@@ -92,12 +93,38 @@ class OfferDetailScreen extends StatelessWidget {
               ),
             ),
           ),
-          // appBar: AppBar(
-          //   title: Text(widget.title),
-          // ),
+          appBar: AppBar(
+            title: GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Online Store',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Lato',
+                    fontWeight: FontWeight.bold),
+              ),
+            ),
+            centerTitle: true,
+            actions: [
+              IconButton(
+                icon: Icon(Icons.search),
+                onPressed: () {},
+              ),
+              IconButton(
+                icon: Icon(Icons.shopping_cart),
+                onPressed: () {
+                  Navigator.pushNamed(context, CartScreen.routename);
+                },
+              )
+            ],
+          ),
           body: CustomScrollView(
             slivers: <Widget>[
               SliverAppBar(
+                automaticallyImplyLeading: false,
                 expandedHeight: 300,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(

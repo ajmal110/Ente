@@ -18,7 +18,8 @@ class _MainOffersCarouselState extends State<MainOffersCarousel> {
   Widget build(BuildContext context) {
     return GFCarousel(
       autoPlay: true,
-      autoPlayInterval: Duration(seconds: 3),
+      autoPlayCurve: Curves.bounceInOut,
+      autoPlayInterval: Duration(seconds: 4),
       enlargeMainPage: true,
       pagination: true,
       viewportFraction: 1.0,

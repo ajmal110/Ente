@@ -73,9 +73,9 @@ class _CartScreenState extends State<CartScreen> {
                           showDialog(
                               context: context,
                               builder: (ctx) => AlertDialog(
-                                    title: Text('Nothing in Cart!!'),
-                                    content: Text(
-                                        'Add something in cart to proceed'),
+                                    title: Text('Your cart is empty!!'),
+                                    content:
+                                        Text('Add items to cart to proceed'),
                                     actions: [
                                       FlatButton(
                                         onPressed: () =>
@@ -94,7 +94,7 @@ class _CartScreenState extends State<CartScreen> {
                         width: 900,
                         child: Center(
                           child: Text(
-                            '+ Add Details to place order',
+                            'Proceed to Checkout',
                             textAlign: TextAlign.center,
                             style: TextStyle(
                               fontSize: 15,
@@ -162,6 +162,11 @@ class _CartScreenState extends State<CartScreen> {
                               //     ),
                               //   ),
                               // ),
+
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 20.0),
+                                child: Container(child: Text('COD Available')),
+                              ),
                             ],
                           ),
                         ),

@@ -29,11 +29,11 @@ class NewsCard extends StatelessWidget {
           ),
         ),
         padding: EdgeInsets.all(4),
-        color: Theme.of(context).primaryColorLight,
+        color: Colors.white,
         elevation: 8,
-        imageOverlay:
-            offer['Photo'].trim() == '' ? null : NetworkImage(offer['Photo']),
-        boxFit: BoxFit.cover,
+        // imageOverlay:
+        //     offer['Photo'].trim() == '' ? null : NetworkImage(offer['Photo']),
+        // boxFit: BoxFit.cover,
         titlePosition: GFPosition.start,
         title: GFListTile(
           title: Center(
