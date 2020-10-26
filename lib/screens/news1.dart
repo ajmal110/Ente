@@ -88,6 +88,7 @@ class News1 extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
+            backgroundColor: Colors.white,
             automaticallyImplyLeading: false,
             expandedHeight: 300,
             pinned: true,
@@ -121,14 +122,18 @@ class News1 extends StatelessWidget {
                   height: 10,
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15),
+                  padding: const EdgeInsets.only(left: 15),
                   child: Text(
                     docs['Heading'],
+                    softWrap: true,
                     style: TextStyle(
                         fontSize: 23,
                         fontWeight: FontWeight.bold,
                         color: Colors.blueGrey),
                   ),
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 15),
@@ -137,7 +142,7 @@ class News1 extends StatelessWidget {
                     docs['Description'],
                     textAlign: TextAlign.left,
                     softWrap: true,
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(fontSize: 15),
                   ),
                 ),
                 SizedBox(height: 10),

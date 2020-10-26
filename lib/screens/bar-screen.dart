@@ -48,15 +48,18 @@ class _BarScreenState extends State<BarScreen> {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart),
-            onPressed: () {
-              Navigator.pushNamed(context, CartScreen.routename);
-            },
+          // IconButton(
+          //   icon: Icon(Icons.search),
+          //   onPressed: () {},
+          // ),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              icon: Icon(Icons.shopping_cart, color: Colors.white, size: 25),
+              onPressed: () {
+                Navigator.pushNamed(context, CartScreen.routename);
+              },
+            ),
           )
         ],
       ),

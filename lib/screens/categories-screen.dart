@@ -49,10 +49,10 @@ class CategoriesScreen extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          ),
+          // IconButton(
+          //   icon: Icon(Icons.search),
+          //   onPressed: () {},
+          // ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
             onPressed: () {

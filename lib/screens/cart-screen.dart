@@ -90,7 +90,7 @@ class _CartScreenState extends State<CartScreen> {
                       },
                       child: Container(
                         color: Color(0xffE7F0C3),
-                        height: 59,
+                        height: 50,
                         width: 900,
                         child: Center(
                           child: Text(
