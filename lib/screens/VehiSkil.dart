@@ -35,18 +35,18 @@ class VehiSkill extends StatelessWidget {
               fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
-        actions: [
-          // IconButton(
-          //   icon: Icon(Icons.search),
-          //   onPressed: () {},
-          // ),
-          IconButton(
-            icon: Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
-            onPressed: () {
-              Navigator.pushNamed(context, CartScreen.routename);
-            },
-          )
-        ],
+        // actions: [
+        //   // IconButton(
+        //   //   icon: Icon(Icons.search),
+        //   //   onPressed: () {},
+        //   // ),
+        //   IconButton(
+        //     icon: Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
+        //     onPressed: () {
+        //       Navigator.pushNamed(context, CartScreen.routename);
+        //     },
+        //   )
+        // ],
       ),
       persistentFooterButtons: <Widget>[
         GestureDetector(

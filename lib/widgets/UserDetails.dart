@@ -120,11 +120,11 @@ class _NewUserState extends State<NewUser> {
           builder: (context) {
             return AlertDialog(
               title: new Text(
-                '',
+                'Thank you for placing your order :)',
                 style: TextStyle(fontSize: 18),
               ),
               content: new Text(
-                'Thank you for placing your order',
+                'Our Executive will contact you soon regarding the order.',
                 style: TextStyle(fontSize: 13),
               ),
               actions: <Widget>[
@@ -176,18 +176,18 @@ class _NewUserState extends State<NewUser> {
               ),
               actions: <Widget>[
                 new FlatButton(
+                  child: Text("Cancel"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                ),
+                new FlatButton(
                   child: new Text("Confirm"),
                   onPressed: () {
                     createThanksDialog(context);
                     placeOrder(widget.cartToShow, widget.currUid);
                     Provider.of<ProductProvider>(context, listen: false)
                         .emptyCart();
-                  },
-                ),
-                new FlatButton(
-                  child: Text("Cancel"),
-                  onPressed: () {
-                    Navigator.of(context).pop();
                   },
                 ),
               ],

@@ -134,17 +134,20 @@ class _MainDrawerState extends State<MainDrawer> {
               thickness: 2,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30.0, left: 10),
+              padding: const EdgeInsets.only(top: 30.0, left: 10, right: 10),
               child: Row(
                 children: [
                   Container(
                     child: Text('Powered by:'),
                   ),
-                  Container(
-                    child: Image.asset(
-                      'assets/images/OGLogo.png',
-                      height: 80,
-                      fit: BoxFit.fitHeight,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      child: Image.asset(
+                        'assets/images/20200614_165332_0000.png',
+                        height: 120,
+                        fit: BoxFit.fitHeight,
+                      ),
                     ),
                   ),
                 ],

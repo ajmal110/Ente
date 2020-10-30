@@ -8,7 +8,6 @@ class ProductDisplaySubcat extends StatelessWidget {
   final String cat;
 
   ProductDisplaySubcat(this.parent, this.cat);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
