@@ -1,9 +1,10 @@
 import 'dart:async';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/Providers/notification_bloc.dart';
 import 'package:plantStore/Providers/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/screens/home.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PhoneLogin extends StatefulWidget {
   PhoneLogin({Key key}) : super(key: key);

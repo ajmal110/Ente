@@ -65,22 +65,22 @@ class _BarScreenState extends State<BarScreen> {
         ],
       ),
       drawer: MainDrawer(),
-      bottomNavigationBar: BottomNavigationBar(
-        unselectedItemColor: Theme.of(context).primaryColorDark,
-        currentIndex: selectedPageIndex,
-        onTap: _pageIndex,
-        showSelectedLabels: false,
-        selectedIconTheme: IconThemeData(size: 40),
-        items: [
-          BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart),
-            title: Text('Cart'),
-          ),
-          // BottomNavigationBarItem(
-          //     icon: Icon(Icons.person), title: Text('Profile')),
-        ],
-      ),
+      // bottomNavigationBar: BottomNavigationBar(
+      //   unselectedItemColor: Theme.of(context).primaryColorDark,
+      //   currentIndex: selectedPageIndex,
+      //   onTap: _pageIndex,
+      //   showSelectedLabels: false,
+      //   selectedIconTheme: IconThemeData(size: 40),
+      //   items: [
+      //     BottomNavigationBarItem(icon: Icon(Icons.home), title: Text('Home')),
+      //     BottomNavigationBarItem(
+      //       icon: Icon(Icons.shopping_cart),
+      //       title: Text('Cart'),
+      //     ),
+      //     // BottomNavigationBarItem(
+      //     //     icon: Icon(Icons.person), title: Text('Profile')),
+      //   ],
+      // ),
       body: pages[selectedPageIndex],
     );
   }

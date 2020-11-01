@@ -1,10 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/main.dart';
 import 'package:plantStore/models/app.dart';
 import 'package:plantStore/screens/aboutsUs.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../screens/cart-screen.dart';
 import '../widgets/myOrders.dart';
@@ -149,6 +151,73 @@ class _MainDrawerState extends State<MainDrawer> {
                         fit: BoxFit.fitHeight,
                       ),
                     ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Divider(
+              thickness: .4,
+              color: Colors.green[300],
+              indent: 60,
+              endIndent: 60,
+            ),
+            Center(
+              child: Column(
+                children: [
+                  // Text(
+                  //   'Contact Us.',
+                  //   style: TextStyle(
+                  //     fontSize: 18,
+                  //     fontFamily: 'SFUI',
+                  //     fontWeight: FontWeight.bold,
+                  //   ),
+                  // ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            FontAwesomeIcons.facebookSquare,
+                            size: 20,
+                            color: Color(0xffE7F0C3),
+                          ),
+                          onPressed: () => launch(
+                              "https://www.facebook.com/ente.manjeri.562"),
+                          tooltip: "Call Us.",
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.email_sharp,
+                            size: 25,
+                            color: Color(0xffE7F0C3),
+                          ),
+                          onPressed: () =>
+                              launch("mailto:qkrestechnologies@gmail.com"),
+                          tooltip: "eMail",
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0, right: 8.0),
+                        child: IconButton(
+                          icon: Icon(
+                            FontAwesomeIcons.instagram,
+                            size: 20,
+                            color: Color(0xffE7F0C3),
+                          ),
+                          onPressed: () => launch(
+                              "https://instagram.com/ente.manjeri?igshid=vba0dmlcs4y1"),
+                          tooltip: "Instagram",
+                        ),
+                      )
+                    ],
                   ),
                 ],
               ),
