@@ -26,6 +26,7 @@ class _OnlineCarouselState extends State<OnlineCarousel> {
         return Container(
             width: MediaQuery.of(context).size.width,
             child: OnlineCard(
+              prod: prod,
               id: prod.documentID.toString(),
               desc: prod['Description'],
               mainText: prod['mainText'],

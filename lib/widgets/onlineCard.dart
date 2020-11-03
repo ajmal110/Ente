@@ -6,6 +6,7 @@ import '../models/offers.dart';
 import './fullScreenImage.dart';
 
 class OnlineCard extends StatelessWidget {
+  final prod;
   final String id;
   final String desc;
   final String name;
@@ -15,7 +16,8 @@ class OnlineCard extends StatelessWidget {
   final String details;
 
   OnlineCard(
-      {this.id,
+      {this.prod,
+      this.id,
       this.desc,
       this.mainText,
       this.name,
@@ -28,6 +30,7 @@ class OnlineCard extends StatelessWidget {
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
           builder: (ctx) => OfferDetailScreen(
+            prod: prod,
             id: id,
             mainText: mainText,
             name: name,

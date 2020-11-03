@@ -30,6 +30,7 @@ class _MyOrdersState extends State<MyOrders> {
               .collection('users')
               .document(currUid)
               .collection('orders')
+              .orderBy('DateTime', descending: true)
               .snapshots(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
