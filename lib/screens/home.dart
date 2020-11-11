@@ -15,6 +15,7 @@ import '../models/offers.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../widgets/newsCarousel.dart';
 import '../widgets/multipleItemCarousel.dart';
+import 'package:flutter_search_bar/flutter_search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   // HomeScreen({Key key, @required this.user})
@@ -103,6 +104,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Divider(),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  'News',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    letterSpacing: 5,
+                  ),
+                ),
+              ),
               //Can be any Heading here
 
               //Holds Ads or Offers or etc

@@ -1,9 +1,12 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:plantStore/Providers/phone_auth.dart';
+import 'package:plantStore/Providers/splashScreen.dart';
 import 'package:plantStore/models/app.dart';
+import 'package:plantStore/onboarding_screen.dart';
 import 'package:plantStore/screens/news.dart';
 import 'package:provider/provider.dart';
 import 'package:plantStore/screens/home.dart';
@@ -20,7 +23,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:plantStore/Providers/pushNotifications.dart';
 
 void main() {
-  runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
+      .then((_) {
+    runApp(new MyApp());
+  });
 }
 
 class MyApp extends StatefulWidget {
@@ -57,13 +64,14 @@ class _MyAppState extends State<MyApp> {
           textTheme: GoogleFonts.rubikTextTheme(),
         ),
         debugShowCheckedModeBanner: false,
-        home: AppWelcome(),
+        home: OnboardingScreen(),
         routes: {
           HomeScreen.routename: (ctx) => HomeScreen(),
           CartScreen.routename: (ctx) => CartScreen(),
           LoginScreen.routename: (ctx) => LoginScreen(),
           CategoriesScreen.routename: (ctx) => CategoriesScreen(),
-          News.routename: (ctx) => News()
+          News.routename: (ctx) => News(),
+          AppWelcome.routename: (ctx) => AppWelcome()
         },
       ),
     );

@@ -5,6 +5,7 @@ import 'package:plantStore/screens/home.dart';
 import 'package:flutter/material.dart';
 
 class AppWelcome extends StatefulWidget {
+  static String routename = '/app-welcome';
   AppWelcome({Key key}) : super(key: key);
 
   @override

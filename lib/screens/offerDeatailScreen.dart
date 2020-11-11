@@ -327,6 +327,13 @@ class OfferDetailScreen extends StatelessWidget {
                               ),
                             ),
                           ),
+                          SizedBox(height: 10),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 15.0),
+                            child: Container(
+                              child: Text('* Cash On Delivery'),
+                            ),
+                          ),
                           Divider(thickness: 3),
                           //       Consumer<ProductProvider>(
                           //         builder: (ctx, product, ch) => Center(

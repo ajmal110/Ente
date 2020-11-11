@@ -188,7 +188,7 @@ class _MainDrawerState extends State<MainDrawer> {
                           ),
                           onPressed: () => launch(
                               "https://www.facebook.com/ente.manjeri.562"),
-                          tooltip: "Call Us.",
+                          tooltip: "facebook",
                         ),
                       ),
                       Padding(
@@ -200,7 +200,7 @@ class _MainDrawerState extends State<MainDrawer> {
                             color: Color(0xffE7F0C3),
                           ),
                           onPressed: () =>
-                              launch("mailto:qkrestechnologies@gmail.com"),
+                              launch("mailto:anjoomshareef@gmail.com"),
                           tooltip: "eMail",
                         ),
                       ),
