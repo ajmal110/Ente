@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/main.dart';
 import 'package:plantStore/models/app.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/aboutsUs.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -28,6 +29,7 @@ class _MainDrawerState extends State<MainDrawer> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Drawer(
       elevation: 16,
       child: Container(
@@ -39,7 +41,7 @@ class _MainDrawerState extends State<MainDrawer> {
               child: Container(
                 child: Image.asset(
                   'assets/images/EML.png',
-                  height: 40,
+                  height: SizeConfig.blockSizeHorizontal * 20,
                   fit: BoxFit.fitHeight,
                 ),
                 color: Color(0xff32AFA9),
@@ -147,7 +149,7 @@ class _MainDrawerState extends State<MainDrawer> {
                     child: Container(
                       child: Image.asset(
                         'assets/images/20200614_165332_0000.png',
-                        height: 120,
+                        height: SizeConfig.blockSizeHorizontal * 35,
                         fit: BoxFit.fitHeight,
                       ),
                     ),

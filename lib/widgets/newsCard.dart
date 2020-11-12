@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/news1.dart';
 
 import '../models/offers.dart';
@@ -16,19 +17,19 @@ class NewsCard extends StatelessWidget {
         content: Container(
           padding: offer['SubDes'].trim() == ''
               ? EdgeInsets.all(0)
-              : EdgeInsets.all(2),
+              : EdgeInsets.all(0),
           // color: Colors.black26,
           child: Text(
             offer['SubDes'],
             softWrap: true,
             style: TextStyle(
               color: Colors.grey[700],
-              fontSize: 13,
+              fontSize: SizeConfig.blockSizeHorizontal * 3,
               fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        padding: EdgeInsets.all(4),
+        padding: EdgeInsets.all(1),
         color: Colors.white,
         elevation: 8,
         // imageOverlay:
@@ -40,14 +41,14 @@ class NewsCard extends StatelessWidget {
             child: Container(
               padding: offer['Heading'].trim() == ''
                   ? EdgeInsets.all(0)
-                  : EdgeInsets.all(1),
+                  : EdgeInsets.all(0),
               // color: Colors.black38,
               child: Text(
                 offer['Heading'],
                 softWrap: true,
                 style: TextStyle(
                   color: Colors.blueGrey,
-                  fontSize: 17,
+                  fontSize: SizeConfig.blockSizeHorizontal * 4,
                   fontWeight: FontWeight.bold,
                 ),
               ),

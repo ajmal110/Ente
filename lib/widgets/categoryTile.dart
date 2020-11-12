@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/news.dart';
 import 'package:plantStore/screens/turf1.dart';
 import 'package:provider/provider.dart';
@@ -22,6 +23,7 @@ class CategoryTile1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return GestureDetector(
       onTap: () {
         if (category == 'more') {
@@ -50,6 +52,7 @@ class CategoryTile1 extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: GFCard(
+              height: SizeConfig.blockSizeHorizontal * 50,
               color: Theme.of(context).primaryColorLight,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(80)),
@@ -69,7 +72,7 @@ class CategoryTile1 extends StatelessWidget {
                 fontFamily: 'OpenSans',
                 color: Colors.grey[800],
                 letterSpacing: 1.3,
-                fontSize: 13),
+                fontSize: SizeConfig.blockSizeHorizontal * 2.8),
           ),
 
           // title: GFListTile(

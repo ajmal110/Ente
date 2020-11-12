@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
           textTheme: GoogleFonts.rubikTextTheme(),
         ),
         debugShowCheckedModeBanner: false,
-        home: OnboardingScreen(),
+        home: Splash(),
         routes: {
           HomeScreen.routename: (ctx) => HomeScreen(),
           CartScreen.routename: (ctx) => CartScreen(),

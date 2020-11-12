@@ -57,6 +57,7 @@ class _CartScreenState extends State<CartScreen> {
                 return Scaffold(
                   resizeToAvoidBottomInset: false,
                   appBar: AppBar(
+                    centerTitle: true,
                     title: Text(
                       'My Cart',
                       style: TextStyle(

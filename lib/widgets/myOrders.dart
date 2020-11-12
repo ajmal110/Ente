@@ -43,6 +43,7 @@ class _MyOrdersState extends State<MyOrders> {
 
             return Scaffold(
               appBar: AppBar(
+                centerTitle: true,
                 title: Text(
                   'Your Orders',
                   style: TextStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/offerDeatailScreen.dart';
 
 import '../models/offers.dart';
@@ -26,6 +27,7 @@ class OnlineCard extends StatelessWidget {
       this.details});
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return GestureDetector(
       onTap: () => Navigator.of(context).push(
         MaterialPageRoute(
@@ -43,7 +45,7 @@ class OnlineCard extends StatelessWidget {
       ),
       child: GFCard(
         content: Padding(
-          padding: const EdgeInsets.only(top: 55.0),
+          padding: const EdgeInsets.only(bottom: 5),
           child: Container(
             color: Colors.black12,
             child: Text(
@@ -51,7 +53,7 @@ class OnlineCard extends StatelessWidget {
               softWrap: true,
               style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: SizeConfig.blockSizeHorizontal * 4.5,
                   fontFamily: 'Lato',
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.5),

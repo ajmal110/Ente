@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/cart-screen.dart';
 import 'package:plantStore/widgets/myOrders.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -20,12 +21,13 @@ class AboutUs extends StatelessWidget {
         ),
         centerTitle: true,
         actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () {},
-          ),
+          // IconButton(
+          //   icon: Icon(Icons.search),
+          //   onPressed: () {},
+          // ),
           IconButton(
             icon: Icon(Icons.shopping_cart),
+            color: Colors.white,
             onPressed: () {
               Navigator.pushNamed(context, CartScreen.routename);
             },
@@ -80,7 +82,7 @@ class AboutUs extends StatelessWidget {
                       child: Container(
                         child: Image.asset(
                           'assets/images/20200614_165332_0000.png',
-                          height: 120,
+                          height: SizeConfig.blockSizeHorizontal * 30,
                           fit: BoxFit.fitHeight,
                         ),
                       ),
@@ -90,7 +92,7 @@ class AboutUs extends StatelessWidget {
                       child: Container(
                         child: Image.asset(
                           'assets/images/OGLogo.png',
-                          height: 100,
+                          height: SizeConfig.blockSizeHorizontal * 20,
                           fit: BoxFit.fitHeight,
                         ),
                       ),

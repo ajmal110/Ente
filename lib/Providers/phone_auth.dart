@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/Providers/notification_bloc.dart';
 import 'package:plantStore/Providers/otp_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -52,26 +53,47 @@ class _PhoneLoginState extends State<PhoneLogin> {
 
   @override
   Widget build(BuildContext context) {
+    var eml;
     return Scaffold(
-      backgroundColor: Color(0xff32AFA9),
+      backgroundColor: Colors.cyan[700],
       body: Column(
         children: <Widget>[
           Center(
             child: Container(
                 alignment: AlignmentDirectional.center,
                 margin: EdgeInsets.only(top: 100),
-                child: Image.asset(
-                  'assets/images/EML.png',
-                  height: 400,
-                  width: 700,
-                  scale: .1,
-                  fit: BoxFit.cover,
+                child: Hero(
+                  tag: 'eml',
+                  child: Image.asset(
+                    'assets/images/EML.png',
+                    height: SizeConfig.blockSizeVertical * 45,
+                    // width: 700,
+                    scale: .1,
+                    fit: BoxFit.cover,
+                  ),
                 )),
+          ),
+          SizedBox(
+            height: SizeConfig.blockSizeVertical * 7,
+          ),
+          Divider(
+            thickness: .6,
+            indent: 30,
+            endIndent: 30,
+            color: Colors.green,
+          ),
+          Text(
+            'Sign Up',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 25,
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.bold),
           ),
           Center(
             child: Container(
               width: MediaQuery.of(context).size.width * 0.8,
-              padding: EdgeInsets.only(top: 120),
+              padding: EdgeInsets.only(top: SizeConfig.blockSizeVertical * 4),
               alignment: Alignment.center,
               child: new RaisedButton(
                 shape: new RoundedRectangleBorder(
@@ -108,14 +130,14 @@ class _PhoneLoginState extends State<PhoneLogin> {
                                             CrossAxisAlignment.start,
                                         children: <Widget>[
                                           Text(
-                                            'LOGIN',
+                                            'Sign up',
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w900,
                                                 color: Colors.black),
                                           ),
                                           Text(
-                                            'Login/Create Account quickly to manage orders',
+                                            ' [This is a one time procedure] \nCreate Account quickly and have Manjeri at your fingertips ',
                                             style: TextStyle(
                                                 fontSize: 12,
                                                 fontWeight: FontWeight.normal,

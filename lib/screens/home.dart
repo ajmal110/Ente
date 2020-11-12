@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/cart-screen.dart';
 import 'package:plantStore/screens/categories-screen.dart';
+import 'package:plantStore/widgets/main-drawer.dart';
 import 'package:plantStore/widgets/onlineCarousel.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -15,6 +16,7 @@ import '../models/offers.dart';
 import '../widgets/mainOffersCarousel.dart';
 import '../widgets/newsCarousel.dart';
 import '../widgets/multipleItemCarousel.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:flutter_search_bar/flutter_search_bar.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     final List<Map<String, String>> _categoryList = [
       {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
       {'cat': 'Turf', 'path': 'assets/images/turf.png'},
@@ -42,6 +45,34 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
 
     return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Ente Manjeri',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 28,
+            fontFamily: 'Lato',
+          ),
+        ),
+        centerTitle: true,
+        actions: [
+          // IconButton(
+          //   icon: Icon(Icons.search),
+          //   onPressed: () {},
+          // ),
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: IconButton(
+              icon:
+                  Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
+              onPressed: () {
+                Navigator.pushNamed(context, CartScreen.routename);
+              },
+            ),
+          )
+        ],
+      ),
+      drawer: MainDrawer(),
       body: SingleChildScrollView(
         child: Container(
           child: Column(
@@ -90,12 +121,12 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Container(
                 margin: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
-                height: MediaQuery.of(context).size.height * 0.3,
+                height: SizeConfig.blockSizeHorizontal * 50,
                 child: ListView.builder(
                   itemCount: _categoryList.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (ctx, i) => Container(
-                    width: 250,
+                    width: SizeConfig.blockSizeHorizontal * 50,
                     child: CategoryTile1(
                       _categoryList[i]['cat'],
                       _categoryList[i]['path'],

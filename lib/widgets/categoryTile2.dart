@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/VehiSkil.dart';
 import 'package:provider/provider.dart';
 
@@ -21,6 +22,7 @@ class CategoryTile2 extends StatelessWidget {
   CategoryTile2(this.parent, this.category, this.path);
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return GestureDetector(
       onTap: () {
         if (parent == 'Bus Timings') {
@@ -78,7 +80,7 @@ class CategoryTile2 extends StatelessWidget {
                 fontFamily: 'OpenSans',
                 color: Colors.grey[800],
                 letterSpacing: 1.3,
-                fontSize: 12),
+                fontSize: SizeConfig.blockSizeHorizontal * 3),
           ),
 
           // title: GFListTile(

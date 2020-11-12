@@ -81,7 +81,7 @@ class _BarScreenState extends State<BarScreen> {
       //     //     icon: Icon(Icons.person), title: Text('Profile')),
       //   ],
       // ),
-      body: pages[selectedPageIndex],
+      // body: pages[selectedPageIndex],
     );
   }
 }
