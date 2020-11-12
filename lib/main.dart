@@ -22,12 +22,13 @@ import './Providers/product-provider.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:plantStore/Providers/pushNotifications.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
-    runApp(new MyApp());
-  });
+void main() async {
+  await WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+  runApp(new MyApp());
 }
 
 class MyApp extends StatefulWidget {
