@@ -41,7 +41,7 @@ class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
               margin: EdgeInsets.only(top: 10),
               child: Image.asset(
                 'assets/images/EML.png',
-                height: SizeConfig.blockSizeVertical * 45,
+                height: SizeConfig.blockSizeVertical * 20,
                 // width: 700,
                 scale: .1,
                 fit: BoxFit.cover,

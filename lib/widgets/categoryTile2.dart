@@ -80,7 +80,7 @@ class CategoryTile2 extends StatelessWidget {
                 fontFamily: 'OpenSans',
                 color: Colors.grey[800],
                 letterSpacing: 1.3,
-                fontSize: SizeConfig.blockSizeHorizontal * 3),
+                fontSize: SizeConfig.blockSizeHorizontal * 2.7),
           ),
 
           // title: GFListTile(

@@ -4,6 +4,7 @@ import 'package:plantStore/Providers/notification_bloc.dart';
 import 'package:plantStore/Providers/otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/models/size_config.dart';
+import 'package:plantStore/screens/bar-screen.dart';
 import 'package:plantStore/screens/home.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -31,9 +32,9 @@ class _PhoneLoginState extends State<PhoneLogin> {
   }
 
   _performActionOnNotification(Map<String, dynamic> message) async {
-    Navigator.of(context).push(
+    Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (context) => HomeScreen(),
+        builder: (context) => BarScreen(),
       ),
     );
   }

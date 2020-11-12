@@ -45,33 +45,33 @@ class _HomeScreenState extends State<HomeScreen> {
     ];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Ente Manjeri',
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            fontFamily: 'Lato',
-          ),
-        ),
-        centerTitle: true,
-        actions: [
-          // IconButton(
-          //   icon: Icon(Icons.search),
-          //   onPressed: () {},
-          // ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: IconButton(
-              icon:
-                  Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
-              onPressed: () {
-                Navigator.pushNamed(context, CartScreen.routename);
-              },
-            ),
-          )
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Text(
+      //     'Ente Manjeri',
+      //     style: TextStyle(
+      //       color: Colors.white,
+      //       fontSize: 28,
+      //       fontFamily: 'Lato',
+      //     ),
+      //   ),
+      //   centerTitle: true,
+      //   actions: [
+      //     // IconButton(
+      //     //   icon: Icon(Icons.search),
+      //     //   onPressed: () {},
+      //     // ),
+      //     Padding(
+      //       padding: const EdgeInsets.only(right: 8.0),
+      //       child: IconButton(
+      //         icon:
+      //             Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
+      //         onPressed: () {
+      //           Navigator.pushNamed(context, CartScreen.routename);
+      //         },
+      //       ),
+      //     )
+      //   ],
+      // ),
       drawer: MainDrawer(),
       body: SingleChildScrollView(
         child: Container(

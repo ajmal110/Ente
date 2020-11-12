@@ -35,7 +35,7 @@ class _AppWelcomeState extends State<AppWelcome> {
     print(user);
     return Scaffold(
         body: user != null
-            ? HomeScreen(
+            ? BarScreen(
                 // user: user,
                 )
             : PhoneLogin());

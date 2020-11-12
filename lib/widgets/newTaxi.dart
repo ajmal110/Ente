@@ -121,6 +121,8 @@ class _NewBusState extends State<NewBus> {
           .ref()
           .child('contactImages')
           .child(_name + '.jpg');
+
+      Navigator.of(context).pop();
       await ref.putFile(_selectedImages[0]).onComplete;
 
       url = await ref.getDownloadURL();
@@ -143,7 +145,6 @@ class _NewBusState extends State<NewBus> {
     //print(_addedExpense.title);
     //print(_addedExpense.category);
     //print(_addedExpense.day);
-    Navigator.of(context).pop();
   }
 
   @override

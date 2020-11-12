@@ -89,6 +89,7 @@ class _NewBusState extends State<NewBus> {
     if (!isValid) {
       return;
     }
+
     _form.currentState.save();
     print('saved');
 
@@ -120,6 +121,8 @@ class _NewBusState extends State<NewBus> {
           .ref()
           .child('contactImages')
           .child(_name + '.jpg');
+
+      Navigator.of(context).pop();
       await ref.putFile(_selectedImages[0]).onComplete;
 
       url = await ref.getDownloadURL();
@@ -140,7 +143,38 @@ class _NewBusState extends State<NewBus> {
     //print(_addedExpense.title);
     //print(_addedExpense.category);
     //print(_addedExpense.day);
-    Navigator.of(context).pop();
+  }
+
+  createThanksDialog(BuildContext context) {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: new Text(
+              'Are you sure about the details you entered?',
+              style: TextStyle(fontSize: 18),
+            ),
+            content: new Text(
+              'if not pls go back and ensure all the details entered are correct',
+              style: TextStyle(fontSize: 13),
+            ),
+            actions: <Widget>[
+              new FlatButton(
+                child: new Text("Continue"),
+                onPressed: () {
+                  _saveForm();
+                  Navigator.of(context).pop();
+                },
+              ),
+              new FlatButton(
+                child: Text("Cancel"),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
   }
 
   @override
@@ -161,7 +195,7 @@ class _NewBusState extends State<NewBus> {
             icon: Icon(
               Icons.save,
             ),
-            onPressed: _saveForm,
+            onPressed: createThanksDialog(context),
           ),
         ],
       ),
@@ -243,6 +277,7 @@ class _NewBusState extends State<NewBus> {
                               }
                               return null;
                             },
+                            keyboardType: TextInputType.number,
                             onSaved: (value) {
                               _phone = value;
                               FocusScope.of(context).unfocus();
