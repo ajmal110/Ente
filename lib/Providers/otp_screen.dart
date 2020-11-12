@@ -167,7 +167,7 @@ class _OTPScreenState extends State<OTPScreen> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (ctx) => BarScreen(),
+              builder: (ctx) => HomeScreen(),
             ),
           );
         } else {

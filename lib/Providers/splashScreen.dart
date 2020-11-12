@@ -19,7 +19,7 @@ class SplashState extends State<Splash> with AfterLayoutMixin<Splash> {
 
     if (_seen) {
       Navigator.of(context).pushReplacement(
-          new MaterialPageRoute(builder: (context) => HomeScreen()));
+          new MaterialPageRoute(builder: (context) => AppWelcome()));
     } else {
       await prefs.setBool('seen', true);
       Navigator.of(context).pushReplacement(
