@@ -171,16 +171,16 @@ class _NewBusState extends State<NewBus> {
                   },
                 ),
                 new FlatButton(
-                  child: Text("Cancel"),
+                  child: Text("Go back"),
                   onPressed: () {
-                    setState(() {
-                      _name = null;
-                      _time = null;
-                      _location = null;
-                      _phone = null;
-                      _selectedImages = [];
-                    });
-                    _form.currentState.reset();
+                    // setState(() {
+                    //   _name = null;
+                    //   _time = null;
+                    //   _location = null;
+                    //   _phone = null;
+                    //   _selectedImages = [];
+                    // });
+                    // _form.currentState.reset();
                     Navigator.of(context).pop();
                   },
                 ),
@@ -261,7 +261,7 @@ class _NewBusState extends State<NewBus> {
                           padding: EdgeInsets.all(10),
                           child: TextFormField(
                             decoration: InputDecoration(
-                              labelText: 'Enter Timing',
+                              labelText: 'Enter Timing (eg. 11 AM to 11 PM)',
                             ),
                             validator: (value) {
                               if (value.trim().isEmpty) {

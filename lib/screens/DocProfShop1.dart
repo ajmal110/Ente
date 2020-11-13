@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -55,6 +56,7 @@ class DocProfShop1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       floatingActionButtonLocation:
           FloatingActionButtonLocation.miniCenterFloat,
@@ -82,19 +84,20 @@ class DocProfShop1 extends StatelessWidget {
               title: Container(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                 decoration: BoxDecoration(
-                    color: Theme.of(context).primaryColor,
+                    color: Colors.black26,
                     borderRadius: BorderRadius.circular(20)),
                 child: Text(
                   docs['Name'],
                   style: TextStyle(
-                    color: Theme.of(context).accentColor,
-                  ),
+                      color: Theme.of(context).accentColor,
+                      fontSize: SizeConfig.blockSizeHorizontal * 4.8,
+                      fontWeight: FontWeight.normal),
                 ),
               ),
-              /*  background: Image.network(
-                      docs['Photo'],
-                      fit: BoxFit.cover,
-                    ), */
+              background: Image.network(
+                docs['Photo'],
+                fit: BoxFit.cover,
+              ),
             ),
           ),
           SliverList(
@@ -109,24 +112,23 @@ class DocProfShop1 extends StatelessWidget {
                         'Phone No : ',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 23,
+                          fontSize: SizeConfig.blockSizeHorizontal * 5,
                         ),
                       ),
                       Card(
-                        elevation: 20,
+                        elevation: 1,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        color: Theme.of(context).primaryColor,
+                        color: Colors.white,
                         child: Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Text(
                             docs['Phone'],
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                color: Theme.of(context).accentColor,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold),
+                              fontSize: SizeConfig.blockSizeHorizontal * 4.8,
+                            ),
                           ),
                         ),
                       ),
@@ -146,7 +148,9 @@ class DocProfShop1 extends StatelessWidget {
                   padding: const EdgeInsets.all(15),
                   child: Text(
                     'Location : ',
-                    style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 5,
+                        fontWeight: FontWeight.bold),
                   ),
                 ),
                 Container(
@@ -156,7 +160,8 @@ class DocProfShop1 extends StatelessWidget {
                     docs['Location'],
                     textAlign: TextAlign.left,
                     softWrap: true,
-                    style: TextStyle(fontSize: 17),
+                    style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 4.3),
                   ),
                 ),
                 SizedBox(height: 10),

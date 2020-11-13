@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/widgets/newTaxi.dart';
+import 'package:share/share.dart';
 
 import '../models/product.dart';
 
@@ -25,6 +27,7 @@ class Taxi extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -76,7 +79,8 @@ class Taxi extends StatelessWidget {
         stream: Firestore.instance
             .collection('Taxi')
             .document(cat)
-            .collection(loc).orderBy('Name')
+            .collection(loc)
+            .orderBy('Name')
             .snapshots(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -116,24 +120,50 @@ class Taxi extends StatelessWidget {
                           'Phone: ${docs[i]['Phone No']}',
                           softWrap: true,
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 10.0),
-                          child: RaisedButton.icon(
-                            color: Colors.white,
-                            onPressed: () async {
-                              launchCaller('${docs[i]['Phone']}');
-                            },
-                            icon: Icon(
-                              Icons.call,
-                              color: Colors.greenAccent,
-                            ),
-                            label: Text(
-                              'Call',
-                              style: TextStyle(
-                                color: Colors.greenAccent,
+                        Column(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10.0),
+                              child: RaisedButton.icon(
+                                color: Colors.white,
+                                onPressed: () async {
+                                  launchCaller('${docs[i]['Phone']}');
+                                },
+                                icon: Icon(
+                                  Icons.call,
+                                  color: Colors.greenAccent,
+                                ),
+                                label: Text(
+                                  'Call',
+                                  style: TextStyle(
+                                    color: Colors.greenAccent,
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5.0),
+                              child: RaisedButton.icon(
+                                  color: Colors.white,
+                                  onPressed: () async {
+                                    Share.share(
+                                        'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                  },
+                                  icon: Icon(
+                                    Icons.share,
+                                    color: Colors.greenAccent,
+                                    size: SizeConfig.blockSizeHorizontal * 5,
+                                  ),
+                                  label: Text(
+                                    'Share',
+                                    style: TextStyle(
+                                        color: Colors.greenAccent,
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal *
+                                                2.8),
+                                  )),
+                            ),
+                          ],
                         ),
                       ],
                     ),

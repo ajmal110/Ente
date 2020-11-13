@@ -151,6 +151,47 @@ class _NewBusState extends State<NewBus> {
 
   @override
   Widget build(BuildContext context) {
+    createThanksDialog() {
+      FocusScope.of(context).unfocus();
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: new Text(
+                'Are you sure about the details you entered?',
+                style: TextStyle(fontSize: 18),
+              ),
+              content: new Text(
+                'if not pls go back and ensure all the details entered are correct',
+                style: TextStyle(fontSize: 13),
+              ),
+              actions: <Widget>[
+                new FlatButton(
+                  child: new Text("Continue"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    _saveForm();
+                  },
+                ),
+                new FlatButton(
+                  child: Text("Go back"),
+                  onPressed: () {
+                    // setState(() {
+                    //   _name = null;
+                    //   _time = null;
+                    //   _location = null;
+                    //   _phone = null;
+                    //   _selectedImages = [];
+                    // });
+                    // _form.currentState.reset();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -162,7 +203,7 @@ class _NewBusState extends State<NewBus> {
             icon: Icon(
               Icons.save,
             ),
-            onPressed: _saveForm,
+            onPressed: () => createThanksDialog(),
           ),
         ],
       ),

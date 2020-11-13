@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/turf.dart';
 import 'package:plantStore/Providers/call_provider.dart';
 import 'package:plantStore/widgets/newTurf.dart';
+import 'package:share/share.dart';
 import '../models/product.dart';
 
 import 'cart-screen.dart';
@@ -19,6 +21,7 @@ class Turf1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -67,7 +70,8 @@ class Turf1 extends StatelessWidget {
         )
       ],
       body: StreamBuilder(
-        stream: Firestore.instance.collection('Turf').orderBy('Name').snapshots(),
+        stream:
+            Firestore.instance.collection('Turf').orderBy('Name').snapshots(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
@@ -97,7 +101,7 @@ class Turf1 extends StatelessWidget {
                     borderRadius: BorderRadius.circular(30),
                   ),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: ListTile(
                       leading: CircleAvatar(
                         radius: 30,
@@ -105,33 +109,68 @@ class Turf1 extends StatelessWidget {
                       ),
                       title: Text(
                         docs[i]['Name'],
+                        style: TextStyle(
+                          fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                        ),
                       ),
                       subtitle: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
                             child: Text(
-                              'Phone : ${docs[i]['Phone']}\nLocation : ${docs[i]['Location']}',
+                              'Phone : ${docs[i]['Phone']}\nLocation : \n ${docs[i]['Location']}',
                               softWrap: true,
+                              style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 3.4,
+                              ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 10.0),
-                            child: RaisedButton.icon(
-                                color: Colors.white,
-                                onPressed: () async {
-                                  launchCaller('${docs[i]['Phone']}');
-                                },
-                                icon: Icon(
-                                  Icons.call,
-                                  color: Colors.greenAccent,
-                                ),
-                                label: Text(
-                                  'Call',
-                                  style: TextStyle(
-                                    color: Colors.greenAccent,
-                                  ),
-                                )),
+                          Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 10.0),
+                                child: RaisedButton.icon(
+                                    color: Colors.white,
+                                    onPressed: () async {
+                                      launchCaller('${docs[i]['Phone']}');
+                                    },
+                                    icon: Icon(
+                                      Icons.call,
+                                      color: Colors.greenAccent,
+                                      size: SizeConfig.blockSizeHorizontal * 5,
+                                    ),
+                                    label: Text(
+                                      'Call',
+                                      style: TextStyle(
+                                          color: Colors.greenAccent,
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  2.8),
+                                    )),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5.0),
+                                child: RaisedButton.icon(
+                                    color: Colors.white,
+                                    onPressed: () async {
+                                      Share.share(
+                                          'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n Location:${docs[i]['Location']} \n From Ente Manjeri');
+                                    },
+                                    icon: Icon(
+                                      Icons.share,
+                                      color: Colors.greenAccent,
+                                      size: SizeConfig.blockSizeHorizontal * 5,
+                                    ),
+                                    label: Text(
+                                      'Share',
+                                      style: TextStyle(
+                                          color: Colors.greenAccent,
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  2.8),
+                                    )),
+                              ),
+                            ],
                           ),
                         ],
                       ),

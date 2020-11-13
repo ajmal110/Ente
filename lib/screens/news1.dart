@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/cart-screen.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:share/share.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../models/product.dart';
@@ -56,6 +58,7 @@ class News1 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     String imageurl;
     if (docs['Photo'].toString().trim() != '') {
       imageurl = docs['Photo'];
@@ -63,6 +66,22 @@ class News1 extends StatelessWidget {
       imageurl = null;
     }
     return Scaffold(
+      floatingActionButton: OutlinedButton.icon(
+          onPressed: () async {
+            Share.share(
+                '${docs['Heading']} \n \n ${docs['Description']} \n From Ente Manjeri');
+          },
+          icon: Icon(
+            Icons.share,
+            color: Colors.blueGrey,
+            size: SizeConfig.blockSizeHorizontal * 5,
+          ),
+          label: Text(
+            'Share',
+            style: TextStyle(
+                color: Colors.blueGrey,
+                fontSize: SizeConfig.blockSizeHorizontal * 2.8),
+          )),
       appBar: AppBar(
         title: GestureDetector(
           onTap: () {
@@ -127,7 +146,7 @@ class News1 extends StatelessWidget {
                     docs['Heading'],
                     softWrap: true,
                     style: TextStyle(
-                        fontSize: 23,
+                        fontSize: SizeConfig.blockSizeHorizontal * 5.2,
                         fontWeight: FontWeight.bold,
                         color: Colors.blueGrey),
                   ),
@@ -142,7 +161,8 @@ class News1 extends StatelessWidget {
                     docs['Description'],
                     textAlign: TextAlign.left,
                     softWrap: true,
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 3.7),
                   ),
                 ),
                 SizedBox(height: 10),

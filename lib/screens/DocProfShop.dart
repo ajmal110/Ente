@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/DocProfShop1.dart';
 import 'package:plantStore/widgets/newDocProfShop.dart';
+import 'package:share/share.dart';
 
 import '../models/product.dart';
 import 'cart-screen.dart';
@@ -23,6 +25,7 @@ class DocProfShop extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         title: GestureDetector(
@@ -79,7 +82,8 @@ class DocProfShop extends StatelessWidget {
         stream: Firestore.instance
             .collection(parent)
             .document(cat)
-            .collection('List').orderBy('Name')
+            .collection('List')
+            .orderBy('Name')
             .snapshots(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -118,6 +122,9 @@ class DocProfShop extends StatelessWidget {
                             ),
                             title: Text(
                               docs[i]['Name'],
+                              style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                              ),
                             ),
                             subtitle: Column(
                               children: [
@@ -129,26 +136,66 @@ class DocProfShop extends StatelessWidget {
                                       child: Text(
                                         'Phone:\n ${docs[i]['Phone']}\n \n Location:\n ${docs[i]['Location']}',
                                         softWrap: true,
+                                        style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  3.4,
+                                        ),
                                       ),
                                     ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(left: 10.0),
-                                      child: RaisedButton.icon(
-                                          color: Colors.white,
-                                          onPressed: () async {
-                                            launchCaller('${docs[i]['Phone']}');
-                                          },
-                                          icon: Icon(
-                                            Icons.call,
-                                            color: Colors.greenAccent,
-                                          ),
-                                          label: Text(
-                                            'Call',
-                                            style: TextStyle(
-                                              color: Colors.greenAccent,
-                                            ),
-                                          )),
+                                    Column(
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 10.0),
+                                          child: RaisedButton.icon(
+                                              color: Colors.white,
+                                              onPressed: () async {
+                                                launchCaller(
+                                                    '${docs[i]['Phone']}');
+                                              },
+                                              icon: Icon(
+                                                Icons.call,
+                                                color: Colors.greenAccent,
+                                                size: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    5,
+                                              ),
+                                              label: Text(
+                                                'Call',
+                                                style: TextStyle(
+                                                    color: Colors.greenAccent,
+                                                    fontSize: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        2.8),
+                                              )),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(left: 5.0),
+                                          child: RaisedButton.icon(
+                                              color: Colors.white,
+                                              onPressed: () async {
+                                                Share.share(
+                                                    'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                              },
+                                              icon: Icon(
+                                                Icons.share,
+                                                color: Colors.greenAccent,
+                                                size: SizeConfig
+                                                        .blockSizeHorizontal *
+                                                    5,
+                                              ),
+                                              label: Text(
+                                                'Share',
+                                                style: TextStyle(
+                                                    color: Colors.greenAccent,
+                                                    fontSize: SizeConfig
+                                                            .blockSizeHorizontal *
+                                                        2.8),
+                                              )),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
