@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/Providers/call_provider.dart';
 import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/widgets/newVehiSkil.dart';
@@ -115,9 +116,18 @@ class VehiSkill extends StatelessWidget {
                     subtitle: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Phone:\n ${docs[i]['Phone']}',
-                          softWrap: true,
+                        Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.phoneSquare,
+                              color: Colors.greenAccent,
+                              size: SizeConfig.blockSizeHorizontal * 4.5,
+                            ),
+                            Text(
+                              '  ${docs[i]['Phone']}',
+                              softWrap: true,
+                            ),
+                          ],
                         ),
                         Column(
                           children: [

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/Providers/call_provider.dart';
 import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/widgets/newTaxi.dart';
@@ -116,9 +117,18 @@ class Taxi extends StatelessWidget {
                     subtitle: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text(
-                          'Phone: ${docs[i]['Phone No']}',
-                          softWrap: true,
+                        Row(
+                          children: [
+                            Icon(
+                              FontAwesomeIcons.phoneSquare,
+                              color: Colors.greenAccent,
+                              size: SizeConfig.blockSizeHorizontal * 4.5,
+                            ),
+                            Text(
+                              '  ${docs[i]['Phone No']}',
+                              softWrap: true,
+                            ),
+                          ],
                         ),
                         Column(
                           children: [

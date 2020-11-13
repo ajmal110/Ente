@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/turf.dart';
 import 'package:plantStore/Providers/call_provider.dart';
@@ -117,12 +118,49 @@ class Turf1 extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Expanded(
-                            child: Text(
-                              'Phone : ${docs[i]['Phone']}\nLocation : \n ${docs[i]['Location']}',
-                              softWrap: true,
-                              style: TextStyle(
-                                fontSize: SizeConfig.blockSizeHorizontal * 3.4,
-                              ),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(
+                                      FontAwesomeIcons.phoneSquare,
+                                      color: Colors.greenAccent,
+                                      size:
+                                          SizeConfig.blockSizeHorizontal * 4.5,
+                                    ),
+                                    Text(
+                                      '  ${docs[i]['Phone']}',
+                                      softWrap: true,
+                                      style: TextStyle(
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal *
+                                                3.4,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(
+                                      Icons.location_on_rounded,
+                                      color: Colors.greenAccent,
+                                      size: SizeConfig.blockSizeHorizontal * 5,
+                                    ),
+                                    Text(
+                                      '  ${docs[i]['Location']}',
+                                      softWrap: true,
+                                      style: TextStyle(
+                                        fontSize:
+                                            SizeConfig.blockSizeHorizontal *
+                                                3.4,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
                             ),
                           ),
                           Column(
