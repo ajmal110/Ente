@@ -112,6 +112,9 @@ class VehiSkill extends StatelessWidget {
                     ),
                     title: Text(
                       docs[i]['Name'],
+                      style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                      ),
                     ),
                     subtitle: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -126,6 +129,9 @@ class VehiSkill extends StatelessWidget {
                             Text(
                               '  ${docs[i]['Phone']}',
                               softWrap: true,
+                              style: TextStyle(
+                                fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                              ),
                             ),
                           ],
                         ),
