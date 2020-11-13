@@ -79,7 +79,7 @@ class DocProfShop extends StatelessWidget {
         stream: Firestore.instance
             .collection(parent)
             .document(cat)
-            .collection('List')
+            .collection('List').orderBy('Name')
             .snapshots(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

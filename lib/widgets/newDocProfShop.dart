@@ -27,6 +27,7 @@ class _NewBusState extends State<NewBus> {
     final picker = ImagePicker();
     final imageFile = await picker.getImage(
       source: ImageSource.gallery,
+      imageQuality: 40,
     );
     if (imageFile == null) {
       return;
@@ -44,6 +45,7 @@ class _NewBusState extends State<NewBus> {
     final picker = ImagePicker();
     final imageFile = await picker.getImage(
       source: ImageSource.camera,
+      imageQuality: 40,
     );
     if (imageFile == null) {
       return;
@@ -117,12 +119,13 @@ class _NewBusState extends State<NewBus> {
     print('SAVED');
 
     String url;
-
+    Navigator.of(context).pop();
     if (_selectedImages.length > 0) {
       final ref = FirebaseStorage.instance
           .ref()
           .child('contactImages')
           .child(_name + '.jpg');
+
       await ref.putFile(_selectedImages[0]).onComplete;
 
       url = await ref.getDownloadURL();
@@ -146,7 +149,6 @@ class _NewBusState extends State<NewBus> {
     //print(_addedExpense.title);
     //print(_addedExpense.category);
     //print(_addedExpense.day);
-    Navigator.of(context).pop();
   }
 
   @override

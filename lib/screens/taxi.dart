@@ -76,7 +76,7 @@ class Taxi extends StatelessWidget {
         stream: Firestore.instance
             .collection('Taxi')
             .document(cat)
-            .collection(loc)
+            .collection(loc).orderBy('Name')
             .snapshots(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

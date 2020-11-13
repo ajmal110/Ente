@@ -73,6 +73,7 @@ class BusTimings extends StatelessWidget {
             .collection('Bus Timings')
             .document(cat)
             .collection('List')
+            .orderBy('Name')
             .snapshots(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -98,8 +99,9 @@ class BusTimings extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
-                    leading: CircleAvatar(backgroundImage: NetworkImage(docs[i]['Photo']),
-                        ),
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(docs[i]['Photo']),
+                    ),
                     title: Text(
                       docs[i]['Name'],
                     ),

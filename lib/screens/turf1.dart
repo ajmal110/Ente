@@ -67,7 +67,7 @@ class Turf1 extends StatelessWidget {
         )
       ],
       body: StreamBuilder(
-        stream: Firestore.instance.collection('Turf').snapshots(),
+        stream: Firestore.instance.collection('Turf').orderBy('Name').snapshots(),
         builder: (ctx, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(
