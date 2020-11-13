@@ -145,40 +145,49 @@ class _NewBusState extends State<NewBus> {
     //print(_addedExpense.day);
   }
 
-  createThanksDialog(BuildContext context) {
-    return showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            title: new Text(
-              'Are you sure about the details you entered?',
-              style: TextStyle(fontSize: 18),
-            ),
-            content: new Text(
-              'if not pls go back and ensure all the details entered are correct',
-              style: TextStyle(fontSize: 13),
-            ),
-            actions: <Widget>[
-              new FlatButton(
-                child: new Text("Continue"),
-                onPressed: () {
-                  _saveForm();
-                  Navigator.of(context).pop();
-                },
-              ),
-              new FlatButton(
-                child: Text("Cancel"),
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-            ],
-          );
-        });
-  }
-
   @override
   Widget build(BuildContext context) {
+    createThanksDialog() {
+      FocusScope.of(context).unfocus();
+      return showDialog(
+          context: context,
+          builder: (context) {
+            return AlertDialog(
+              title: new Text(
+                'Are you sure about the details you entered?',
+                style: TextStyle(fontSize: 18),
+              ),
+              content: new Text(
+                'if not pls go back and ensure all the details entered are correct',
+                style: TextStyle(fontSize: 13),
+              ),
+              actions: <Widget>[
+                new FlatButton(
+                  child: new Text("Continue"),
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    _saveForm();
+                  },
+                ),
+                new FlatButton(
+                  child: Text("Cancel"),
+                  onPressed: () {
+                    setState(() {
+                      _name = null;
+                      _time = null;
+                      _location = null;
+                      _phone = null;
+                      _selectedImages = [];
+                    });
+                    _form.currentState.reset();
+                    Navigator.of(context).pop();
+                  },
+                ),
+              ],
+            );
+          });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -195,7 +204,7 @@ class _NewBusState extends State<NewBus> {
             icon: Icon(
               Icons.save,
             ),
-            onPressed: createThanksDialog(context),
+            onPressed: () => createThanksDialog(),
           ),
         ],
       ),
