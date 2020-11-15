@@ -130,7 +130,7 @@ class VehiSkill extends StatelessWidget {
                               '  ${docs[i]['Phone']}',
                               softWrap: true,
                               style: TextStyle(
-                                fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                                fontSize: SizeConfig.blockSizeHorizontal * 3.5,
                               ),
                             ),
                           ],

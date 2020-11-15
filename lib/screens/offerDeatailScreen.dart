@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/animation.dart';
@@ -12,14 +11,14 @@ import 'package:provider/provider.dart';
 import '../models/product.dart';
 import '../Providers/product-provider.dart';
 
-class OfferDetailScreen extends StatelessWidget {
+class OfferDetailScreen extends StatefulWidget {
   final prod;
   final String id;
   final String desc;
   final String name;
   final String mainText;
   final String photo;
-  final String price;
+  final int price;
   final String details;
   OfferDetailScreen(
       {this.prod,
@@ -31,44 +30,14 @@ class OfferDetailScreen extends StatelessWidget {
       this.price,
       this.details});
 
-  //THE FOLLOWING IS A LIST OF DUMMY REVIEWS which actually has to
-  // be a part of Products OR has to be in a separate database with the
-  //prodId along with it.
-  //THIS IS JUST FOR YOUR FRONT-END looks....but this can EASILY be fitted
-  //into desired BACK-END.
-  /* final List<Map<String, Object>> reviews = [
-    {
-      'rating': 4.0,
-      'review':
-          'Excellent phone in this budget .The only thing is battery drains fast and charges slowly and also camera is not so good but works fine .'
-    },
-    {
-      'rating': 4.0,
-      'review':
-          'Excellent phone in this budget .The only thing is battery drains fast and charges slowly and also camera is not so good but works fine .'
-    },
-    {
-      'rating': 4.0,
-      'review':
-          'Excellent phone in this budget .The only thing is battery drains fast and charges slowly and also camera is not so good but works fine .'
-    },
-    {
-      'rating': 4.0,
-      'review':
-          'Excellent phone in this budget .The only thing is battery drains fast and charges slowly and also camera is not so good but works fine .'
-    },
-    {
-      'rating': 4.0,
-      'review':
-          'Excellent phone in this budget .The only thing is battery drains fast and charges slowly and also camera is not so good but works fine .'
-    },
-    {
-      'rating': 4.0,
-      'review':
-          'Excellent phone in this budget .The only thing is battery drains fast and charges slowly and also camera is not so good but works fine .'
-    },
-  ];
- */
+  @override
+  _OfferDetailScreenState createState() => _OfferDetailScreenState();
+}
+
+class _OfferDetailScreenState extends State<OfferDetailScreen> {
+  int _itemCount = 1;
+
+  int _n = 0;
 
   void changePage(BuildContext context, String currUid, List cartToShow) {
     Navigator.of(context).pop();
@@ -91,7 +60,7 @@ class OfferDetailScreen extends StatelessWidget {
         return StreamBuilder(
             stream: Firestore.instance
                 .collection('online')
-                .document(id)
+                .document(widget.id)
                 .collection('reviews')
                 .snapshots(),
             builder: (ctx, snapshot) {
@@ -113,7 +82,7 @@ class OfferDetailScreen extends StatelessWidget {
                   ),
                   onPressed: () => Navigator.of(context).push(
                     MaterialPageRoute(
-                      builder: (ctx) => AddReview(id),
+                      builder: (ctx) => AddReview(widget.id),
                     ),
                   ),
                 ),
@@ -146,6 +115,7 @@ class OfferDetailScreen extends StatelessWidget {
                 //     )
                 //   ],
                 // ),
+
                 body: CustomScrollView(
                   slivers: <Widget>[
                     SliverAppBar(
@@ -162,7 +132,7 @@ class OfferDetailScreen extends StatelessWidget {
                         title: Stack(
                           children: [
                             Container(
-                              child: Text(name,
+                              child: Text(widget.name,
                                   style: TextStyle(
                                       // color: Colors.white,
 
@@ -178,7 +148,7 @@ class OfferDetailScreen extends StatelessWidget {
                                       fontFamily: 'Montserrat')),
                             ),
                             Text(
-                              name,
+                              widget.name,
                               style: TextStyle(
                                   fontSize: 18.0,
                                   fontFeatures: [FontFeature.enable('smcp')],
@@ -189,7 +159,7 @@ class OfferDetailScreen extends StatelessWidget {
                           ],
                         ),
                         background: Image.network(
-                          photo,
+                          widget.photo,
                           fit: BoxFit.scaleDown,
                         ),
                       ),
@@ -198,40 +168,40 @@ class OfferDetailScreen extends StatelessWidget {
                       delegate: SliverChildListDelegate(
                         [
                           SizedBox(height: 5),
-                          Container(
-                            padding: const EdgeInsets.all(15),
-                            child: Row(
-                              children: [
-                                Text(
-                                  'Price : ',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 20,
-                                  ),
-                                ),
-                                Card(
-                                  // elevation: 20,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30),
-                                  ),
-                                  // color: Theme.of(context).primaryColor,
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10.0),
-                                    child: Text(price.toString(),
-                                        textAlign: TextAlign.center,
-                                        style: TextStyle(
-                                          // color: Theme.of(context).accentColor,
-                                          fontSize: 16,
-                                        )
-                                        // fontWeight: FontWeight.bold),
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
+                          // Container(
+                          //   padding: const EdgeInsets.all(15),
+                          //   child: Row(
+                          //     children: [
+                          //       Text(
+                          //         'Price : ',
+                          //         style: TextStyle(
+                          //           fontWeight: FontWeight.bold,
+                          //           fontSize: 20,
+                          //         ),
+                          //       ),
+                          //       Card(
+                          //         // elevation: 20,
+                          //         shape: RoundedRectangleBorder(
+                          //           borderRadius: BorderRadius.circular(30),
+                          //         ),
+                          //         // color: Theme.of(context).primaryColor,
+                          //         child: Padding(
+                          //           padding: const EdgeInsets.all(10.0),
+                          //           child: Text(widget.price.toString(),
+                          //               textAlign: TextAlign.center,
+                          //               style: TextStyle(
+                          //                 // color: Theme.of(context).accentColor,
+                          //                 fontSize: 16,
+                          //               )
+                          //               // fontWeight: FontWeight.bold),
+                          //               ),
+                          //         ),
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                           Padding(
-                            padding: const EdgeInsets.all(15),
+                            padding: const EdgeInsets.fromLTRB(15, 40, 15, 15),
                             child: Text(
                               'Product Details : ',
                               style: TextStyle(
@@ -242,7 +212,7 @@ class OfferDetailScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 15),
                             width: double.infinity,
                             child: Text(
-                              details.toString(),
+                              widget.details.toString(),
                               textAlign: TextAlign.left,
                               softWrap: true,
                               style: TextStyle(fontSize: 17),
@@ -261,13 +231,76 @@ class OfferDetailScreen extends StatelessWidget {
                             padding: EdgeInsets.symmetric(horizontal: 15),
                             width: double.infinity,
                             child: Text(
-                              desc.toString(),
+                              widget.desc.toString(),
                               textAlign: TextAlign.left,
                               softWrap: true,
                               style: TextStyle(fontSize: 17),
                             ),
                           ),
                           SizedBox(height: 10),
+                          Container(
+                            margin: EdgeInsets.all(8),
+                            child: Row(
+                              children: <Widget>[
+                                _itemCount != 1
+                                    ? new IconButton(
+                                        icon: new Icon(Icons.remove),
+                                        onPressed: () =>
+                                            setState(() => _itemCount--),
+                                      )
+                                    : new IconButton(
+                                        icon: new Icon(
+                                          Icons.remove,
+                                          color: Colors.black,
+                                        ),
+                                      ),
+                                new Text(_itemCount.toString()),
+                                new IconButton(
+                                    icon: new Icon(Icons.add),
+                                    onPressed: () =>
+                                        setState(() => _itemCount++))
+                              ],
+                            ),
+                          ),
+
+                          Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(15),
+                                child: Text(
+                                  'Amount : ',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 5.0, bottom: 15, top: 15),
+                                child: Text('Rs',
+                                    textAlign: TextAlign.center,
+                                    style: TextStyle(
+                                      // color: Theme.of(context).accentColor,
+                                      fontSize: 16,
+                                    )
+                                    // fontWeight: FontWeight.bold),
+                                    ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child:
+                                    Text((_itemCount * widget.price).toString(),
+                                        textAlign: TextAlign.center,
+                                        style: TextStyle(
+                                          // color: Theme.of(context).accentColor,
+                                          fontSize: 16,
+                                        )
+                                        // fontWeight: FontWeight.bold),
+                                        ),
+                              ),
+                            ],
+                          ),
+
                           Consumer<ProductProvider>(
                             builder: (ctx, product, ch) => Center(
                               child: Container(
@@ -275,24 +308,24 @@ class OfferDetailScreen extends StatelessWidget {
                                     MediaQuery.of(context).size.width * 0.11,
                                 width: MediaQuery.of(context).size.width * 0.9,
                                 child: FlatButton.icon(
-                                  color: product.cart.contains(id)
+                                  color: product.cart.contains(widget.id)
                                       ? Colors.grey
                                       : Theme.of(context).primaryColor,
                                   onPressed: () {
-                                    product.toggleCart(id);
+                                    product.toggleCart(widget.id);
                                   },
                                   icon: Icon(
                                     Icons.shopping_cart,
-                                    color: product.cart.contains(id)
+                                    color: product.cart.contains(widget.id)
                                         ? Colors.black
                                         : Theme.of(context).accentColor,
                                   ),
                                   label: Text(
-                                    product.cart.contains(id)
+                                    product.cart.contains(widget.id)
                                         ? 'Remove from Cart'
                                         : 'Add to Cart',
                                     style: TextStyle(
-                                      color: product.cart.contains(id)
+                                      color: product.cart.contains(widget.id)
                                           ? Colors.black
                                           : Theme.of(context).accentColor,
                                     ),
@@ -311,7 +344,7 @@ class OfferDetailScreen extends StatelessWidget {
                                 child: FlatButton.icon(
                                   color: Colors.teal[800],
                                   onPressed: () {
-                                    changePage(context, currUid, [prod]);
+                                    changePage(context, currUid, [widget.prod]);
                                   },
                                   icon: Icon(
                                     Icons.shopping_cart,
@@ -334,7 +367,7 @@ class OfferDetailScreen extends StatelessWidget {
                               child: Text('* Cash On Delivery'),
                             ),
                           ),
-                          Divider(thickness: 3),
+
                           //       Consumer<ProductProvider>(
                           //         builder: (ctx, product, ch) => Center(
                           //           child: Container(

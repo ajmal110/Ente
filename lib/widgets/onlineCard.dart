@@ -13,7 +13,7 @@ class OnlineCard extends StatelessWidget {
   final String name;
   final String mainText;
   final String photo;
-  final String price;
+  final int price;
   final String details;
 
   OnlineCard(

@@ -128,7 +128,7 @@ class _CartScreenState extends State<CartScreen> {
                                     final String mainText =
                                         cartToShow[i]['mainText'];
                                     final String photo = cartToShow[i]['photo'];
-                                    final String price = cartToShow[i]['price'];
+                                    final int price = cartToShow[i]['price'];
                                     final String details =
                                         cartToShow[i]['productDetails'];
 
