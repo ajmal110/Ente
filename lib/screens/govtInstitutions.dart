@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:plantStore/Providers/call_provider.dart';
+import 'package:plantStore/Providers/text-scroll.dart';
+import 'package:plantStore/models/size_config.dart';
+import 'package:share/share.dart';
 
 import '../models/product.dart';
 import '../screens/cart-screen.dart';
@@ -12,6 +16,7 @@ class GovtInstitutions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -38,7 +43,7 @@ class GovtInstitutions extends StatelessWidget {
       ),
       body: StreamBuilder(
         stream: Firestore.instance
-            .collection('Govt Institutions')
+            .collection('Institutions')
             .document(cat)
             .collection('List')
             .snapshots(),
@@ -67,35 +72,166 @@ class GovtInstitutions extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: ListTile(
                     leading: CircleAvatar(
+                      radius: 30,
                       backgroundImage: NetworkImage(docs[i]['Photo']),
                     ),
                     title: Text(
-                      "Location: ${docs[i]['Location']}",
-                      softWrap: true,
+                      docs[i]['Name'],
+                      style: TextStyle(
+                        fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                      ),
                     ),
-                    subtitle: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    subtitle: Column(
                       children: [
-                        Text(
-                          'Phone: ${docs[i]['Phone']}',
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30.0),
-                          child: RaisedButton.icon(
-                              color: Colors.white,
-                              onPressed: () async {
-                                launchCaller('${docs[i]['Phone']}');
-                              },
-                              icon: Icon(
-                                Icons.call,
-                                color: Colors.greenAccent,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        FontAwesomeIcons.phoneSquare,
+                                        color: Colors.greenAccent,
+                                        size: SizeConfig.blockSizeHorizontal *
+                                            4.5,
+                                      ),
+                                      Text(
+                                        '  ${docs[i]['Phone']}',
+                                        softWrap: true,
+                                        style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  3.4,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        Icons.location_on_rounded,
+                                        color: Colors.greenAccent,
+                                        size:
+                                            SizeConfig.blockSizeHorizontal * 5,
+                                      ),
+                                      Container(
+                                        width: SizeConfig.blockSizeHorizontal *
+                                            35.0,
+                                        height: 20,
+                                        child: MarqueeWidget(
+                                            direction: Axis.horizontal,
+                                            child: Text(
+                                                " ${docs[i]['Location']}")),
+                                        // Container(
+                                        //   width: SizeConfig
+                                        //           .blockSizeHorizontal *
+                                        //       35.0,
+                                        //   height: 20,
+                                        //   child: Marquee(
+                                        //     text:
+                                        //         '  ${docs[i]['Location']}',
+                                        //     style: TextStyle(
+                                        //       fontSize: SizeConfig
+                                        //               .blockSizeHorizontal *
+                                        //           3.0,
+                                        //     ),
+                                        //     scrollAxis: Axis.horizontal,
+                                        //     crossAxisAlignment:
+                                        //         CrossAxisAlignment
+                                        //             .start,
+                                        //     blankSpace: 20.0,
+                                        //     velocity: 50.0,
+                                        //     pauseAfterRound: Duration(
+                                        //         milliseconds: 500),
+                                        //     startPadding: 10.0,
+                                        //     // accelerationDuration:
+                                        //     //     Duration(seconds: 2),
+                                        //     // accelerationCurve:
+                                        //     //     Curves.linear,
+                                        //     // decelerationDuration:
+                                        //     //     Duration(
+                                        //     //         milliseconds: 2),
+                                        //     // decelerationCurve:
+                                        //     //     Curves.linear,
+                                        //   ),
+                                      ),
+
+                                      // Container(
+                                      //   width: SizeConfig
+                                      //           .blockSizeHorizontal *
+                                      //       35.0,
+                                      //   height: 20,
+                                      //   child: ScrollingText(
+                                      //     text:
+                                      //         '  ${docs[i]['Location']}',
+                                      //     textStyle: TextStyle(
+                                      //       fontSize: SizeConfig
+                                      //               .blockSizeHorizontal *
+                                      //           3.0,
+                                      //     ),
+                                      //     scrollAxis: Axis.horizontal,
+                                      //   ),
+                                      // ),
+                                    ],
+                                  )
+                                ],
                               ),
-                              label: Text(
-                                'Call',
-                                style: TextStyle(
-                                  color: Colors.greenAccent,
+                            ),
+                            Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 10.0),
+                                  child: RaisedButton.icon(
+                                      color: Colors.white,
+                                      onPressed: () async {
+                                        launchCaller('${docs[i]['Phone']}');
+                                      },
+                                      icon: Icon(
+                                        Icons.call,
+                                        color: Colors.greenAccent,
+                                        size:
+                                            SizeConfig.blockSizeHorizontal * 5,
+                                      ),
+                                      label: Text(
+                                        'Call',
+                                        style: TextStyle(
+                                            color: Colors.greenAccent,
+                                            fontSize:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    2.8),
+                                      )),
                                 ),
-                              )),
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 5.0),
+                                  child: RaisedButton.icon(
+                                      color: Colors.white,
+                                      onPressed: () async {
+                                        Share.share(
+                                            'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                      },
+                                      icon: Icon(
+                                        Icons.share,
+                                        color: Colors.greenAccent,
+                                        size:
+                                            SizeConfig.blockSizeHorizontal * 5,
+                                      ),
+                                      label: Text(
+                                        'Share',
+                                        style: TextStyle(
+                                            color: Colors.greenAccent,
+                                            fontSize:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    2.8),
+                                      )),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ],
                     ),

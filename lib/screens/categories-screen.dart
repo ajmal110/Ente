@@ -24,7 +24,7 @@ class CategoriesScreen extends StatelessWidget {
     {'cat': 'Skilled Workers', 'path': 'assets/images/Workers.png'},
     // {'cat': 'Business', 'path': 'assets/images/Business1.png'},
     {'cat': 'Shopping', 'path': 'assets/images/Shopping.png'},
-    {'cat': 'Govt Institutions', 'path': 'assets/images/Govt.png'},
+    {'cat': 'Institutions', 'path': 'assets/images/Untitled design(1).png'},
     {'cat': 'My Doctor', 'path': 'assets/images/doc.png'},
     {'cat': 'Turf', 'path': 'assets/images/turf.png'},
     {'cat': 'Blood Bank', 'path': 'assets/images/Blood Bank.png'},

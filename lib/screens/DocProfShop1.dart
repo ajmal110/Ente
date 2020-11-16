@@ -82,19 +82,21 @@ class DocProfShop1 extends StatelessWidget {
             pinned: true,
             flexibleSpace: FlexibleSpaceBar(
               title: Container(
-                padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                // decoration: BoxDecoration(
-                //     color: Colors.black26,
-                //     borderRadius: BorderRadius.circular(20)),
+                // alignment: Alignment.bottomCenter,
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+                decoration: BoxDecoration(
+                    color: Colors.black26,
+                    borderRadius: BorderRadius.circular(2)),
                 child: Text(
                   docs['Name'],
                   style: TextStyle(
                       color: Theme.of(context).accentColor,
-                      fontSize: SizeConfig.blockSizeHorizontal * 4.5,
+                      fontSize: SizeConfig.blockSizeHorizontal * 3.9,
                       fontWeight: FontWeight.normal),
                   softWrap: true,
                 ),
               ),
+              centerTitle: true,
               background: Image.network(
                 docs['Photo'],
                 fit: BoxFit.cover,

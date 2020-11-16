@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
+import 'package:plantStore/Providers/text-scroll.dart';
 import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/news1.dart';
 
@@ -21,12 +22,12 @@ class NewsCard extends StatelessWidget {
           // color: Colors.black26,
           child: Text(
             offer['SubDes'],
-            softWrap: true,
             style: TextStyle(
               color: Colors.grey[700],
               fontSize: SizeConfig.blockSizeHorizontal * 3,
-              fontWeight: FontWeight.bold,
+              // fontWeight: FontWeight.bold,
             ),
+            softWrap: true,
           ),
         ),
         padding: EdgeInsets.all(1),

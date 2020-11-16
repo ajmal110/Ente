@@ -31,7 +31,7 @@ class CategoryTile2 extends StatelessWidget {
             context,
             MaterialPageRoute(builder: (ctx) => BusTimings(category)),
           );
-        } else if (parent == 'Govt Institutions') {
+        } else if (parent == 'Institutions') {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (ctx) => GovtInstitutions(category)),

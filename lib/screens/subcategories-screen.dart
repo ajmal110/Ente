@@ -131,10 +131,16 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Workshop', 'path': 'assets/images/workshop.png'},
   ];
 
-  final List<Map<String, String>> govtInstitutions = [
-    {'cat': 'Post Office', 'path': 'assets/images/Post Office.png'},
-    {'cat': 'Police', 'path': 'assets/images/police.png'},
-    {'cat': 'Fire Force', 'path': 'assets/images/Fire Force.png'},
+  final List<Map<String, String>> institutions = [
+    {'cat': 'Govt Institutions', 'path': 'assets/images/Govt.png'},
+    {'cat': 'Nursery Schools', 'path': 'assets/images/Nursery Schools.png'},
+    {'cat': 'Schools', 'path': 'assets/images/Schools.png'},
+    {'cat': 'Colleges', 'path': 'assets/images/Colleges.png'},
+    {'cat': 'PSC Coaching', 'path': 'assets/images/PSC Coaching.png'},
+    {'cat': 'Entrance Coaching', 'path': 'assets/images/Entrance Coaching.png'},
+    {'cat': 'Church', 'path': 'assets/images/Church.png'},
+    {'cat': 'Mosque', 'path': 'assets/images/Mosque.png'},
+    {'cat': 'Temple', 'path': 'assets/images/Untitled design(2).png'},
   ];
   final List<Map<String, String>> bloodBank = [
     {'cat': 'A+ve', 'path': 'assets/images/A+ve.png'},
@@ -166,7 +172,7 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
       {'cat': 'Skilled Workers', 'subcat': skilledWorkers},
       {'cat': 'My Doctor', 'subcat': doctor},
       {'cat': 'Shopping', 'subcat': shopping},
-      {'cat': 'Govt Institutions', 'subcat': govtInstitutions},
+      {'cat': 'Institutions', 'subcat': institutions},
       {'cat': 'Blood Bank', 'subcat': bloodBank},
     ];
 
