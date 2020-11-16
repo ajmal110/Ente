@@ -106,9 +106,29 @@ class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
     {'cat': 'Electricals', 'path': 'assets/images/Electricals.png'},
     {'cat': 'Opticals', 'path': 'assets/images/opticals.png'},
     {'cat': 'Sanitaryware', 'path': 'assets/images/sanitary.png'},
-    {'cat': 'Sports store', 'path': 'assets/images/sports store.png'},
+    {'cat': 'Sports Store', 'path': 'assets/images/sports store.png'},
     {'cat': 'Studio', 'path': 'assets/images/Studio.png'},
     {'cat': 'Courier Service', 'path': 'assets/images/Courier Service.png'},
+    {'cat': 'Petrol Pump', 'path': 'assets/images/petrol.png'},
+    {'cat': 'Online Services', 'path': 'assets/images/online services.png'},
+    {'cat': 'Pharmacy', 'path': 'assets/images/medicals.png'},
+    {'cat': 'Vehicle Motors', 'path': 'assets/images/motors.png'},
+    {
+      'cat': 'Interior Designing',
+      'path': 'assets/images/interior designing.png'
+    },
+    {'cat': 'Gym & Fitness', 'path': 'assets/images/gym.png'},
+    {'cat': 'Gas Agency', 'path': 'assets/images/gas.png'},
+    {'cat': 'Curtain & Rexin', 'path': 'assets/images/curtain.png'},
+    {'cat': 'Computer Sales & service', 'path': 'assets/images/computers.png'},
+    {'cat': 'Cement & Steel', 'path': 'assets/images/cement.png'},
+    {'cat': 'Cake & Icecream', 'path': 'assets/images/cake.png'},
+    {'cat': 'Press & DTP', 'path': 'assets/images/press.png'},
+    {'cat': 'Scrap', 'path': 'assets/images/scrap.png'},
+    {'cat': 'Tailors', 'path': 'assets/images/tailor.png'},
+    {'cat': 'Wallpapers & Stickers', 'path': 'assets/images/wallpapers.png'},
+    {'cat': 'Watch & Clock', 'path': 'assets/images/watch.png'},
+    {'cat': 'Workshop', 'path': 'assets/images/workshop.png'},
   ];
 
   final List<Map<String, String>> govtInstitutions = [

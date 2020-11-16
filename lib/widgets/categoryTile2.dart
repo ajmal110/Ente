@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/VehiSkil.dart';
+import 'package:plantStore/widgets/myOrders.dart';
 import 'package:provider/provider.dart';
 
 import 'package:getwidget/getwidget.dart';
@@ -81,6 +82,7 @@ class CategoryTile2 extends StatelessWidget {
                 color: Colors.grey[800],
                 letterSpacing: 1.3,
                 fontSize: SizeConfig.blockSizeHorizontal * 2.7),
+            textAlign: TextAlign.center,
           ),
 
           // title: GFListTile(

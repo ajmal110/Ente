@@ -83,15 +83,16 @@ class DocProfShop1 extends StatelessWidget {
             flexibleSpace: FlexibleSpaceBar(
               title: Container(
                 padding: EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-                decoration: BoxDecoration(
-                    color: Colors.black26,
-                    borderRadius: BorderRadius.circular(20)),
+                // decoration: BoxDecoration(
+                //     color: Colors.black26,
+                //     borderRadius: BorderRadius.circular(20)),
                 child: Text(
                   docs['Name'],
                   style: TextStyle(
                       color: Theme.of(context).accentColor,
-                      fontSize: SizeConfig.blockSizeHorizontal * 4.8,
+                      fontSize: SizeConfig.blockSizeHorizontal * 4.5,
                       fontWeight: FontWeight.normal),
+                  softWrap: true,
                 ),
               ),
               background: Image.network(
