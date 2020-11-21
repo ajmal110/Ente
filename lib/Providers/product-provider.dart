@@ -106,9 +106,14 @@ class ProductProvider with ChangeNotifier {
   ];
 
   List<String> _cart = [];
+  List<Map> _cartWithCount = [];
 
   List<String> get cart {
     return [..._cart];
+  }
+
+  List<Map> get cartWithCount {
+    return [..._cartWithCount];
   }
 
   List<Product> get allProducts {
@@ -123,11 +128,26 @@ class ProductProvider with ChangeNotifier {
     return [..._topPicks];
   }
 
-  void toggleCart(String a) {
-    if (_cart.contains(a)) {
-      _cart.remove(a);
+  void toggleCart(String id, int count) {
+    if (_cart.contains(id)) {
+      _cart.remove(id);
+      _cartWithCount.removeWhere((element) => element['id'] == id);
     } else {
-      _cart.add(a);
+      _cart.add(id);
+      _cartWithCount.add({
+        'id': id,
+        'count': count,
+      });
+    }
+    notifyListeners();
+  }
+
+  void countChange({String id, bool isplus}) {
+    int index = _cartWithCount.indexWhere((element) => element['id'] == id);
+    if (isplus) {
+      _cartWithCount[index]['count']++;
+    } else {
+      _cartWithCount[index]['count']--;
     }
     notifyListeners();
   }

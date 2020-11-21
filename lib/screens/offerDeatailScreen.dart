@@ -35,9 +35,26 @@ class OfferDetailScreen extends StatefulWidget {
 }
 
 class _OfferDetailScreenState extends State<OfferDetailScreen> {
-  int _itemCount = 1;
-
+  int _itemCount;
   int _n = 0;
+
+  bool _init = true;
+
+  @override
+  void didChangeDependencies() {
+    if (_init) {
+      _itemCount =
+          (Provider.of<ProductProvider>(context).cart.contains(widget.id))
+              ? Provider.of<ProductProvider>(context)
+                  .cartWithCount
+                  .firstWhere((element) => element['id'] == widget.id)['count']
+              : 1;
+    }
+    setState(() {
+      _init = false;
+    });
+    super.didChangeDependencies();
+  }
 
   void changePage(BuildContext context, String currUid, List cartToShow) {
     Navigator.of(context).pop();
@@ -238,28 +255,30 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                             ),
                           ),
                           SizedBox(height: 10),
-                          Container(
-                            margin: EdgeInsets.all(8),
-                            child: Row(
-                              children: <Widget>[
-                                _itemCount != 1
-                                    ? new IconButton(
-                                        icon: new Icon(Icons.remove),
-                                        onPressed: () =>
-                                            setState(() => _itemCount--),
-                                      )
-                                    : new IconButton(
-                                        icon: new Icon(
-                                          Icons.remove,
-                                          color: Colors.black,
+                          Consumer<ProductProvider>(
+                            builder: (ctx, product, ch) => Container(
+                              margin: EdgeInsets.all(8),
+                              child: Row(
+                                children: <Widget>[
+                                  _itemCount != 1
+                                      ? new IconButton(
+                                          icon: new Icon(Icons.remove),
+                                          onPressed: () =>
+                                              setState(() => _itemCount--),
+                                        )
+                                      : new IconButton(
+                                          icon: new Icon(
+                                            Icons.remove,
+                                            color: Colors.black,
+                                          ),
                                         ),
-                                      ),
-                                new Text(_itemCount.toString()),
-                                new IconButton(
-                                    icon: new Icon(Icons.add),
-                                    onPressed: () =>
-                                        setState(() => _itemCount++))
-                              ],
+                                  new Text(_itemCount.toString()),
+                                  new IconButton(
+                                      icon: new Icon(Icons.add),
+                                      onPressed: () =>
+                                          setState(() => _itemCount++))
+                                ],
+                              ),
                             ),
                           ),
 
@@ -312,7 +331,7 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                       ? Colors.grey
                                       : Theme.of(context).primaryColor,
                                   onPressed: () {
-                                    product.toggleCart(widget.id);
+                                    product.toggleCart(widget.id, _itemCount);
                                   },
                                   icon: Icon(
                                     Icons.shopping_cart,

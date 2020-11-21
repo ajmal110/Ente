@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:plantStore/widgets/UserDetails.dart';
 import 'package:plantStore/widgets/onlineCard.dart';
+import 'package:plantStore/widgets/onlineCard1.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -29,6 +30,8 @@ class _CartScreenState extends State<CartScreen> {
   @override
   Widget build(BuildContext context) {
     final List<String> cartItems = Provider.of<ProductProvider>(context).cart;
+    final List<Map> cartDetailed =
+        Provider.of<ProductProvider>(context).cartWithCount;
     return FutureBuilder(
       future: FirebaseAuth.instance.currentUser(),
       builder: (ctx, snap) => snap.connectionState == ConnectionState.waiting
@@ -132,7 +135,7 @@ class _CartScreenState extends State<CartScreen> {
                                     final String details =
                                         cartToShow[i]['productDetails'];
 
-                                    return OnlineCard(
+                                    return OnlineCard1(
                                       desc: desc,
                                       id: id,
                                       mainText: mainText,
