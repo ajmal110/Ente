@@ -107,14 +107,27 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   Navigator.pushNamed(context, CategoriesScreen.routename);
                 },
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    'Categories',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20,
-                      letterSpacing: 5,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Categories  ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            letterSpacing: 5,
+                          ),
+                        ),
+                        Icon(
+                          Icons.arrow_right_alt_rounded,
+                          size: SizeConfig.blockSizeHorizontal * 7,
+                          color: Colors.black26,
+                        ),
+                      ],
                     ),
                   ),
                 ),

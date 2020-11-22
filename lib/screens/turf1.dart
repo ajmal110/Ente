@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:plantStore/Providers/text-scroll.dart';
 import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/turf.dart';
 import 'package:plantStore/Providers/call_provider.dart';
@@ -108,10 +109,13 @@ class Turf1 extends StatelessWidget {
                         radius: 30,
                         backgroundImage: NetworkImage(docs[i]['Photo']),
                       ),
-                      title: Text(
-                        docs[i]['Name'],
-                        style: TextStyle(
-                          fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                      title: MarqueeWidget(
+                        direction: Axis.horizontal,
+                        child: Text(
+                          docs[i]['Name'],
+                          style: TextStyle(
+                            fontSize: SizeConfig.blockSizeHorizontal * 3.9,
+                          ),
                         ),
                       ),
                       subtitle: Row(
@@ -149,13 +153,15 @@ class Turf1 extends StatelessWidget {
                                       color: Colors.greenAccent,
                                       size: SizeConfig.blockSizeHorizontal * 5,
                                     ),
-                                    Text(
-                                      '  ${docs[i]['Location']}',
-                                      softWrap: true,
-                                      style: TextStyle(
-                                        fontSize:
-                                            SizeConfig.blockSizeHorizontal *
-                                                3.4,
+                                    MarqueeWidget(
+                                      direction: Axis.horizontal,
+                                      child: Text(
+                                        '  ${docs[i]['Location']}',
+                                        style: TextStyle(
+                                          fontSize:
+                                              SizeConfig.blockSizeHorizontal *
+                                                  3.4,
+                                        ),
                                       ),
                                     ),
                                   ],
@@ -165,48 +171,73 @@ class Turf1 extends StatelessWidget {
                           ),
                           Column(
                             children: [
+                              // Padding(
+                              //   padding: const EdgeInsets.only(left: 10.0),
+                              //   child: RaisedButton.icon(
+                              //       color: Colors.white,
+                              //       onPressed: () async {
+                              //         launchCaller('${docs[i]['Phone']}');
+                              //       },
+                              //       icon: Icon(
+                              //         Icons.call,
+                              //         color: Colors.greenAccent,
+                              //         size: SizeConfig.blockSizeHorizontal * 5,
+                              //       ),
+                              //       label: Text(
+                              //         'Call',
+                              //         style: TextStyle(
+                              //             color: Colors.greenAccent,
+                              //             fontSize:
+                              //                 SizeConfig.blockSizeHorizontal *
+                              //                     2.8),
+                              //       )),
+                              // ),
+                              // Padding(
+                              //   padding: const EdgeInsets.only(left: 5.0),
+                              //   child: RaisedButton.icon(
+                              //       color: Colors.white,
+                              //       onPressed: () async {
+                              //         Share.share(
+                              //             'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n Location:${docs[i]['Location']} \n From Ente Manjeri');
+                              //       },
+                              //       icon: Icon(
+                              //         Icons.share,
+                              //         color: Colors.greenAccent,
+                              //         size: SizeConfig.blockSizeHorizontal * 5,
+                              //       ),
+                              //       label: Text(
+                              //         'Share',
+                              //         style: TextStyle(
+                              //             color: Colors.greenAccent,
+                              //             fontSize:
+                              //                 SizeConfig.blockSizeHorizontal *
+                              //                     2.8),
+                              //       )),
+                              // ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 10.0),
-                                child: RaisedButton.icon(
-                                    color: Colors.white,
-                                    onPressed: () async {
-                                      launchCaller('${docs[i]['Phone']}');
-                                    },
-                                    icon: Icon(
-                                      Icons.call,
-                                      color: Colors.greenAccent,
-                                      size: SizeConfig.blockSizeHorizontal * 5,
-                                    ),
-                                    label: Text(
-                                      'Call',
-                                      style: TextStyle(
-                                          color: Colors.greenAccent,
-                                          fontSize:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  2.8),
-                                    )),
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    launchCaller('${docs[i]['Phone']}');
+                                  },
+                                  child: Image.asset(
+                                    'assets/images/49.png',
+                                    height: 25,
+                                  ),
+                                ),
                               ),
                               Padding(
-                                padding: const EdgeInsets.only(left: 5.0),
-                                child: RaisedButton.icon(
-                                    color: Colors.white,
-                                    onPressed: () async {
-                                      Share.share(
-                                          'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n Location:${docs[i]['Location']} \n From Ente Manjeri');
-                                    },
-                                    icon: Icon(
-                                      Icons.share,
-                                      color: Colors.greenAccent,
-                                      size: SizeConfig.blockSizeHorizontal * 5,
-                                    ),
-                                    label: Text(
-                                      'Share',
-                                      style: TextStyle(
-                                          color: Colors.greenAccent,
-                                          fontSize:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  2.8),
-                                    )),
+                                padding: const EdgeInsets.all(8.0),
+                                child: GestureDetector(
+                                  onTap: () async {
+                                    Share.share(
+                                        'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                  },
+                                  child: Image.asset(
+                                    'assets/images/50.png',
+                                    height: 25,
+                                  ),
+                                ),
                               ),
                             ],
                           ),

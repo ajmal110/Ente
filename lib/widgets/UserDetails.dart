@@ -58,7 +58,7 @@ class _NewUserState extends State<NewUser> {
         final String name = item['Name'];
         final String mainText = item['mainText'];
         final String photo = item['photo'];
-        final String price = item['price'];
+        final int price = item['price'];
         final String details = item['productDetails'];
 
         if (orderid.trim() == '') {

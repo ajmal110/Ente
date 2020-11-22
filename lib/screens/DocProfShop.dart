@@ -6,6 +6,7 @@ import 'package:plantStore/Providers/call_provider.dart';
 import 'package:plantStore/Providers/text-scroll.dart';
 import 'package:plantStore/models/size_config.dart';
 import 'package:plantStore/screens/DocProfShop1.dart';
+import 'package:plantStore/widgets/myOrders.dart';
 import 'package:plantStore/widgets/newDocProfShop.dart';
 import 'package:share/share.dart';
 
@@ -105,7 +106,7 @@ class DocProfShop extends StatelessWidget {
               itemCount: docs.length,
               itemBuilder: (ctx, i) => Container(
                     width: 230,
-                    height: 200,
+                    height: 150,
                     padding: EdgeInsets.all(8),
                     child: GestureDetector(
                       onTap: () => Navigator.push(
@@ -115,25 +116,29 @@ class DocProfShop extends StatelessWidget {
                         ),
                       ),
                       child: Container(
-                        width: 100,
-                        height: 100,
+                        width: 10,
+                        height: 10,
                         child: Card(
-                          elevation: 10,
+                          elevation: 3,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: const EdgeInsets.all(1.0),
                             child: ListTile(
                               leading: CircleAvatar(
                                 radius: 30,
-                                backgroundImage: NetworkImage(docs[i]['Photo']),
+                                backgroundImage:
+                                    NetworkImage(docs[i]['Photo'], scale: 1),
                               ),
-                              title: Text(
-                                docs[i]['Name'],
-                                style: TextStyle(
-                                  fontSize:
-                                      SizeConfig.blockSizeHorizontal * 3.9,
+                              title: MarqueeWidget(
+                                direction: Axis.horizontal,
+                                child: Text(
+                                  docs[i]['Name'],
+                                  style: TextStyle(
+                                    fontSize:
+                                        SizeConfig.blockSizeHorizontal * 3.9,
+                                  ),
                                 ),
                               ),
                               subtitle: Column(
@@ -180,8 +185,7 @@ class DocProfShop extends StatelessWidget {
                                                 Container(
                                                   width: SizeConfig
                                                           .blockSizeHorizontal *
-                                                      35.0,
-                                                  height: 20,
+                                                      45.0,
                                                   child: MarqueeWidget(
                                                       direction:
                                                           Axis.horizontal,
@@ -244,55 +248,81 @@ class DocProfShop extends StatelessWidget {
                                       ),
                                       Column(
                                         children: [
+                                          // Padding(
+                                          //   padding: const EdgeInsets.only(
+                                          //       left: 10.0),
+                                          //   child: RaisedButton.icon(
+                                          //       color: Colors.white,
+                                          //       onPressed: () async {
+                                          //         launchCaller(
+                                          //             '${docs[i]['Phone']}');
+                                          //       },
+                                          //       icon: Icon(
+                                          //         Icons.call,
+                                          //         color: Colors.greenAccent,
+                                          //         size: SizeConfig
+                                          //                 .blockSizeHorizontal *
+                                          //             5,
+                                          //       ),
+                                          //       label: Text(
+                                          //         'Call',
+                                          //         style: TextStyle(
+                                          //             color: Colors.greenAccent,
+                                          //             fontSize: SizeConfig
+                                          //                     .blockSizeHorizontal *
+                                          //                 2.8),
+                                          //       )),
+                                          // ),
+                                          // Padding(
+                                          //   padding: const EdgeInsets.only(
+                                          //       left: 5.0),
+                                          //   child: RaisedButton.icon(
+                                          //       color: Colors.white,
+                                          //       onPressed: () async {
+                                          //         Share.share(
+                                          //             'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                          //       },
+                                          //       icon: Icon(
+                                          //         Icons.share,
+                                          //         color: Colors.greenAccent,
+                                          //         size: SizeConfig
+                                          //                 .blockSizeHorizontal *
+                                          //             5,
+                                          //       ),
+                                          //       label: Text(
+                                          //         'Share',
+                                          //         style: TextStyle(
+                                          //             color: Colors.greenAccent,
+                                          //             fontSize: SizeConfig
+                                          //                     .blockSizeHorizontal *
+                                          //                 2.8),
+                                          //       )),
+                                          // ),
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 10.0),
-                                            child: RaisedButton.icon(
-                                                color: Colors.white,
-                                                onPressed: () async {
-                                                  launchCaller(
-                                                      '${docs[i]['Phone']}');
-                                                },
-                                                icon: Icon(
-                                                  Icons.call,
-                                                  color: Colors.greenAccent,
-                                                  size: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      5,
-                                                ),
-                                                label: Text(
-                                                  'Call',
-                                                  style: TextStyle(
-                                                      color: Colors.greenAccent,
-                                                      fontSize: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          2.8),
-                                                )),
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: GestureDetector(
+                                              onTap: () async {
+                                                launchCaller(
+                                                    '${docs[i]['Phone']}');
+                                              },
+                                              child: Image.asset(
+                                                'assets/images/49.png',
+                                                height: 25,
+                                              ),
+                                            ),
                                           ),
                                           Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 5.0),
-                                            child: RaisedButton.icon(
-                                                color: Colors.white,
-                                                onPressed: () async {
-                                                  Share.share(
-                                                      'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
-                                                },
-                                                icon: Icon(
-                                                  Icons.share,
-                                                  color: Colors.greenAccent,
-                                                  size: SizeConfig
-                                                          .blockSizeHorizontal *
-                                                      5,
-                                                ),
-                                                label: Text(
-                                                  'Share',
-                                                  style: TextStyle(
-                                                      color: Colors.greenAccent,
-                                                      fontSize: SizeConfig
-                                                              .blockSizeHorizontal *
-                                                          2.8),
-                                                )),
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: GestureDetector(
+                                              onTap: () async {
+                                                Share.share(
+                                                    'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                              },
+                                              child: Image.asset(
+                                                'assets/images/50.png',
+                                                height: 25,
+                                              ),
+                                            ),
                                           ),
                                         ],
                                       ),

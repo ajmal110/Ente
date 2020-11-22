@@ -20,15 +20,19 @@ class OfferDetailScreen extends StatefulWidget {
   final String photo;
   final int price;
   final String details;
-  OfferDetailScreen(
-      {this.prod,
-      this.id,
-      this.desc,
-      this.mainText,
-      this.name,
-      this.photo,
-      this.price,
-      this.details});
+  final int count;
+
+  OfferDetailScreen({
+    this.prod,
+    this.id,
+    this.desc,
+    this.mainText,
+    this.name,
+    this.photo,
+    this.price,
+    this.details,
+    this.count,
+  });
 
   @override
   _OfferDetailScreenState createState() => _OfferDetailScreenState();
@@ -418,11 +422,10 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                 if (reviews.length == 0) Text('No ratings yet'),
                                 if (reviews.length != 0)
                                   Card(
-                                    elevation: 20,
+                                    elevation: 1,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
                                     ),
-                                    color: Theme.of(context).primaryColor,
                                     child: Padding(
                                       padding: const EdgeInsets.all(8.0),
                                       child: Row(
@@ -432,14 +435,14 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                                 1), //////////////////////
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              color: Colors.amber,
+                                              color: Colors.yellow[800],
                                               fontSize: 20,
                                             ),
                                           ),
                                           SizedBox(width: 4),
                                           Icon(
                                             Icons.star,
-                                            color: Colors.amber,
+                                            color: Colors.yellow[800],
                                           )
                                         ],
                                       ),
@@ -471,18 +474,16 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(10),
                                       ),
-                                      elevation: 8,
+                                      elevation: 4,
                                       child: ListTile(
                                         leading: SizedBox(
                                           width: 80,
                                           child: Card(
-                                            elevation: 20,
+                                            elevation: 1,
                                             shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(20),
                                             ),
-                                            color:
-                                                Theme.of(context).primaryColor,
                                             child: Padding(
                                               padding:
                                                   const EdgeInsets.all(8.0),
@@ -494,7 +495,8 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                                         .toStringAsFixed(
                                                             1), //////////
                                                     style: TextStyle(
-                                                        color: Colors.amber,
+                                                        color:
+                                                            Colors.yellow[800],
                                                         fontSize: 16,
                                                         fontWeight:
                                                             FontWeight.bold),
@@ -502,7 +504,7 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                                   SizedBox(width: 4),
                                                   Icon(
                                                     Icons.star,
-                                                    color: Colors.amber,
+                                                    color: Colors.yellow[800],
                                                   )
                                                 ],
                                               ),

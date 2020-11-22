@@ -18,7 +18,7 @@ class NewsCard extends StatelessWidget {
         content: Container(
           padding: offer['SubDes'].trim() == ''
               ? EdgeInsets.all(0)
-              : EdgeInsets.all(0),
+              : EdgeInsets.all(3),
           // color: Colors.black26,
           child: Text(
             offer['SubDes'],
