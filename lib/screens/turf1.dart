@@ -153,14 +153,18 @@ class Turf1 extends StatelessWidget {
                                       color: Colors.greenAccent,
                                       size: SizeConfig.blockSizeHorizontal * 5,
                                     ),
-                                    MarqueeWidget(
-                                      direction: Axis.horizontal,
-                                      child: Text(
-                                        '  ${docs[i]['Location']}',
-                                        style: TextStyle(
-                                          fontSize:
-                                              SizeConfig.blockSizeHorizontal *
-                                                  3.4,
+                                    Container(
+                                      width:
+                                          SizeConfig.blockSizeHorizontal * 45.0,
+                                      child: MarqueeWidget(
+                                        direction: Axis.horizontal,
+                                        child: Text(
+                                          '  ${docs[i]['Location']}',
+                                          style: TextStyle(
+                                            fontSize:
+                                                SizeConfig.blockSizeHorizontal *
+                                                    3.4,
+                                          ),
                                         ),
                                       ),
                                     ),
