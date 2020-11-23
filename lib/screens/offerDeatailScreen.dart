@@ -60,12 +60,13 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
     super.didChangeDependencies();
   }
 
-  void changePage(BuildContext context, String currUid, List cartToShow) {
+  void changePage(
+      BuildContext context, String currUid, List cartToShow, int count) {
     Navigator.of(context).pop();
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (ctx) => NewUser(cartToShow, currUid),
+        builder: (ctx) => NewUser(cartToShow, currUid, count),
       ),
     );
   }
@@ -367,7 +368,8 @@ class _OfferDetailScreenState extends State<OfferDetailScreen> {
                                 child: FlatButton.icon(
                                   color: Colors.teal[800],
                                   onPressed: () {
-                                    changePage(context, currUid, [widget.prod]);
+                                    changePage(context, currUid, [widget.prod],
+                                        _itemCount);
                                   },
                                   icon: Icon(
                                     Icons.shopping_cart,

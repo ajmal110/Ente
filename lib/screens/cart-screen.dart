@@ -22,7 +22,7 @@ class _CartScreenState extends State<CartScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (ctx) => NewUser(cartToShow, currUid),
+        builder: (ctx) => NewUser(cartToShow, currUid,null),
       ),
     );
   }

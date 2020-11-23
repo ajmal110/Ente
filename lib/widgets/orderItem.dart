@@ -81,14 +81,14 @@ class _OrderItemState extends State<OrderItem> {
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
                                   Text(
-                                    prod['Name'],
+                                    '${prod['Name']}',
                                     style: TextStyle(
                                       fontSize: 18,
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                   Text(
-                                    prod['price'],
+                                    '${prod['price'].toString()} x ${prod['quantity'].toString()} = ${prod['totalPrice'].toString()}',
                                     style: TextStyle(
                                       fontSize: 18,
                                       color: Colors.grey,

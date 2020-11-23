@@ -12,7 +12,8 @@ import 'package:provider/provider.dart';
 class NewUser extends StatefulWidget {
   final cartToShow;
   final currUid;
-  NewUser(this.cartToShow, this.currUid);
+  final count;
+  NewUser(this.cartToShow, this.currUid, this.count);
   @override
   _NewUserState createState() => _NewUserState();
 }
@@ -60,6 +61,16 @@ class _NewUserState extends State<NewUser> {
         final String photo = item['photo'];
         final int price = item['price'];
         final String details = item['productDetails'];
+        final int quantity = widget.count == null
+            ? ((Provider.of<ProductProvider>(context, listen: false)
+                    .cart
+                    .contains(item.documentID))
+                ? Provider.of<ProductProvider>(context, listen: false)
+                    .cartWithCount
+                    .firstWhere(
+                        (element) => element['id'] == item.documentID)['count']
+                : 1)
+            : widget.count;
 
         if (orderid.trim() == '') {
           final id1 = Firestore.instance
@@ -94,6 +105,8 @@ class _NewUserState extends State<NewUser> {
             'photo': photo,
             'price': price,
             'productDetails': details,
+            'quantity': quantity,
+            'totalPrice': price * quantity,
           });
         } else {
           Firestore.instance
@@ -109,6 +122,8 @@ class _NewUserState extends State<NewUser> {
             'photo': photo,
             'price': price,
             'productDetails': details,
+            'quantity': quantity,
+            'totalPrice': price * quantity,
           });
         }
       });
