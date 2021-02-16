@@ -52,16 +52,16 @@ class _BarScreenState extends State<BarScreen> {
           //   icon: Icon(Icons.search),
           //   onPressed: () {},
           // ),
-          Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: IconButton(
-              icon:
-                  Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
-              onPressed: () {
-                Navigator.pushNamed(context, CartScreen.routename);
-              },
-            ),
-          )
+          // Padding(
+          //   padding: const EdgeInsets.only(right: 8.0),
+          //   child: IconButton(
+          //     icon:
+          //         Icon(Icons.shopping_cart, color: Colors.grey[200], size: 25),
+          //     onPressed: () {
+          //       Navigator.pushNamed(context, CartScreen.routename);
+          //     },
+          //   ),
+          // )
         ],
       ),
       drawer: MainDrawer(),

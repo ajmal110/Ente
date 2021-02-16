@@ -21,13 +21,54 @@ class SubCategoriesScreen extends StatefulWidget {
 
 class _SubCategoriesScreenState extends State<SubCategoriesScreen> {
   final List<Map<String, String>> busTimings = [
-    {'cat': 'Pandikad', 'path': 'assets/images/A.png'},
-    {'cat': 'Nilamboor', 'path': 'assets/images/A.png'},
-    {'cat': 'Wandoor', 'path': 'assets/images/A.png'},
-    {'cat': 'Calicut', 'path': 'assets/images/A.png'},
-    {'cat': 'Perinthlmanna', 'path': 'assets/images/A.png'},
-    {'cat': 'Thrissur', 'path': 'assets/images/A.png'},
-    {'cat': 'Eranamkulam', 'path': 'assets/images/A.png'},
+    {
+      'cat': 'Manjeri - Kattapana',
+      'path': 'assets/images/Manjeri - Kattapana.png'
+    },
+    {'cat': 'Manjeri - Batheri', 'path': 'assets/images/Manjeri -Batheri.png'},
+    {'cat': 'Manjeri - Calicut', 'path': 'assets/images/Manjeri -Calicut.png'},
+    {
+      'cat': 'Manjeri - Coimbatore',
+      'path': 'assets/images/Manjeri -Coimbatore.png'
+    },
+    {
+      'cat': 'Manjeri - Eranamkulam',
+      'path': 'assets/images/Manjeri -Eranamkulam.png'
+    },
+    {
+      'cat': 'Manjeri - Eratupetta',
+      'path': 'assets/images/Manjeri -Eratupetta.png'
+    },
+    {
+      'cat': 'Manjeri - Guruvayoor',
+      'path': 'assets/images/Manjeri -Guruvayoor.png'
+    },
+    {
+      'cat': 'Manjeri - Manandawadi',
+      'path': 'assets/images/Manjeri -Manandawadi.png'
+    },
+    {'cat': 'Manjeri - Mysore', 'path': 'assets/images/Manjeri -Mysore.png'},
+    {
+      'cat': 'Manjeri - Nilamboor',
+      'path': 'assets/images/Manjeri -Nilamboor.png'
+    },
+    {
+      'cat': 'Manjeri - Pandikkad',
+      'path': 'assets/images/Manjeri -Pandikkad.png'
+    },
+    {
+      'cat': 'Manjeri - Perinthalmanna',
+      'path': 'assets/images/Manjeri -Perinthalmanna.png'
+    },
+    {
+      'cat': 'Manjeri - Thamarassery',
+      'path': 'assets/images/Manjeri -Thamarassery.png'
+    },
+    {
+      'cat': 'Manjeri - Thrissur',
+      'path': 'assets/images/Manjeri -Thrissur.png'
+    },
+    {'cat': 'Manjeri - Wandoor', 'path': 'assets/images/Manjeri -Wandoor.png'},
   ];
 
   final List<Map<String, String>> taxi = [

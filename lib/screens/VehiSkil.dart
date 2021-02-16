@@ -137,45 +137,70 @@ class VehiSkill extends StatelessWidget {
                         ),
                         Column(
                           children: [
+                            // Padding(
+                            //   padding: const EdgeInsets.only(left: 10.0),
+                            //   child: RaisedButton.icon(
+                            //       color: Colors.white,
+                            //       onPressed: () async {
+                            //         launchCaller('${docs[i]['Phone']}');
+                            //       },
+                            //       icon: Icon(
+                            //         Icons.call,
+                            //         color: Colors.greenAccent,
+                            //       ),
+                            //       label: Text(
+                            //         'Call',
+                            //         style: TextStyle(
+                            //           color: Colors.greenAccent,
+                            //         ),
+                            //       )),
+                            // ),
+                            // Padding(
+                            //   padding: const EdgeInsets.only(left: 5.0),
+                            //   child: RaisedButton.icon(
+                            //       color: Colors.white,
+                            //       onPressed: () async {
+                            //         Share.share(
+                            //             'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                            //       },
+                            //       icon: Icon(
+                            //         Icons.share,
+                            //         color: Colors.greenAccent,
+                            //         size: SizeConfig.blockSizeHorizontal * 5,
+                            //       ),
+                            //       label: Text(
+                            //         'Share',
+                            //         style: TextStyle(
+                            //             color: Colors.greenAccent,
+                            //             fontSize:
+                            //                 SizeConfig.blockSizeHorizontal *
+                            //                     2.8),
+                            //       )),
+                            // ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 10.0),
-                              child: RaisedButton.icon(
-                                  color: Colors.white,
-                                  onPressed: () async {
-                                    launchCaller('${docs[i]['Phone']}');
-                                  },
-                                  icon: Icon(
-                                    Icons.call,
-                                    color: Colors.greenAccent,
-                                  ),
-                                  label: Text(
-                                    'Call',
-                                    style: TextStyle(
-                                      color: Colors.greenAccent,
-                                    ),
-                                  )),
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () async {
+                                  launchCaller('${docs[i]['Phone']}');
+                                },
+                                child: Image.asset(
+                                  'assets/images/49.png',
+                                  height: 25,
+                                ),
+                              ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(left: 5.0),
-                              child: RaisedButton.icon(
-                                  color: Colors.white,
-                                  onPressed: () async {
-                                    Share.share(
-                                        'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
-                                  },
-                                  icon: Icon(
-                                    Icons.share,
-                                    color: Colors.greenAccent,
-                                    size: SizeConfig.blockSizeHorizontal * 5,
-                                  ),
-                                  label: Text(
-                                    'Share',
-                                    style: TextStyle(
-                                        color: Colors.greenAccent,
-                                        fontSize:
-                                            SizeConfig.blockSizeHorizontal *
-                                                2.8),
-                                  )),
+                              padding: const EdgeInsets.all(8.0),
+                              child: GestureDetector(
+                                onTap: () async {
+                                  Share.share(
+                                      'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                },
+                                child: Image.asset(
+                                  'assets/images/50.png',
+                                  height: 25,
+                                ),
+                              ),
                             ),
                           ],
                         ),

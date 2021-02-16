@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:plantStore/Providers/text-scroll.dart';
+import 'package:plantStore/widgets/myOrders.dart';
 
 import '../models/product.dart';
 import '../widgets/newBustiming.dart';
@@ -23,13 +25,16 @@ class BusTimings extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          cat,
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 21,
-              fontFamily: 'Lato',
-              fontWeight: FontWeight.bold),
+        title: MarqueeWidget(
+          direction: Axis.horizontal,
+          child: Text(
+            cat,
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 21,
+                fontFamily: 'Lato',
+                fontWeight: FontWeight.bold),
+          ),
         ),
         centerTitle: true,
         actions: [

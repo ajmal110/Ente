@@ -316,7 +316,7 @@ class DocProfShop extends StatelessWidget {
                                             child: GestureDetector(
                                               onTap: () async {
                                                 Share.share(
-                                                    'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n From Ente Manjeri');
+                                                    'Name:${docs[i]['Name']} \n Phone:${docs[i]['Phone']} \n Location:${docs[i]['Location']} \n From Ente Manjeri');
                                               },
                                               child: Image.asset(
                                                 'assets/images/50.png',

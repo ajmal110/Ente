@@ -177,14 +177,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     }),
               ),
               Divider(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Offers And deals',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    letterSpacing: 5,
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Offers And deals',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          letterSpacing: 5,
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_right_alt_rounded,
+                        size: SizeConfig.blockSizeHorizontal * 7,
+                        color: Colors.black26,
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -204,34 +217,34 @@ class _HomeScreenState extends State<HomeScreen> {
                   },
                 ),
               ),
-              Divider(),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  'Online Store',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    letterSpacing: 5,
-                  ),
-                ),
-              ),
-              Container(
-                height: 250,
-                margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-                child: StreamBuilder(
-                  stream: Firestore.instance.collection('online').snapshots(),
-                  builder: (ctx, snapshot) {
-                    if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
-                        child: CircularProgressIndicator(),
-                      );
-                    }
-                    final docs = snapshot.data.documents;
-                    return OnlineCarousel(docs);
-                  },
-                ),
-              ),
+              // Divider(),
+              // Padding(
+              //   padding: const EdgeInsets.all(8.0),
+              //   child: Text(
+              //     'Online Store',
+              //     style: TextStyle(
+              //       fontWeight: FontWeight.bold,
+              //       fontSize: 20,
+              //       letterSpacing: 5,
+              //     ),
+              //   ),
+              // ),
+              // Container(
+              //   height: 250,
+              //   margin: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+              //   child: StreamBuilder(
+              //     stream: Firestore.instance.collection('online').snapshots(),
+              //     builder: (ctx, snapshot) {
+              //       if (snapshot.connectionState == ConnectionState.waiting) {
+              //         return Center(
+              //           child: CircularProgressIndicator(),
+              //         );
+              //       }
+              //       final docs = snapshot.data.documents;
+              //       return OnlineCarousel(docs);
+              //     },
+              //   ),
+              // ),
             ],
           ),
         ),

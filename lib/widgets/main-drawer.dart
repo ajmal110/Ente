@@ -74,33 +74,33 @@ class _MainDrawerState extends State<MainDrawer> {
             Divider(
               thickness: 2,
             ),
-            Container(
-              height: 40,
-              child: ListTile(
-                onTap: () {
-                  Navigator.pushNamed(context, CartScreen.routename);
-                },
-                leading: Icon(Icons.shopping_cart),
-                title: Text('My Cart'),
-              ),
-            ),
-            Divider(
-              thickness: 2,
-            ),
-            Container(
-              height: 40,
-              child: ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (ctx) => MyOrders()));
-                },
-                leading: Icon(Icons.history),
-                title: Text('My Orders'),
-              ),
-            ),
-            Divider(
-              thickness: 2,
-            ),
+            // Container(
+            //   height: 40,
+            //   child: ListTile(
+            //     onTap: () {
+            //       Navigator.pushNamed(context, CartScreen.routename);
+            //     },
+            //     leading: Icon(Icons.shopping_cart),
+            //     title: Text('My Cart'),
+            //   ),
+            // ),
+            // Divider(
+            //   thickness: 2,
+            // ),
+            // Container(
+            //   height: 40,
+            //   child: ListTile(
+            //     onTap: () {
+            //       Navigator.push(
+            //           context, MaterialPageRoute(builder: (ctx) => MyOrders()));
+            //     },
+            //     leading: Icon(Icons.history),
+            //     title: Text('My Orders'),
+            //   ),
+            // ),
+            // Divider(
+            //   thickness: 2,
+            // ),
             Container(
               height: 40,
               child: ListTile(
@@ -138,7 +138,7 @@ class _MainDrawerState extends State<MainDrawer> {
               thickness: 2,
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 30.0, left: 10, right: 10),
+              padding: const EdgeInsets.only(top: 50.0, left: 10, right: 10),
               child: Row(
                 children: [
                   Container(
